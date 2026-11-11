@@ -1,3 +1,4 @@
+# shared method parts: evidence, fusion, probe shaping, stop test, answer call
 from __future__ import annotations
 
 import re
@@ -215,6 +216,7 @@ def shaped(r: ProbeRequest, kind: str, round_kind: str, sizes: Sizes, groups: Ma
         r = replace(r, semijoin=True, mentions=[r.value], **({"vocab": [r.value]} if vocab else {}))
     if not share or r.k_group is not None:
         return [r]
+    # sites sharing a collection and encoder split one k by their share of the group's objects
     names = r.collections if r.collections is not None else sorted({c for _, c in sizes})
     parts = []
     for name in names:
@@ -294,6 +296,7 @@ async def generate_answer(q: Question, ctx: QueryContext, facts: Sequence[Fact],
         reply_cost = budget.OUT_WEIGHT * 24
         frame = frame_of(facts)
         if len(facts) > 1 and frame + reply_cost > left:
+            # longest fact prefix whose answer prompt and reply still fit what is left
             lo, hi = 1, len(facts)
             while lo < hi:
                 mid = (lo + hi + 1) // 2

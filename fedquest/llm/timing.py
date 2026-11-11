@@ -1,3 +1,4 @@
+# timing log of model calls; timed replays look up each call's median wall time
 from __future__ import annotations
 
 import json

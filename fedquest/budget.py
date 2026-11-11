@@ -1,3 +1,4 @@
+# token counts (Gemma 4 tokenizer when found) and the per-question budget
 from __future__ import annotations
 
 import glob

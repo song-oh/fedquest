@@ -1,3 +1,4 @@
+# Bloom filters over each collection's titles and title words
 from __future__ import annotations
 
 import base64

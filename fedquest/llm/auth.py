@@ -1,3 +1,4 @@
+# ALCF access tokens through Argonne's auth script; API keys for openai endpoints
 from __future__ import annotations
 
 import importlib.util

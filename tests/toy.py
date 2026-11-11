@@ -1,3 +1,4 @@
+# toy_fed, built on disk with hash encoders, and the scripted LLM that answers it
 from __future__ import annotations
 
 import json

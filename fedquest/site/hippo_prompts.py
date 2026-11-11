@@ -1,3 +1,4 @@
+# HippoRAG 2's prompts: NER, NER-conditioned triples and the DSPy fact filter
 from __future__ import annotations
 
 import copy
@@ -8,6 +9,7 @@ from string import Template
 from typing import Any
 
 UPSTREAM = "hipporag 2.0.0a4"
+# SHA-256 of the upstream hipporag files the prompts here are copied from
 UPSTREAM_FILES = {
     "prompts/templates/ner.py": "975f38b8889debce67c0c579be850c6a8fba95e4448a85434d18711aa0c99625",
     "prompts/templates/triple_extraction.py": "c5dde436afdf2de43d48022cda85856cf7088beb1b9167564036877cda35887d",

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# a Qdrant server for this clone on one node, its port offset by the uid
 set -euo pipefail
 cd "$(dirname "$0")/.."
 REPO=$PWD

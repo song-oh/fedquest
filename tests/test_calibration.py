@@ -1,3 +1,4 @@
+# how the calibrator shrinks cell rates, picks its strength and fits from probes
 import json
 import logging
 import random

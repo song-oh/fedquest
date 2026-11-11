@@ -1,3 +1,4 @@
+# a site's SQLite cache of extraction results by object, version and query hash
 from __future__ import annotations
 
 import json

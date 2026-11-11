@@ -1,3 +1,4 @@
+# prompts and reply parsers for every model task, with the mention and witness tests
 from __future__ import annotations
 
 import re
@@ -232,6 +233,7 @@ def described(variable: str, question: str) -> str | None:
     return name if mentions(question, name) else None
 
 
+# a placeholder the question names outright: a constant on one edge, folded into the relation between two
 def _fold_concepts(edges: list[Edge], variables: list[str], answer: str | None, question: str) -> list[str]:
     constants = []
     for v in list(variables):
@@ -296,6 +298,7 @@ def parse_pattern(text: str, question: str) -> Pattern:
                 unnamed.discard(k)
                 nodes[k] = f"?{name}"
             return nodes[k]
+        # an unknown name snaps to a node at fuzz ratio 80, but never person1 to person2
         pool = [n for n in nodes if n != skip and not _numbered_apart(k, n)]
         if pool:
             match = process.extractOne(k, pool, scorer=fuzz.ratio)
@@ -670,6 +673,7 @@ def read_reply(text: str) -> Any:
     first = next((v for v in values if isinstance(v, dict)), None)
     if first is not None and not ("entity" in first and len(values) == 1):
         return first
+    # no keyed object: file each entity object under the nearest unknown key before it
     keys = [(m.start(), m.group(1)) for m in _HIT_KEY.finditer(text or "") if m.group(1) != "conditions"]
     out: dict[str, list[dict[str, Any]]] = {}
     loose: list[dict[str, Any]] = []
@@ -793,6 +797,7 @@ def mention_words(value: str) -> list[str]:
 def mentions(text: str, value: str) -> bool:
     if witnessed(text, value):
         return True
+    # else a tau share of the value's long words must appear; with fewer than two, only a witness counts
     tau = _MENTION.get()[1]
     words = mention_words(value)
     nt = _norm_text(text)
@@ -1333,6 +1338,7 @@ def react_budget(tokens_left: int | None) -> str:
     return "Budget left: no token limit" if tokens_left is None else f"Budget left: {max(0, tokens_left)} tokens"
 
 
+# HotpotQA and 2Wiki borrow MuSiQue's demos, M3SciQA those of MMQA
 for _demos in (IRCOT_DEMOS, PLANNER_DEMOS, PLANNER_OPS_DEMOS, REACT_DEMOS):
     for _name in ("hotpotqa", "twowiki"):
         _demos.setdefault(_name, _demos["musique"])

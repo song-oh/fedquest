@@ -5,6 +5,7 @@
 #PBS -l place=scatter
 #PBS -k doe
 #PBS -j oe
+# HippoRAG 2 index job: HIPPO_PLAN shares the nodes among the pooled corpora
 set -u
 cd "${PBS_O_WORKDIR:?}" || exit 1
 export TZ=/usr/share/zoneinfo/US/Central
@@ -13,6 +14,7 @@ if [[ -z ${HIPPO_PLAN:-} ]]; then
   if ((NODES == 16)); then
     HIPPO_PLAN="musique_next_home:8 hotpot_home:5 twowiki_home:3"
   else
+    # about half the nodes for MuSiQue, three tenths for HotpotQA, the rest for 2Wiki
     m=$(((NODES + 1) / 2)) h=$(((NODES * 3 + 5) / 10))
     ((m < 1)) && m=1
     ((h < 1)) && h=1

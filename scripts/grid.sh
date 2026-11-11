@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# the scaling grid: replays scale_musique's probe trace on the scale pool
 set -euo pipefail
 cd "$(dirname "$0")/.."
 export FEDQUEST_POOL=scale FEDQUEST_SOCK_DIR=/tmp/fedquest-$(id -u)/scale FEDQUEST_REMOTE_CONFIG=configs/remote_scale.yaml

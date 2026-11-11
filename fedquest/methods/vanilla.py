@@ -1,3 +1,4 @@
+# Vanilla RAG baseline: probe with the question, answer from the top objects
 from __future__ import annotations
 
 import asyncio

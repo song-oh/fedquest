@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# token-guarded CONNECT proxy from Midway3 compute nodes to a few hosts on port 443
 
 from __future__ import annotations
 

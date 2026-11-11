@@ -1,3 +1,4 @@
+# Method base class and registry, with the per-question context and result
 from __future__ import annotations
 
 import inspect

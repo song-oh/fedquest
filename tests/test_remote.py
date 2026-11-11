@@ -1,3 +1,4 @@
+# remote mode on the toy federation, with threads standing in for Globus Compute
 import asyncio
 import shutil
 import threading

@@ -1,3 +1,4 @@
+# the KnowledgeView protocol that the memory and Neo4j stores implement
 from __future__ import annotations
 
 import os
@@ -21,6 +22,7 @@ def harvested(f: Fact) -> bool:
 
 
 def materializable(r: ExtractionResult) -> bool:
+    # MGRAG's query-conditioned extractions never enter the KG; its keep version does
     return r.error is None and (not r.version.startswith("mgrag") or r.version == KEEP_VERSION)
 
 

@@ -1,3 +1,4 @@
+# query-graph matching on extracted facts: paths, bindings and the frontier
 from __future__ import annotations
 
 import itertools
@@ -211,6 +212,7 @@ class Matcher:
             return [v for v, _ in sorted(vals.items(), key=lambda kv: -kv[1])[:MAX_VALUES]] or None
 
         supported: set[int] = set()
+        # spread candidate values along the edges until no variable's score improves
         for _ in range(len(pattern.edges) + 1):
             changed = False
             for e in pattern.edges:
@@ -228,6 +230,7 @@ class Matcher:
         need = {e.id for e in pattern.edges}
         best: tuple[int, float, dict[str, str], dict[int, EdgeSupport]] = (-1, 0.0, {}, {})
         pair_cache: dict[tuple[int, str, str], EdgeSupport | None] = {}
+        # best of at most 3125 bindings: most edges supported first, then mean path score
         domains = [ranked[v] or [None] for v in pattern.variables]
         for combo in itertools.islice(itertools.product(*domains), 3125):
             binding = {v: x for v, x in zip(pattern.variables, combo, strict=True) if x is not None}

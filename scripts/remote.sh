@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# gateway to the site servers, for the main or scale pool (FEDQUEST_POOL)
 set -euo pipefail
 cd "$(dirname "$0")/.."
 PY=.venv/bin/python

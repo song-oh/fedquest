@@ -1,3 +1,4 @@
+# LLM agents: ReAct, and a planner using search/extract or FedQuest's operators
 from __future__ import annotations
 
 import json
@@ -155,6 +156,7 @@ def condition(text: str) -> Condition:
     t = " ".join(str(text).split())
     body = t[1:-1].strip() if t.startswith("(") and t.endswith(")") else t
     parts = [p.strip() for p in body.split("|")]
+    # a triple with X on one side only keys on the other side; anything else is a phrase about X
     if len(parts) == 3 and all(parts):
         head, rel, tail = parts
         hx, tx = _X.fullmatch(head) is not None, _X.fullmatch(tail) is not None
@@ -244,6 +246,7 @@ def _cost(cands: Sequence[Candidate], setup: float, cap: int, skipped: Collectio
     for c in cands:
         if c.ref not in skipped:
             groups[(c.site, c.modality)].append(c)
+    # read calls take up to PER_CALL objects of one site and modality; each pays its setup and reply
     reply = 4 * (out_empty + out_hit * min(cap, OPS_CAP))
     per_object = 4 * out_hit if cap > OPS_CAP else 0
     total = 0.0
@@ -326,6 +329,7 @@ class _Ops:
         skipped = {c.ref for c in cands if self.skips(c, prefilter)}
         out: list[Candidate] = []
         for c in cands:
+            # objects the prefilter will skip cost nothing and do not count against the object cap
             if c.ref not in skipped and sum(x.ref not in skipped for x in out) >= room:
                 return out, "object cap"
             if left is not None and _cost([*out, c], setup, unknown.cap, skipped, self.out_empty, self.out_hit) > left:
@@ -697,6 +701,7 @@ class ReAct(Method):
                         and (uri := decode_image(r))):
                     pic = (title, uri)
                 added.append((c, f"{title}\n{text}", pic))
+            # drop the last results until the next step and the answer, with them shown, fit the budget
             while added:
                 lines = [f"[{len(read) + i + 1}] {t.replace(chr(10), ': ', 1)}" for i, (_, t, _) in enumerate(added)]
                 transcript.append({"role": "observation", "content": "\n".join(lines)})

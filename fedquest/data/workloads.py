@@ -1,3 +1,4 @@
+# question orders for a workload: cold, by session, or dealt into agent streams
 from __future__ import annotations
 
 import random

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# from a Midway3 compute node, reach Globus auth and the ALCF API (--proxy: via fqproxy)
 set -uo pipefail
 ACCOUNT=${ACCOUNT:-pi-chard}
 PARTITION=${PARTITION:-caslake}

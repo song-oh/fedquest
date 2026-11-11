@@ -1,3 +1,4 @@
+# DGRAG baseline: answer at an edge, go to the cloud when the gate doubts it
 from __future__ import annotations
 
 import asyncio
@@ -155,6 +156,7 @@ class DGRAG(Method):
         left = budget.remaining(ctx.ledger)
         if left is None:
             return self.local_tokens
+        # unless chat_n proved unbatched, the candidates share one local prompt; else each pays it
         k = 1 if DGRAG.batched is not False else self.candidates
         frame = 400 + budget.OUT_WEIGHT * 24 * self.candidates
         room = (left - CLOUD_RESERVE - GATE_RESERVE) // k - frame
@@ -261,6 +263,7 @@ class DGRAG(Method):
             ev.doc_ids.update({ref: d for ref, d in zip(consulted, docs, strict=True) if d})
             answer = cands[int(decision.get("best", 0))]
             return finish(q, self.name, answer, evidence=ev, facts=facts, consulted=consulted)
+        # no subgraph summary over the threshold: escalate to the closest one's edge
         matched = idx.match(qv, self.top_m, self.match_threshold) or idx.match(qv, 1, None)
         owners = idx.owners(matched)
         knowledge = [idx.retrieve(ei, lv, hv, self.top_k, self.retrieve_threshold) for ei in owners]

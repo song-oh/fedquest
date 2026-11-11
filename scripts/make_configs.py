@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# experiment, model, tool and deployment configs, written from the tables here
 
 from __future__ import annotations
 
@@ -72,6 +73,7 @@ JUDGE = "openai/gpt-oss-120b"
 JUDGE2 = "nemotron-3-ultra"
 ROLES_TEXT = ("pattern", "extract_text", "answer", "planner", "reader")
 ROLES_IMAGE = ("extract_image", "answer_vision")
+# backbone cell: model, endpoint, extra_body, headroom, json_mode, concurrency
 CELLS: dict[str, tuple[str, str, dict[str, Any] | None, int | None, bool, int]] = {
     "gemma4_e4b": ("google/gemma-4-E4B-it", SOPHIA, None, None, False, 8),
     "gptoss_20b": ("openai/gpt-oss-20b", GPTOSS_POOL, {"reasoning_effort": "low"}, 512, False, 16),
@@ -263,6 +265,7 @@ def grid_cells() -> list[tuple[str, int, int, int]]:
     out = []
     for n in GRID_NODES:
         for c in GRID_PER_NODE:
+            # two facilities, n nodes each, c databases per node
             total = 2 * n * c
             if total <= GRID_MAX:
                 out.append((f"{lay(total)}_n{n}", total, n, c))
@@ -557,6 +560,7 @@ def render(name_: str, cfg: dict[str, Any]) -> str:
     lines = []
     for key in ORDER:
         value = cfg.get(key)
+        # judge defaults to true, so judge: false is the one False written out
         if value is None or value == [] or value == {} or (value is False and key != "judge"):
             continue
         if key == "methods":
@@ -611,6 +615,7 @@ def placement(federations: list[str], facility: str, nodes: int, names: set[str]
             entries.append((fname, sites))
     load = [0.0] * nodes
     out: dict[str, int] = {}
+    # fewest sites first; a chunk goes to the least-loaded nodes, a site weighing 1/len(sites)
     for fname, sites in sorted(entries, key=lambda e: len(e[1])):
         for start in range(0, len(sites), nodes):
             chunk = sites[start:start + nodes]

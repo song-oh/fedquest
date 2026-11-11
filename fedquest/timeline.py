@@ -1,3 +1,4 @@
+# per-question span timeline, attributed to stages and resources of the wall time
 from __future__ import annotations
 
 import heapq
@@ -241,6 +242,7 @@ def attribute(tl: Timeline, t0: float, t1: float) -> Attribution:
     won = [0.0] * len(top)
     site_llm, nxt, i, j = 0.0, 0, 0, 0
     cuts = sorted({t0, t1, *(x for a, b, _ in top for x in (a, b)), *(x for a, b, _ in inner for x in (a, b))})
+    # sweep: each slice between cuts goes to the open top-level span that ends last
     for a, b in itertools.pairwise(cuts):
         while nxt < len(top) and top[nxt][0] <= a:
             heapq.heappush(active, (-top[nxt][1], top[nxt][0], nxt))
@@ -271,6 +273,7 @@ def attribute(tl: Timeline, t0: float, t1: float) -> Attribution:
 
 
 def _ms(values: dict[str, float], total: float) -> dict[str, float]:
+    # largest-remainder rounding to whole ms, so the parts sum to the rounded wall time
     exact = {k: max(v, 0.0) * 1000 for k, v in values.items()}
     ms = {k: math.floor(v) for k, v in exact.items()}
     for k in sorted(exact, key=lambda k: ms[k] - exact[k])[: max(0, round(total * 1000) - sum(ms.values()))]:

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# after the runs: cache simulations, the evidence analysis and the report
 set -uo pipefail
 cd "$(dirname "$0")/.."
 PY=.venv/bin/python

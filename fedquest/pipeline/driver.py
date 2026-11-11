@@ -1,3 +1,4 @@
+# pipeline driver: catalog tasks run in lanes, with dependencies and retries
 from __future__ import annotations
 
 import contextlib
@@ -220,11 +221,13 @@ class Driver:
         if st.get("state") != "done":
             return False
         t = self.by_id[task_id]
+        # a score goes stale once the task it follows finishes again after it
         if t.kind in ("score", "score2"):
             ran = self.states.get(t.after[0]).get("done_at", 0)
             return st.get("done_at", 0) >= ran
         return True
 
+    # spent: out of tries, or waiting on a required dependency that is spent
     def spent(self, task_id: str) -> bool:
         st = self.states.get(task_id)
         if st.get("state") == "failed" and st.get("tries", 0) >= TRIES:
@@ -270,6 +273,7 @@ class Driver:
             if code == 0:
                 self.states.put(tid, state="done", codes=codes, ended=time.time(), done_at=time.time())
                 log.info("%s done (%.0f s)", tid, time.time() - st.get("started", time.time()))
+            # killed by our own stop: not a failure, so the try is given back
             elif self.stopping and code in (-signal.SIGINT, -signal.SIGKILL, 130, 137):
                 self.states.put(tid, state="failed", codes=[*st.get("codes", []), INTERRUPTED], ended=0,
                                 tries=max(0, st.get("tries", 1) - 1))

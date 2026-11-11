@@ -1,4 +1,5 @@
 #!/bin/bash
+# Gemma and gpt-oss vLLM replicas on one node; the pool file lists those that answer
 set -u
 POOL_FILE=${1:?pool file} LOGDIR=${2:?log dir}
 mkdir -p "$LOGDIR" "$(dirname "$POOL_FILE")"
@@ -83,6 +84,7 @@ while ((SECONDS < deadline)); do
     fi
   done
   ((pending == 0)) && break
+  # once no Gemma replica is pending, the judge gets JUDGE_WAIT_S more
   ((gemma_pending == 0)) && : "${gemma_done:=$SECONDS}"
   if [[ -n $gemma_done ]] && ((SECONDS - gemma_done >= JUDGE_WAIT_S)); then
     echo "== $(date '+%F %T') the judge did not answer within ${JUDGE_WAIT_S} s of the Gemma replicas: left out"

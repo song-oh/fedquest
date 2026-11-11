@@ -1,3 +1,4 @@
+# login-node gateway that batches site calls to Globus Compute endpoints
 from __future__ import annotations
 
 import argparse
@@ -92,6 +93,7 @@ class Gateway:
         try:
             out = cf.result()
         except BaseException as e:
+            # no task id: Globus Compute never accepted the call, so it is submitted again
             if getattr(cf, "task_id", None) is None:
                 if not cf.cancelled():
                     self.last_error[facility] = f"{type(e).__name__}: {' '.join(str(e).split())[:600]}"
@@ -134,6 +136,7 @@ class Gateway:
         turn = 0
         while True:
             await self.wake.wait()
+            # round-robin: up to MAX_BATCH calls of the next facility with any, then SPACING_S of rest
             for _ in range(len(order)):
                 facility = order[turn % len(order)]
                 turn += 1
@@ -413,6 +416,7 @@ def nodecheck(facility: str, nodes: int, sets: list[str], wait_s: float, config:
                 problems.append(f"slot {j}: {(out.get('error') or {}).get('message')}")
                 continue
             h = out["value"]
+            # "via" is the node that ran the task; another host means the call was forwarded over TCP
             crossed += int(out.get("via") not in (None, h.get("host")))
             build = (h.get("node_qdrant") or {}).get("build_s")
             print(f"slot {j}: served by {h.get('host')} (its slot {h.get('slot')}, {h.get('sites')} sites, Qdrant "

@@ -1,3 +1,4 @@
+# FedQuest: hop-by-hop probes and budgeted reads, with direct and repair runs
 from __future__ import annotations
 
 import asyncio
@@ -79,6 +80,7 @@ COORD_CAP = 12
 SAFETY_CALLS = 64
 REPAIR_MIN = 500
 BEAM_ROUNDS = 6
+# defaults: output tokens of an empty read reply, and of each value a read names
 OUT_EMPTY = 6.0
 OUT_HIT = 26.0
 FRAME = 8.0
@@ -212,6 +214,7 @@ def restates(key: str, known: str) -> bool:
     differ = set(a) ^ set(b)
     if not differ and len(a) == len(b):
         differ = {x for x, y in zip(a, b, strict=True) if x != y}
+    # a near match that differs in a numeral, ordinal or Jr/Sr is another entity, not a restatement
     return not any(_DISTINCT.match(w) for w in differ)
 
 
@@ -299,6 +302,7 @@ def conditions(pattern: Pattern, question: str, pictured: Collection[tuple[str, 
             if is_var(end) and e.other(end) != end and lowered.holders.get(i, end) == end:
                 out.append(Cond(len(out), end, e, visual=i in lowered.image, deps=lowered.uses.get(i, ())))
 
+    # a picture filter, and a standby hop through each anchored atom in case the filter goes void
     def visual_filter(x: str, text: str, fallback: bool = False) -> None:
         f = Cond(len(out), x, None, text, visual=True, fallback=fallback)
         out.append(f)
@@ -885,6 +889,7 @@ class _Run:
         self.edge_index = {id(e): i for i, e in enumerate(pattern.edges)}
         self.conds = conditions(pattern, q.question, marks=self.marks)
         self.root: _Run = prior.root if prior is not None else self
+        # state shared by a run and its repair, direct and chain runs lives on the root
         if prior is None:
             self.family: list[_Run] = []
             self.breaches: dict[str, list[str]] = defaultdict(list)
@@ -980,6 +985,7 @@ class _Run:
         cal = ctx.calib if ctx is not None else None
         self.out_empty = cal.read_cost("out_empty", OUT_EMPTY) if cal is not None else OUT_EMPTY
         self.out_hit = cal.read_cost("out_hit", OUT_HIT) if cal is not None else OUT_HIT
+        # a follow-up run keeps the reads so far; its budget is raised to repair_floor past their evidence
         if prior is not None:
             self.max_rounds = m.repair_rounds
             if m.tokens is not None:
@@ -1014,6 +1020,7 @@ class _Run:
         i = self.edge_index.get(id(c.edge))
         return c.var == (self.marks.owners[i] if i is not None and i in self.marks.owners else compiler.owner(c.edge))
 
+    # pending: askable now; later: waits for a value or dependency; done: asked; void: cannot be asked
     def status(self, c: Cond) -> str:
         other = c.other or ""
         if c.edge is not None and is_var(other):
@@ -1324,6 +1331,7 @@ class _Run:
                 for v in fresh:
                     rel = _grounded(c.edge.relation, self.p, {**known, **({c.other: v} if c.other else {})})
                     asks.append(Asked(x, c, v, f"{rel} X that {c.text}" if c.text else rel))
+        # one hop kind per round: text, else owned filters, else visual (query planner: filters first)
         text = [a for a in asks if not a.cond.visual]
         if query and (filters := [a for a in asks if a.cond.visual and self.owns(a.cond)]):
             kind, asks = "filter", filters
@@ -1384,6 +1392,7 @@ class _Run:
                 ref = (site or str(h.get("site", "")), str(h.get("oid", "")))
                 claimed = [asked[int(n) - 1] for n in h.get("conditions") or [] if 1 <= int(n) <= len(asked)]
                 key = _key(entity)
+                # a value that restates a constant or its key is not a new binding
                 if (not key or not claimed or not (compiler.admitted(x, entity, self.marks) or x in self.targets())
                         or any(restates(key, k) for k in [*anchors, *known])):
                     continue
@@ -1589,6 +1598,7 @@ class _Run:
                      owners_able=len({it.c.site for it in pool.values() if it.mentions is not False}))
         if kind == "filter" and self.m.audited:
             self.ctx.ledger.count_fired("image_semijoins")
+        # owner-first: read the sites that may hold the key's title, then probe the rest for open asks
         if self.deferred:
             self.ctx.ledger.count_fired("owner_hops")
             owned = {self.conds[cid].var for i, _ in self.deferred for cid in self.round_lists[i][1][2]}
@@ -1968,6 +1978,7 @@ class _Run:
                     if own and pictures:
                         add(ProbeRequest(rel, "title", self.m.k, collections=pictures, titles=[a.value],
                                          value=a.value), "title", a.value, [a], a.cond.other)
+            # the question is probed in round one, when no keyed probe exists, and for image fallbacks
             first = not self.question_probed
             if first or not graph_keys or not reqs or (image and any(a.cond.fallback for a in asks)):
                 self.question_probed = True
@@ -2271,6 +2282,7 @@ class _Run:
                     if self.m.calibrated else \
                     min(1.0, approx_tokens(c.summary) / max(1, c.tokens))
             pool[key] = Item(c, max(question, mixed), float(position[c.ref]), beta=beta, mentions=bits.get(key))
+        # per condition the able candidates' p sums to at most coverage; outside is the mass left over
         outside: dict[int, float] = {}
         for cid in {k[0] for k in pool}:
             items = [it for k, it in pool.items() if k[0] == cid]
@@ -2470,6 +2482,7 @@ class _Run:
             if c_id != cid or self.judged(these, ref):
                 continue
             c = it.c
+            # beta: chance an entry's lead suffices; a glanced entry leaves p*(1-beta) to its object
             glanced = all((a.cond.id, norm_entity(a.value or ""), ref) in self.entries for a in these)
             w = it.p * (1.0 - it.beta) if glanced else it.p
             if w <= 1e-12 and self.m.order == "calib":
@@ -2674,6 +2687,7 @@ class _Run:
         for u in unknowns:
             for h in parsed.get(u.name, []):
                 c, entity = entries[h.object - 1], h.entity
+                # a filter read only confirms a candidate the entry names; it never adds a value
                 if u.mode == "filter":
                     named = [n for n in u.candidates if prompts.witnessed(c.summary, n)]
                     said = prompts.judgment(h.entity)
@@ -2791,6 +2805,7 @@ class _Run:
                     used.append(f)
                     known.setdefault(f, a.value)
                     of_fact.append((x.lstrip("?"), len(hits[x.lstrip("?")]) - 1, f))
+        # keep a reused fact if its object's version is unchanged or, under witness, its span still holds
         if fkg and used and self.m.kg_check in ("version", "witness"):
             refs = list(dict.fromkeys((f.site, f.oid) for f in used))
             now = await self.ctx.fed.versions(refs, epoch=self.m.epoch, ledger=self.ctx.ledger)
@@ -2871,6 +2886,7 @@ class _Run:
             sims = [float(s) for s in sim.sims(r, [rec.relation for rec in other])] if other and sim is not None else []
             para = [other[i] for i in sorted(range(len(sims)), key=lambda i: -sims[i]) if sims[i] >= self.m.rel_sim]
             no: set[Ref] = set()
+            # objects an earlier read of this exact ask found nothing in are marked judged, not read again
             if not index:
                 no = {ref for rec in exact for ref in rec.negatives} if self.m.negatives else set()
                 fresh = [ref for ref in no if (a.cond.id, v, ref) not in self.seen]
@@ -3262,6 +3278,7 @@ class _Run:
         texts = {ref: c.summary for ref, c in self.entries_read.items() if c.site not in self.titled}
         texts.update(self.snippets)
         union = self.m.context == "union"
+        # context order: sources of the cited facts, index entries, reads, then the rest
         order = [*[r for r in cited if r in texts], *([c.ref for c in self.question_top] if union else []),
                  *self.indexed, *self.read, *texts]
         if not facts or union:
@@ -3297,6 +3314,7 @@ class _Run:
                       indexed=self.indexed, stopped=stopped, bindings=bindings, reused=self.reused)
 
 
+# direct run: one round of reads over the question probe's top hits, each place called once
 class _Direct(_Run):
     RUN = "direct"
 

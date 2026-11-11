@@ -1,3 +1,4 @@
+# HippoRAG 2 baseline: the sites' HippoRAG 2 rankings fused by RRF, one answer
 from __future__ import annotations
 
 from fedquest import timeline

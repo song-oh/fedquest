@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Neo4j for the federated KG, on 127.0.0.1 under FEDQUEST_NEO4J_HOME
 set -euo pipefail
 cd "$(dirname "$0")/.."
 VERSION=5.26.29

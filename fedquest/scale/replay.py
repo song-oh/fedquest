@@ -1,3 +1,4 @@
+# scale study: traced probe rounds replayed against the sites by N concurrent clients
 from __future__ import annotations
 
 import argparse

@@ -1,3 +1,4 @@
+# per-question ledger: model usage, rounds, bytes moved and what each site was told
 from __future__ import annotations
 
 import json
@@ -158,6 +159,7 @@ class Ledger(Record):
         self.keys_seen.setdefault(site, set()).update(_norm(k) for k in keys if k)
         told = {_norm(v) for v in values if v}
         self.values_seen.setdefault(site, set()).update(told)
+        # a value told to a site crosses when it first came from another site
         self.told_cross.update((site, v) for v in told if self.origins.get(v, site) != site)
         if question:
             self.question_seen.add(site)
@@ -182,6 +184,7 @@ class Ledger(Record):
 
     def note_prompt(self, role: str, text: str, prompt_tokens: int) -> None:
         earlier = self.prompts_seen.setdefault(role, [])
+        # prefix_ideal: tokens an ideal prefix cache would reuse, against the role's last 8 prompts
         if text and earlier and prompt_tokens:
             shared = max(common_prefix(text, e) for e in earlier)
             self.prefix_ideal += round(prompt_tokens * shared / len(text))

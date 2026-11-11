@@ -1,3 +1,4 @@
+# question halves A and B, and {x} fit names for cross-fitted calibrations and routers
 from __future__ import annotations
 
 from fedquest.data.splits import dev_half

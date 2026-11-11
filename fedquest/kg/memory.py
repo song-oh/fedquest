@@ -1,3 +1,4 @@
+# in-memory KnowledgeView: facts, asks, probes and aliases kept per namespace
 from __future__ import annotations
 
 import copy

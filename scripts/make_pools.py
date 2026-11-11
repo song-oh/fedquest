@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# question pools (full and heldout splits), checked against configs/pools.sha256
 
 from __future__ import annotations
 
@@ -47,6 +48,7 @@ def pool(home: str, root: Path) -> list[dict]:
         if by_id.get(q["qid"]) != q:
             raise SystemExit(f"{home}: {head_split}'s {q['qid']} is not the converter's record: the raw files or the "
                              "converter changed since the splits were drawn")
+    # the drawn split leads the pool; the rest of the dev set follows in a seeded shuffle
     held = {q["qid"] for q in head}
     rest = sorted((q for q in every if q["qid"] not in held), key=lambda q: q["qid"])
     random.Random(f"{load_federation(home).questions.seed}:{SPLIT}").shuffle(rest)

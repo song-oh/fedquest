@@ -1,3 +1,4 @@
+# a node slot's site server, on a Unix socket and a token-checked TCP port
 from __future__ import annotations
 
 import argparse

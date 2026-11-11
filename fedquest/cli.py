@@ -1,3 +1,4 @@
+# fedquest CLI: data, llm, kg, remote, eval and hippo commands, plus calibrate
 from __future__ import annotations
 
 import asyncio
@@ -45,6 +46,7 @@ def _die_by_sigint() -> None:
     os.kill(os.getpid(), signal.SIGINT)
 
 
+# first Ctrl-C stops gracefully; a second one, or the exit after it, dies by SIGINT
 def _interrupt(signum: int, frame: Any) -> None:
     if getattr(_interrupt, "pressed", False):
         _die_by_sigint()
@@ -244,6 +246,7 @@ def llm_check(
     except RuntimeError as e:
         console.print(f"[red]{escape(str(e))}")
         raise typer.Exit(1) from e
+    # an ALCF base_url is <root>/resource_server/<cluster>/...; listings and jobs hang off the resource server
     root, _, served = cfg.base_url.partition("/resource_server/")
     root, cluster = root + "/resource_server", served.split("/")[0]
     client.cfg = cfg.model_copy(update={"max_retries": 1})
@@ -275,6 +278,7 @@ def llm_check(
                         pending.setdefault(model, role)
                 await asyncio.gather(*(probe(role, model) for model, role in pending.items()))
                 missing = sorted(required - answered)
+                # stop: every needed model answered, one failed for good, or no retry fits the deadline
                 if not missing or hopeless & set(missing) or time.monotonic() + 60 > deadline:
                     return
                 console.print(f"{time.strftime('%H:%M')} no reply from {', '.join(missing)} "
@@ -610,6 +614,7 @@ def calibrate(federation: Annotated[list[str] | None, typer.Argument(
             Path(out).write_text(json.dumps(report, indent=1))
             console.print(f"[green]{out}")
         return
+    # --label or --inputs: calibration v4, pooled from observation files or one federation's probes
     if label is not None or files:
         files += names if files else []
         if label != "v4" or not (refit and portable and out) or questions or k or shape or layouts \

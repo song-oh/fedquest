@@ -1,3 +1,4 @@
+# model client: record/replay cache, budget checks, retries, pacing and replica pools
 from __future__ import annotations
 
 import asyncio
@@ -369,6 +370,7 @@ class LLMClient:
         stats = CallStats()
         if hit is not None:
             reply = LLMReply(hit["reply"], Usage.from_dict(hit["usage"]), True, model, hit["usage"].get("finish_reason"))
+            # live: the call is remade only to time it; the recorded reply stays the answer
             if live:
                 try:
                     _, _, _, served = await self._call(model, messages, max_tokens, temperature, json_mode, task,
@@ -405,6 +407,7 @@ class LLMClient:
             if self.cache is not None:
                 record = {k: v for k, v in u.to_dict().items() if k not in _COMPUTED} | {"finish_reason": finish}
                 await asyncio.to_thread(self.cache.put, key, model, text, record)
+                # INSERT OR IGNORE: if another process recorded this call first, its reply wins
                 first = await asyncio.to_thread(self.cache.get, key)
                 if first is not None and (first["reply"], first["usage"]) != (text, record):
                     reply = LLMReply(first["reply"], Usage.from_dict(first["usage"]), False, model,
@@ -531,6 +534,7 @@ class LLMClient:
                     stats.http429 += 1
                 elif isinstance(status, int) and status >= 500:
                     stats.http5xx += 1
+                # a 401 earns one retry with a fresh token; a policy refusal or a second 401 is final
                 if status == 401 and (refreshed or attempt > self.cfg.max_retries
                                       or _REFUSED.search(f"{exc} {getattr(exc, 'body', '')}")):
                     raise self._refused(model, exc, refreshed) from None

@@ -1,3 +1,4 @@
+# HippoRAG 2 at a site: OpenIE, the phrase-passage graph and PPR retrieval
 from __future__ import annotations
 
 import ast
@@ -99,6 +100,7 @@ def fix_broken_generated_json(json_str: str) -> str:
         return json_str
     except json.JSONDecodeError:
         pass
+    # truncated JSON: drop the unfinished item after the last comma, then close what is open
     last_comma_index = json_str.rfind(",")
     if last_comma_index != -1:
         json_str = json_str[:last_comma_index]
@@ -284,6 +286,7 @@ def graph_edges(chunk_triples: Sequence[Sequence[Sequence[str]]], phrases: Seque
             ent_node_to_chunk_ids[node].add(chunk_key)
     _, chunk_triple_entities = extract_entity_nodes(chunk_triples)
     passage_pairs = 0
+    # passage nodes come after the phrase nodes; each links to its entities with weight 1
     for idx, ents in enumerate(chunk_triple_entities):
         for chunk_ent in ents:
             node_to_node_stats[(len(phrases) + idx, pid[chunk_ent])] = 1.0
@@ -317,6 +320,7 @@ def ppr(graph: sp.spmatrix, reset: np.ndarray, damping: float = DAMPING, tol: fl
     walk = graph.T
     x = r.copy()
     for _ in range(max_iter):
+        # the mass at sink nodes (no edges) restarts from the reset vector
         new = damping * (walk @ (x * inv) + x[sink].sum() * r) + (1 - damping) * r
         change = float(np.abs(new - x).sum())
         x = new
@@ -441,6 +445,7 @@ class HippoIndex:
         for rank, f in enumerate(top_k_facts):
             fact_score = query_fact_scores[top_k_fact_indices[rank]] if query_fact_scores.ndim > 0 else \
                 query_fact_scores
+            # each entity of a fact gets its score over the entity's passage count, averaged over facts
             for phrase in (f[0].lower(), f[2].lower()):
                 phrase_id = self.phrase_id.get(phrase)
                 if phrase_id is not None:
@@ -537,6 +542,7 @@ class HippoIndex:
             log.info("%s: HippoRAG 2 index up to date (%d passages)", label, len(old.oids))
             return old
         path.mkdir(parents=True, exist_ok=True)
+        # OpenIE records of an earlier build are reused: it must match in version, model and prompts
         if (path / "meta.json").exists():
             meta = json.loads((path / "meta.json").read_text())
             if any(meta.get(k) != v for k, v in want.items()):

@@ -1,3 +1,4 @@
+# result-merging study: orderings of the databases' recorded probe lists
 from __future__ import annotations
 
 import argparse
@@ -217,6 +218,7 @@ def study(layout: str, dataset: str, kinds: tuple[str, ...] = ("question",), tex
         for c in every:
             st = bg.get((c["qid"], c.get("encoder")))
             if st is not None and c.get("kind") == "question" and c.get("z") is not None:
+                # raw similarity back from the anchor z: z times the background sd, plus its mean
                 raw[id(c)] = float(c["z"]) * st[1] + st[0]
         extra_base["raw"] = raw
     titles: dict[str, str] = {}
@@ -246,6 +248,7 @@ def study(layout: str, dataset: str, kinds: tuple[str, ...] = ("question",), tex
         _objects(dataset, {c["oid"] for c in every if c.get("modality") != "image"}, titles)
     extra_base["titles"] = {id(c): title_feats(questions.get(c["qid"], ""), titles.get(c["oid"], "")) for c in every}
     results: dict[str, dict[str, list[float]]] = {s: defaultdict(list) for s in STRATEGIES}
+    # two folds by question: Platt weights fit on one fold order the other fold's lists
     for f in (0, 1):
         train = [c for (q, _, _), v in lists.items() if fold[q] != f for c in v]
         extra = {**extra_base, **{f"platt_{s}": _fit_platt(train, names, extra_base) for s, names in FEATURES.items()

@@ -1,3 +1,4 @@
+# ReWOO baseline: plan every tool call up front, then fill in the evidence
 from __future__ import annotations
 
 import asyncio
@@ -182,6 +183,7 @@ class ReWOO(Method):
                     if c.doc_id:
                         ev.doc_ids[c.ref] = c.doc_id
                 led.note_read([c.doc_id for c, _, _ in added if c.doc_id], "coordinator")
+                # substituted into later inputs, a Search's #E is its first object's title
                 results[n] = texts[objects[n][0]].split("\n", 1)[0] if objects[n] else "unknown"
                 last_search = n
                 lines.append(f"Plan: {plan}\n#E{n} = Search[{query}]: {len(objects[n])} objects"

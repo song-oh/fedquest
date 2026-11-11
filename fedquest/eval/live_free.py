@@ -1,3 +1,4 @@
+# live-free scheduler study: z vs rank calibration on recorded observations
 from __future__ import annotations
 
 import argparse
@@ -75,6 +76,7 @@ def _fit_all(train: list[dict[str, Any]]) -> dict[str, Chance]:
 def _cross_fit(fit_obs: Sequence[dict[str, Any]], test_obs: Sequence[dict[str, Any]],
                fit: Callable[[list[dict[str, Any]]], dict[str, Chance]]) -> dict[str, Chance]:
     qids = sorted({str(o["qid"]) for o in [*fit_obs, *test_obs]})
+    # two folds by question: each fold's chances come from a fit on the other
     fold = {q: i % 2 for i, q in enumerate(qids)}
     tables: dict[str, dict[int, float]] = defaultdict(dict)
     for f in (0, 1):

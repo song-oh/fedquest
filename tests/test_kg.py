@@ -1,3 +1,4 @@
+# matching the running example against stored facts; memory, Neo4j and site stores
 import os
 
 import numpy as np

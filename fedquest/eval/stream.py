@@ -1,3 +1,4 @@
+# stream runs: per-question KG views, flushed in batches behind shard barriers
 from __future__ import annotations
 
 import asyncio
@@ -55,6 +56,7 @@ def _summed(a: Mapping[str, Any], b: Mapping[str, Any]) -> dict[str, Any]:
     return out
 
 
+# writes go to a private view and queue in pending until flush replays them on the shared KG
 class StreamKG:
     def __init__(self, base: Any) -> None:
         self.base = base
@@ -282,6 +284,7 @@ class Barrier:
             have = self.present(batch, phase)
             self.late -= have
             missing = set(range(self.shards)) - have
+            # shards already late at an earlier barrier are not waited for again
             if not missing - self.late:
                 return missing
             if time.monotonic() - t0 >= self.timeout:

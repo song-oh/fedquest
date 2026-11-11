@@ -1,3 +1,4 @@
+# the typed query graph: its translation to MGRAG's pattern, the fallback and repair
 from __future__ import annotations
 
 import json

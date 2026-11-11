@@ -1,3 +1,4 @@
+# MGRAG baseline: extract from top-ranked objects until the query graph matches
 from __future__ import annotations
 
 import asyncio

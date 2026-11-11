@@ -1,3 +1,4 @@
+# fuzzy lookup of a value among entity keys sharing its first or last token
 from __future__ import annotations
 
 from collections import defaultdict

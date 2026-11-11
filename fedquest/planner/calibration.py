@@ -1,3 +1,4 @@
+# rank calibration: chance a candidate is evidence, shrunk across cell levels
 from __future__ import annotations
 
 import bisect
@@ -114,6 +115,7 @@ def merged_law(r: int, n_s: int, n: int) -> tuple[tuple[int, float], ...]:
     if n_s >= n:
         return ((_v4_index(r), 1.0),)
     masses = [0.0] * len(V4_FIRST_RANKS)
+    # law of the group rank of a site's r-th object, its n_s objects placed at random among n, by V4 bucket
     log_p = sum(math.log((n_s - i) / (n - i)) for i in range(r))
     top, total, g = n - n_s + r, 0.0, r
     while True:
@@ -285,6 +287,7 @@ class Calibrator:
             return any(self.counts.get(_k("bucket", kind, b, s) if bit is None else _k("mention", kind, b, s, int(bit)),
                                        (0, 0))[1] for s in ((True, False) if signal is None else (signal,)))
 
+        # alpha never rises with rank: ranks before the first measured bucket take its chance
         top = next((r for r in V4_FIRST_RANKS if measured(r)), 1)
         return chance(top) if rank < top else min(chance(r) for r in V4_FIRST_RANKS if top <= r <= max(1, rank))
 
@@ -564,6 +567,7 @@ def reliability(cal: Calibrator | str | Path, observations: Iterable[str | Path]
 
 
 def _spent(items: Sequence[tuple[float, bool, float]]) -> float:
+    # expected tokens read in score order until the first evidence, ties read in random order
     spent = 0.0
     for _, tied in itertools.groupby(sorted(items, key=lambda x: -x[0]), key=lambda x: x[0]):
         group = list(tied)

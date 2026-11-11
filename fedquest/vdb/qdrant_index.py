@@ -1,3 +1,4 @@
+# a site's vector index: Qdrant, embedded or server, or an exact scan of emb.npy
 from __future__ import annotations
 
 import contextlib
@@ -102,6 +103,7 @@ def ranked_scored(rows: np.ndarray, vector: np.ndarray, k: int, offset: int = 0,
             if out.size:
                 scores = scores.copy()
                 scores[out] = -np.inf
+    # rounded scores, with ties at the cut kept and broken by position: a deterministic top k
     key = np.round(scores.astype(np.float64), SCORE_DECIMALS)
     if want < key.size:
         part = np.argpartition(-key, want - 1)[:want]
@@ -235,6 +237,7 @@ class SiteIndex:
         name = self.name(collection)
         approximate = self._approximate()
         quantized = approximate and self.cfg.index is not None and self.cfg.index.kind != "hnsw"
+        # no indexing while the points upload (threshold 0); builds_graph turns it on afterwards
         config = {**self._index_config(), "optimizers_config": models.OptimizersConfigDiff(
             indexing_threshold=0, default_segment_number=SEGMENTS if ann_live() else None)}
         params = models.VectorParams(size=int(vectors.shape[1]), distance=models.Distance.COSINE, on_disk=quantized)

@@ -1,3 +1,4 @@
+# MRAMG-Bench documents and questions, as text and image objects
 from __future__ import annotations
 
 import json

@@ -1,3 +1,4 @@
+# Neo4j KnowledgeView: facts as FQ_FACT edges between entities, with provenance
 from __future__ import annotations
 
 import asyncio
@@ -281,6 +282,7 @@ async def _rows(tx: Any, query: str, **params: Any) -> list[Any]:
     return [record async for record in await tx.run(query, params)]
 
 
+# claim k seq numbers; the FQSpace write also locks the namespace, so k=0 just orders writers
 async def _reserve(tx: Any, ns: str, k: int = 0) -> int:
     return (await _rows(tx, _RESERVE, ns=ns, k=k))[0]["base"]
 
@@ -356,6 +358,7 @@ class Neo4jKG:
                 held = {r["name"] for q in ("SHOW CONSTRAINTS YIELD name", "SHOW INDEXES YIELD name")
                         for r in await self._run(q)}
                 for statement in _SCHEMA:
+                    # the third word of each statement is its constraint or index name
                     if statement.split()[2] not in held:
                         await self._create(statement)
                 await self._run("CALL db.awaitIndexes(300)")
@@ -629,6 +632,7 @@ class Neo4jKG:
                          for uid, rec in merged.items() for i, (ref, values) in enumerate(rec.witnesses.items())]
             silent = [{"ask": uid, "uid": _object_uid(ns, *ref), "site": ref[0], "oid": ref[1]}
                       for uid, rec in merged.items() for ref in sorted(rec.negatives)]
+            # _PUT_ASKS drops an ask's old witness and silent edges, so the merged record is written whole
             for query, rows in ((_PUT_ASKS, asks), (_PUT_WITNESSES, witnesses), (_PUT_SILENT, silent),
                                 (_PUT_ENTRIES, put_entries)):
                 if rows:

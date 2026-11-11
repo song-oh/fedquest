@@ -1,3 +1,4 @@
+# MS MARCO v1.1: one-hop questions whose gold is the selected passages
 from __future__ import annotations
 
 from functools import cache

@@ -1,3 +1,4 @@
+# edge views: the sentences nearest a probe key, packed into the snippet room
 from __future__ import annotations
 
 import os

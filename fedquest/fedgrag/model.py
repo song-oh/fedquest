@@ -1,3 +1,4 @@
+# FedGRAG index: prototype routing, per-site fact expansion, fact composition
 from __future__ import annotations
 
 import json
@@ -162,6 +163,7 @@ class FedGRAGIndex:
         start = np.zeros_like(r0)
         top = np.argsort(-r0)[:L_NEIGHBORS]
         start[top] = r0[top]
+        # top prototypes' scores spread over the prototype graph; a site keeps its best prototype
         r = start
         for _ in range(T_STEPS):
             r = self.alpha * start + (1.0 - self.alpha) * (self.adj @ r)
@@ -232,6 +234,7 @@ class FedGRAGIndex:
             for e in self.corpus.facts[f]:
                 by_entity.setdefault(int(e), []).append(f)
         ranked = sorted(best, key=lambda f: (-best[f][1], f))
+        # breadth-first from the top facts through shared entities, then fill up by relevance
         order: list[int] = []
         seen: set[int] = set()
         queue = ranked[:s.start_facts]

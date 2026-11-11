@@ -1,3 +1,4 @@
+# stable hashes, atomic JSON and JSONL writes, a directory lock, sqlite in WAL mode
 from __future__ import annotations
 
 import asyncio

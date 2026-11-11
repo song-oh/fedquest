@@ -1,3 +1,4 @@
+# MGRAG+FU: MGRAG with follow-up probes keyed by the partial match's frontier
 from __future__ import annotations
 
 import asyncio
@@ -290,6 +291,7 @@ class _FU:
         return (self.m.tokens is None or self.ctx.ledger.evidence_tokens + one <= self.m.tokens) and self.fits_total(one)
 
     def estimate(self, cands: Sequence[Candidate]) -> float:
+        # output weighs 4x; its per-object mean starts at OUT_START and then tracks the extractions so far
         mean = self.out_tokens / self.out_objects if self.out_objects else OUT_START
         return PROMPT_TOKENS + sum(c.tokens for c in cands) + 4.0 * mean * len(cands)
 
@@ -498,11 +500,13 @@ class _FU:
             hyp = norm_entity(f.value) if f.value and f.kind != "question" else ""
             if a > best[f.c.ref].get(hyp, (-1.0, 0.0))[0]:
                 best[f.c.ref][hyp] = (a, weights.get(hyp, 1.0) if hyp else 1.0)
+        # score: the larger of an object's value-free alpha and its weighted alphas summed over hypotheses
         return {ref: max(h.get("", (0.0, 0.0))[0], sum(a * w for k, (a, w) in h.items() if k))
                 for ref, h in best.items()}
 
     def push(self, fused: Sequence[tuple[Candidate, str]], rnd: int) -> None:
         refs = {c.ref for c, _ in fused}
+        # the latest round's objects go first; their older queue entries are dropped
         self.queue = [Queued(c, via, rnd) for c, via in fused] + [x for x in self.queue if x.c.ref not in refs]
 
 

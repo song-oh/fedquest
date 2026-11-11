@@ -1,3 +1,4 @@
+# entity name normalization, fuzzy name equality and content-word stems
 from __future__ import annotations
 
 import re

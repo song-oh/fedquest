@@ -1,3 +1,4 @@
+# distractor pools: passages outside a benchmark's corpus, in seeded hash order
 from __future__ import annotations
 
 import bz2
@@ -90,6 +91,7 @@ def build_pool(dataset: str, *, seed: int = 13, limit: int | None = None, source
             continue
         seen.add(key[:16])
         count += 1
+        # inverted key: the min-heap evicts the largest order key, so the limit smallest stay
         neg = "".join(chr(0x10FFFF - ord(c)) for c in key)
         if limit is None or len(keep) < limit:
             heapq.heappush(keep, (neg, title, text))

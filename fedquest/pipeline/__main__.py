@@ -1,3 +1,4 @@
+# CLI of the pipeline driver: plan, run, status, stop and retry
 from __future__ import annotations
 
 import argparse

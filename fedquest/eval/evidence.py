@@ -1,3 +1,4 @@
+# evidence funnel of gold objects: returned, read, in context, by hop and path
 from __future__ import annotations
 
 import argparse
@@ -32,6 +33,7 @@ def gold_records(row: dict[str, Any]) -> list[dict[str, Any]]:
     for d in golds:
         e = log.get(d, {})
         read = _read(e) or d in consulted
+        # rows without a context log count every consulted gold as in context
         ctx = bool(e.get("in_context")) or (not logged and d in consulted)
         out.append({"doc": d, "hop": int(e.get("hop", 0)), "later": bool(e.get("later", False)),
                     "returned": bool(e.get("returned")) or read or ctx,

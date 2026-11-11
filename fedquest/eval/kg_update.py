@@ -1,3 +1,4 @@
+# KG update study: answer and neutral edits of gold objects, applied at an epoch
 from __future__ import annotations
 
 import argparse
@@ -154,6 +155,7 @@ def make(federation: str, split: str = "final_test", n: int = 120, seed: int = 1
         refs = {(s, o.oid) for s, o in held}
         if not held or refs & edited or any(prompts.witnessed(o.title, answer) for _, o in held):
             continue
+        # kept questions alternate: answer edits swap the answer, neutral ones only append text
         kind = "answer" if len(base) % 2 == 0 else "neutral"
         if kind == "neutral":
             new_texts = []
@@ -161,6 +163,7 @@ def make(federation: str, split: str = "final_test", n: int = 120, seed: int = 1
                 body = o.text.rstrip()
                 body += "" if not body or body[-1] in ".!?;" else "."
                 new_texts.append(body + NEUTRAL_TEXT)
+            # a neutral edit must not change whether the object fits whole in a snippet
             if any((len(o.text) <= SNIPPET_CHARS) != (len(t) <= SNIPPET_CHARS) for (_, o), t in zip(held, new_texts,
                                                                                                 strict=True)):
                 continue

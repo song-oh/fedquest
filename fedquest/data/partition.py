@@ -1,3 +1,4 @@
+# data placement: title-hash parts and ranks; Dirichlet over topic clusters
 from __future__ import annotations
 
 from collections import defaultdict

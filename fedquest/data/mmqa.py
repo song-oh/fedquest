@@ -1,3 +1,4 @@
+# MultiModalQA questions, per-hop gold, and text, table-row and image objects
 from __future__ import annotations
 
 import gzip
@@ -106,6 +107,7 @@ def gold_objects(d: dict[str, Any]) -> tuple[dict[str, list[str]], list[str]]:
     tid = meta.get("table_id", "")
     inner = [a for group in meta.get("intermediate_answers", []) for a in group]
     compose = re.fullmatch(r"Compose\((\w+),(\w+)\)", meta.get("type", ""))
+    # Compose(A,B): part B holds the inner answers (first hop), part A the final ones
     if compose and compose.group(1) in _MODALITY and compose.group(2) in _MODALITY:
         roles = {"first": (inner, _MODALITY[compose.group(2)]),
                  "final": (d.get("answers", []), _MODALITY[compose.group(1)])}

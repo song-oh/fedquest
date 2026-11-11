@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# this facility's databases: download, prepare and embed whatever is missing
 set -euo pipefail
 SITE=${1:?usage: prepare_data.sh aurora|midway3}
 cd "$(dirname "$0")/.."
@@ -17,6 +18,7 @@ PY
   then
     fedquest data download "$dataset"
   fi
+  # a collection without objects copies them from a sibling with the same source
   $PY - "$fed" "$site" <<'PY'
 import shutil
 import sys

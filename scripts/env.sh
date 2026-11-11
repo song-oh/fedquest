@@ -1,3 +1,4 @@
+# sourced: venv, recorded settings, endpoint ids and the paper's model setup
 if [ -n "${BASH_SOURCE:-}" ]; then _fq_src=${BASH_SOURCE[0]}; else _fq_src=$0; fi
 _fq_root=$(cd "$(dirname "$_fq_src")/.." && pwd)
 cd "$_fq_root" || return 1

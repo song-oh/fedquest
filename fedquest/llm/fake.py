@@ -1,3 +1,4 @@
+# fake backend for offline tests: canned replies pulled out of the prompt text
 from __future__ import annotations
 
 import json
@@ -68,6 +69,7 @@ def fake_read(text: str) -> dict[str, list[dict[str, Any]]]:
                         hit = hits.setdefault(title.lower(), {"entity": title, "object": n, "conditions": []})
                         hit["conditions"].append(int(num))
                     continue
+                # X is the condition's unknown end; inline facts that match its known end supply X
                 known, other = (head, 2) if tail == "X" else (tail, 0)
                 words = set(re.findall(r"[a-z]{4,}", _rel.lower()))
                 facts = [(len(words & set(re.findall(r"[a-z]{4,}", f[1].lower()))), f[other].strip())

@@ -1,3 +1,4 @@
+# a failing site's extractions and reads are counted and logged, never charged
 import json
 import logging
 import shutil

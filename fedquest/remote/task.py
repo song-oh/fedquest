@@ -1,3 +1,4 @@
+# the Globus Compute task: start this node's site server and forward the call
 from __future__ import annotations
 
 import contextlib
@@ -48,6 +49,7 @@ def _handle(request: dict[str, Any]) -> dict[str, Any]:
             return {"ok": True, "value": {"host": socket.gethostname(), "held_s": seconds}}
         if request.get("action") == "ready":
             return {"ok": True, "value": ready(facility, env)}
+        # a shutdown issued over SHUTDOWN_STALE_S ago (a stale queued task) stops nothing
         issued = request.get("issued")
         if request.get("action") == "shutdown" and issued is not None and time.time() - float(issued) > SHUTDOWN_STALE_S:
             return {"ok": True, "value": {"stopping": None, "stale_s": round(time.time() - float(issued)),

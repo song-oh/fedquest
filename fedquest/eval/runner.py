@@ -1,3 +1,4 @@
+# experiment runner: question splits, runs per label and workload, resume checks
 from __future__ import annotations
 
 import asyncio
@@ -351,6 +352,7 @@ def _recorded_params(rows: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
     return list(seen.values())
 
 
+# a key only one side has differs unless it holds that param's neutral value from added_params
 def _differs(ran: dict[str, Any], now: dict[str, Any], key: str, added: dict[str, Any]) -> bool:
     if key in ran and key in now:
         return ran[key] != now[key]
@@ -386,6 +388,7 @@ def _redefined(labels: dict[str, dict[str, Any]], recorded: dict[str, Any], rows
     return changed, unrecorded
 
 
+# a torn last line (no newline, not JSON) is cut; a whole one only gets its newline
 def heal_rows(path: Path) -> None:
     try:
         with open(path, "rb+") as f:
@@ -426,6 +429,7 @@ def _done(path: Path, retry_errors: bool = False, max_tries: int | None = None) 
     rows = list(read_jsonl(path))
     failed = Counter((d["qid"], d.get("agent", 0)) for d in rows
                      if d.get("error") and not auth_error(d["error"]) and not network_error(d["error"]))
+    # retry_errors: an error row is done after max_tries failures, never for auth or network errors
     return {(d["qid"], d.get("agent", 0)) for d in rows
             if not d.get("error") or (retry_errors is False) or (
                 not auth_error(d["error"]) and not network_error(d["error"]) and max_tries is not None
@@ -626,6 +630,7 @@ async def run_experiment(exp: ExperimentCfg, *, mode: str = "local", methods: li
         for p in rows_dir.glob("*.jsonl"):
             if p.stem.split("+")[0] in mine:
                 heal_rows(p)
+    # resume only onto rows from the same split, calibration, network, models, flags and stream layout
     if resume and before and any(rows_dir.glob("*.jsonl")):
         was = before.get("experiment", {})
         recorded = before.get("calibration") or {}
@@ -982,6 +987,7 @@ async def _run_label(exp: ExperimentCfg, label: str, spec: MethodSpec, method: M
         return
 
     combos = [(n, s, d) for n in exp.agents for s in exp.sharing for d in exp.deals]
+    # a single agent runs once, under the first sharing and deal setting
     combos = [c for c in combos if c[0] != 1 or c[1:] == (exp.sharing[0], exp.deals[0])]
     for n, sharing, deal in combos:
         sub = f"{label}+{sharing}{n}" + ("" if deal == "overlap" else f"+{deal}")
@@ -1040,6 +1046,7 @@ async def _run_stream(exp: ExperimentCfg, label: str, spec: MethodSpec, method: 
     record_path = rows_dir.parent / f"stream_{label}.json"
     record = _stream_record(record_path, i, k, size) if resume else {}
     skipped = 0
+    # per batch: run this shard's questions on private KG views, meet at the barrier, flush their writes
     for b in range(-(-len(questions) // size) if size else 0):
         mine = [(b * size + j, q) for j, q in enumerate(questions[b * size:(b + 1) * size]) if shard_of(q.qid, k) == i]
         todo = [(pos, q) for pos, q in mine if (q.qid, 0) not in done]

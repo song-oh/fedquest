@@ -1,3 +1,4 @@
+# anchor-normalized scores, with a key's cosines to fixed anchors as background
 from __future__ import annotations
 
 import functools

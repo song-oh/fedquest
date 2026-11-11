@@ -1,3 +1,4 @@
+# FedGRAG's tuned and trained-encoder checks on a tiny four-database layout
 from __future__ import annotations
 
 import itertools

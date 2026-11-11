@@ -1,3 +1,4 @@
+# calibration probes: FedQuest's rounds, each candidate labeled against gold
 from __future__ import annotations
 
 from collections.abc import Collection, Sequence

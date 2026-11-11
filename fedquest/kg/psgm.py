@@ -1,3 +1,4 @@
+# PSGM matcher: query nodes onto KG entities, edges onto embedding-guided paths
 from __future__ import annotations
 
 import logging
@@ -102,6 +103,7 @@ class PSGMatcher:
             if (start, target) in paths:
                 return paths[(start, target)]
             found: list[Fact] | None = None
+            # greedy walk of at most lp facts, preferring the target, then the running sum nearest it
             goal, h_p, node, seen, steps = vec[target], vec[start], start, {start}, []
             for _ in range(self.lp if start != target else 0):
                 best: tuple[tuple[Any, ...], Fact, str, np.ndarray] | None = None

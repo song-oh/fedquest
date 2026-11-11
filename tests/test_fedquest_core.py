@@ -1,3 +1,4 @@
+# FedQuest's typed graph, semijoin probes, v4 pricing and the plan 2 fallback
 import math
 
 from fedquest.llm.fake import fake_read, message_text

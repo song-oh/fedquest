@@ -1,4 +1,5 @@
 #!/bin/bash
+# one rank of the hippo index job: serve Gemma, extract its share, maybe build
 set -u
 cd "${PBS_O_WORKDIR:?run from scripts/hippo/hippo_index.pbs}" || exit 1
 RANK=${PALS_RANKID:-${PMI_RANK:-${PALS_RANK:-}}}
@@ -38,6 +39,7 @@ if [[ -n $SERVED ]]; then
   done
 fi
 touch "$LOGDIR/part$PART.done"
+# share 0 builds once every share is done or the wait ends; share 1 if share 0 had no Gemma
 BUILDER=
 if [[ -n $SERVED ]] && ((PART == 0)); then BUILDER=1; fi
 if [[ -n $SERVED ]] && ((PART == 1)); then

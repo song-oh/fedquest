@@ -1,3 +1,4 @@
+# closed-book baseline: the answer model with no retrieval
 from __future__ import annotations
 
 from fedquest.llm import prompts

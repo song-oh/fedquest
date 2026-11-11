@@ -1,3 +1,4 @@
+# lenient reply parsing: JSON spans, triples, [SEP]/[REC] records and <ANS> answers
 from __future__ import annotations
 
 import json
@@ -54,6 +55,7 @@ def json_values(text: str) -> Iterator[Any]:
 def json_objects(text: str) -> Iterator[tuple[int, Any]]:
     for start in (i for i, c in enumerate(text or "") if c == "{"):
         end = _balanced_end(text, start)
+        # innermost objects only: a span holding another { is skipped
         if end is None or "{" in text[start + 1 : end]:
             continue
         span = text[start : end + 1]

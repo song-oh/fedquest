@@ -1,3 +1,4 @@
+# sqlite record/replay cache of model calls, keyed by the whole request
 from __future__ import annotations
 
 import hashlib

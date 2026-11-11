@@ -129,6 +129,7 @@ PY
     waiting() { echo "WAITING: $* (then: $CUR)" > "$R/run_logs/coord.stage"; log "WAITING: $*"; }
     heal() {
       if grep -q '^NOT READY: aurora:' "$R/run_logs/pool.last"; then
+        # down slots with a job queued are a queue wait; with none, the endpoint is restarted
         if queued=$(qselect -u "$USER" 2> /dev/null) && [[ -z $queued ]]; then
           log "Aurora's slots are down and no batch job of yours is there: its endpoint again (facility.sh restart)"
           bash scripts/facility.sh restart >> "$LOG" 2>&1 || log "facility.sh restart failed (above)"
@@ -165,6 +166,7 @@ PY
       done
       wait
       errs=$(cat "$R"/results/smoke_*/rows/*.jsonl 2> /dev/null | grep -c '"error": "')
+      # over budget: budget_left below -400 (a small overrun passes)
       over=$(grep -ho '"budget_left": -[0-9]*' "$R"/results/smoke_*/rows/*.jsonl 2> /dev/null | awk -F': ' '$2 < -400' | wc -l | tr -d ' ')
       rows=$(cat "$R"/results/smoke_*/rows/*.jsonl 2> /dev/null | wc -l | tr -d ' ')
       log "smokes: $rows rows, $errs error rows, $over over budget"
@@ -262,6 +264,7 @@ PY
     pkill -u "$ME" -f "fedquest.scale.replay" 2> /dev/null || true
     pkill -u "$ME" -f "fedquest.remote.gateway up" 2> /dev/null || true
     pkill -u "$ME" -f "eval run smoke_" 2> /dev/null || true
+    # tasks the driver started carry FEDQUEST_PIPELINE_TASK; end any it left behind
     n=0
     for p in $(pgrep -u "$ME" 2> /dev/null); do
       if [[ $p != "$$" ]] && grep -qz '^FEDQUEST_PIPELINE_TASK=' "/proc/$p/environ" 2> /dev/null; then

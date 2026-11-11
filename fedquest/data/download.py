@@ -1,3 +1,4 @@
+# benchmark downloads, resumable and checked against pinned SHA-256 hashes
 from __future__ import annotations
 
 import gzip
@@ -76,6 +77,7 @@ def fetch(url: str, dest: Path, sha256: str | None = None, retries: int = 5) -> 
             have = part.stat().st_size if part.exists() else 0
             headers = {"Range": f"bytes={have}-"} if have else {}
             with requests.get(url, stream=True, timeout=60, headers=headers) as r:
+                # 416: the range starts past the end, so the .part file is already whole
                 if r.status_code == 416:
                     break
                 r.raise_for_status()

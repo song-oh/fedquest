@@ -1,3 +1,4 @@
+# score calibration: probe the calib questions, fit or refit the observations
 from __future__ import annotations
 
 import hashlib

@@ -1,3 +1,4 @@
+# DGRAG build and its edge-first answering, escalating on disagreement
 from __future__ import annotations
 
 import json

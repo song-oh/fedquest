@@ -1,3 +1,4 @@
+# a node's own Qdrant server, built at start-up for its slot's sites
 from __future__ import annotations
 
 import http.client
@@ -58,6 +59,7 @@ def free_port() -> int:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.bind((HOST, 0))
             port = s.getsockname()[1]
+        # Qdrant's gRPC port is the HTTP port plus one, so both must be free
         if port < 65535 and _bindable(port + 1):
             return port
     raise RuntimeError("no two consecutive free ports on 127.0.0.1")

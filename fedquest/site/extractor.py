@@ -1,3 +1,4 @@
+# fact extraction per object, query-conditioned, or several objects in one call
 from __future__ import annotations
 
 import base64
@@ -146,6 +147,7 @@ class Extractor:
             return [failed.get(o.oid) or self._failed(o, site, version, error) for o in objs]
         entities, triples = prompts.parse_query_records(reply.text, limit=40 * len(shown))
 
+        # a record goes to the objects that name it (head or tail); if none do, to every object
         def owners(*names: str) -> list[int]:
             hit = [i for i, t in enumerate(texts) if any(n and prompts.mentions(t, n) for n in names)]
             return hit or list(range(len(shown)))

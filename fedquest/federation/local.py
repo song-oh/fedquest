@@ -1,3 +1,4 @@
+# in-process federation with one SiteService per site
 from __future__ import annotations
 
 import asyncio

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# per-machine install: uv venv, the package, and store paths in .fedquest.env
 set -euo pipefail
 MACHINE=${1:?usage: setup_env.sh local|aurora|midway3}
 cd "$(dirname "$0")/.."

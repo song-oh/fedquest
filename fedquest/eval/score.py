@@ -1,3 +1,4 @@
+# scoring of run rows: answer metrics, judge accuracy, set scores and summaries
 from __future__ import annotations
 
 import csv
@@ -54,6 +55,7 @@ def list_golds(row: dict[str, Any]) -> list[str] | None:
 
 def answer_items(pred: str, golds: Sequence[str] = ()) -> list[str]:
     text, kept = pred or "", {}
+    # golds that contain a separator are masked first so the split keeps them whole
     for i, g in enumerate(sorted({g.strip() for g in golds if LIST_SEP.search(g.strip())}, key=len, reverse=True)):
         text, n = re.subn(re.escape(g), f"\x00{i}\x00", text, flags=re.IGNORECASE)
         if n:

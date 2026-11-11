@@ -1,3 +1,4 @@
+# sentence-aligned word chunks with overlap, sized by an approximate token count
 from __future__ import annotations
 
 import re

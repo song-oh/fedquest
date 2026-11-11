@@ -1,3 +1,4 @@
+# DGRAG index: summaries pick owner sites; entity and fact retrieval per site
 from __future__ import annotations
 
 import json
@@ -61,6 +62,7 @@ class DGRAGIndex:
     def owners(self, matched: list[tuple[int, float]]) -> list[int]:
         return list(dict.fromkeys(int(self.summary_edge[i]) for i, _ in matched))
 
+    # low-level keywords reach entities and then their facts; high-level ones reach facts directly
     def retrieve(self, ei: int, low: np.ndarray | None, high: np.ndarray | None, top_k: int = TOP_K,
                  threshold: float | None = None) -> Knowledge:
         e, t = self.edges[ei], self.tables

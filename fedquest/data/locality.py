@@ -1,3 +1,4 @@
+# locality splits: warm streams covering more of the eval questions' hop docs
 from __future__ import annotations
 
 import random

@@ -1,3 +1,4 @@
+# where data, runs and configs live; .fedquest.env is read on import
 from __future__ import annotations
 
 import os

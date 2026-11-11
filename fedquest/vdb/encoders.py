@@ -1,3 +1,4 @@
+# the named encoders: sentence-transformers models and a model-free hash
 from __future__ import annotations
 
 import logging

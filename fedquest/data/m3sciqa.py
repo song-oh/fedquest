@@ -1,3 +1,4 @@
+# M3SciQA: from a paper's figure or table to passages of a reference paper
 from __future__ import annotations
 
 import json
@@ -210,6 +211,7 @@ def _numbers(evidence: str, passages: Sequence[ObjectRecord]) -> list[str]:
     return found if len(found) <= 2 else []
 
 
+# evidence found by exact prefix, then 4-gram overlap, then its decimals; else the whole paper
 def locate(evidence: str, passages: Sequence[ObjectRecord]) -> tuple[str, list[str]]:
     grams = _grams(evidence)
     held = {o.doc_id: grams & _grams(o.text) for o in passages} if grams else {}

@@ -1,3 +1,4 @@
+# optional JSONL trace of every probe round (FEDQUEST_PROBE_TRACE)
 from __future__ import annotations
 
 import json

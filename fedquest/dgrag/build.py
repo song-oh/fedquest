@@ -1,3 +1,4 @@
+# DGRAG offline build: KG embeddings, subgraph partitions and their summaries
 from __future__ import annotations
 
 import argparse
@@ -117,6 +118,7 @@ def partition(nodes: Sequence[int], pairs: Sequence[tuple[int, int]], seed: int 
         todo += parts if len(parts) > 1 else _bfs_chunks(sub, size)
     groups: dict[int, list[int]] = {i: c for i, c in enumerate(sorted(done))}
     where = {n: i for i, c in groups.items() for n in c}
+    # merge each small subgraph into its most linked neighbor that still fits in size
     merged = True
     while merged:
         merged = False
@@ -226,6 +228,7 @@ def build_layout(federation: str, mode: str = "remote", members: dict[str, list[
     fids = [np.asarray(sorted(f for o in members[s] for f in by_oid.get(o, [])), dtype=np.int64) for s in sites]
     nids = [np.asarray(sorted({int(e) for f in fs.tolist() for e in tables.facts[f].tolist()}), dtype=np.int64)
             for fs in fids]
+    # an edge is one site's share of the graph: its facts and the entities they touch
     edges = edges_from(tables.facts, sites, fids, nids)
     subgraphs: list[dict[str, Any]] = []
     prompts: list[list[dict[str, Any]]] = []

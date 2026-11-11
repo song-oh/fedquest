@@ -1,3 +1,4 @@
+# DGRAG reimplementation: settings, and where its corpus and layouts live
 from __future__ import annotations
 
 from pathlib import Path

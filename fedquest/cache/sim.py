@@ -1,3 +1,4 @@
+# offline cache study: a stream's hop asks replayed against a fact cache
 from __future__ import annotations
 
 import argparse
@@ -128,6 +129,7 @@ def simulate(stream: list[list[Hop]], total_tokens: float, total_rounds: int, re
         used -= e.size
         stats["evictions"] += 1
 
+    # GDSF priority: inflation plus freq * cost / size; benefit also decays it by age at the update rate
     def priority(e: Entry, now: int) -> float:
         base = e.freq * e.cost / max(1, e.size)
         if eviction == "benefit" and per_change > 0:
@@ -141,6 +143,7 @@ def simulate(stream: list[list[Hop]], total_tokens: float, total_rounds: int, re
                 if seen_obj and rng.random() < len(seen_obj) / objects:
                     changed_at[rng.choice(seen_obj)] = pos
         contacted = set().union(*(h.sites for h in hops)) if hops else set()
+        # piggyback: a contacted site reports which of its objects changed since we last heard from it
         if validity == "piggyback":
             for s in contacted:
                 last = heard.get(s, -1)

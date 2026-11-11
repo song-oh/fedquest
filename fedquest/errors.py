@@ -1,3 +1,4 @@
+# errors that cross the wire, and string tests for auth and network failures
 from __future__ import annotations
 
 import pickle

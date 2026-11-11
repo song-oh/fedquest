@@ -1,3 +1,4 @@
+# federated KG semantics on the memory store and, if configured, a throwaway Neo4j
 import asyncio
 import dataclasses
 import multiprocessing

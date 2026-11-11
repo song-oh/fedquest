@@ -1,3 +1,4 @@
+# node slot registry on shared disk: claims and published server addresses
 from __future__ import annotations
 
 import contextlib

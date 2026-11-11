@@ -1,3 +1,4 @@
+# prepare a federation: draw its questions, write each site's collection objects
 from __future__ import annotations
 
 import functools
@@ -248,6 +249,7 @@ def _fraction_test(fraction: float, seed: int, kept: frozenset[str]) -> Sized:
 
     @functools.cache
     def test(title: str) -> bool:
+        # a hash fraction of the pages, plus every page the kept splits' ground truth needs
         return fraction_rank(title, seed) < cut or page_key(title) in kept
 
     return test
@@ -283,6 +285,7 @@ def _prepare_mramg(cfg: FederationCfg, sites: set[str]) -> dict[str, Any]:
     return {"test": test, "calib": calib, "counts": counts, "partition": {str(k): v for k, v in part_of.items()}}
 
 
+# n questions from pool in the reference's question-type proportions
 def _like(pool: list[Question], reference: list[Question], n: int, rng: random.Random) -> list[Question]:
     types = _count(q.qtype for q in reference)
     share = {t: n * c / len(reference) for t, c in types.items()}
@@ -490,6 +493,7 @@ def prepare_federation(cfg: FederationCfg, sites: list[str] | None = None) -> di
         import json
 
         previous = json.loads(path.read_text())
+    # same config: keep the object counts of sites prepared by an earlier call
     if previous.get("config_sha") == manifest["config_sha"]:
         manifest["objects"] = {**previous.get("objects", {}), **manifest["objects"]}
     write_json(path, manifest)

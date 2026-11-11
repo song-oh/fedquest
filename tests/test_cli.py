@@ -1,3 +1,4 @@
+# CLI commands checked against a fake Docker and fake model backends
 import asyncio
 import http.client
 import http.server

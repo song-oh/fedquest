@@ -1,3 +1,4 @@
+# importing the package registers every method
 from fedquest.methods import (  # noqa: F401
     closed_book,
     dgrag,

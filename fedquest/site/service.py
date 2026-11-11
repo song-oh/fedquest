@@ -1,3 +1,4 @@
+# a site: filtered vector search, value semijoins, reads and fact extraction
 from __future__ import annotations
 
 import asyncio
@@ -373,6 +374,7 @@ class SiteService:
         if r.k_group is None or not r.group_size or (r.encoder is not None and c.encoder != r.encoder):
             return r.k
         m = len(self.objects[c.name])
+        # the collection's share of the group's top k_group, rounded up, plus share_slack's margin
         return -(-r.k_group * m // r.group_size) + _slack(r.k_group, m / r.group_size)
 
     def _postings_of(self, collection: str) -> Postings:
@@ -485,6 +487,7 @@ class SiteService:
                     found, scored = [pos for pos, _ in hits_s], dict(hits_s)
                 page, joinable, exact = [(pos, r.offset + j + 1) for j, pos in enumerate(found)], int(joined.size), True
             else:
+                # too many objects to join exactly: filter the vector top FILTER_TOP by mention instead
                 vec = self._embed_key(c.name, r.key)
                 t0 = time.perf_counter()
                 top_s = self.index.search_scored(c.name, vec, FILTER_TOP, 0, exclude=sorted(skip), exact=True)
@@ -725,6 +728,7 @@ class SiteService:
     async def _stand_in(self, stored: ExtractionResult, timing_key: str,
                         call: Callable[[], Any] | None) -> None:
         llm = self.extractor.llm
+        # stored results still cost time: live runs call again, timed replays sleep the recorded seconds
         if call is not None:
             out = await call()
             made = out if isinstance(out, list) else [out]
@@ -814,6 +818,7 @@ class SiteService:
         order = list(dict.fromkeys([*oids, *(oid for block in blocks for oid in block)]))
         placed: set[str] = set()
         calls: list[list[ObjectRecord]] = []
+        # blocks before loose oids, each oid in its first block; a call takes up to PER_CALL of one modality
         for block in [*blocks, *([oid] for oid in oids)]:
             by_modality: dict[str, list[ObjectRecord]] = {}
             for oid in dict.fromkeys(block):
@@ -1123,6 +1128,7 @@ class TitleIndex:
         words = key.split()
         if not any(len(w) >= 4 for w in words):
             return []
+        # else up to two titles holding it as a phrase, ones starting with it first, then shorter ones
         pool = set.intersection(*(self.words.get(w, set()) for w in words))
         named = sorted({self.keys[i] for i in pool if f" {key} " in f" {self.keys[i]} "},
                        key=lambda k: (not k.startswith(key), len(k), k))[:2]
@@ -1229,6 +1235,7 @@ class Postings:
         local[rows] = np.arange(len(rows), dtype=np.int64)
         mapped = local[self.post]
         keep = mapped >= 0
+        # kept rows per word; reduceat yields an element for an empty run, so those are zeroed
         kept = (np.add.reduceat(keep.astype(np.int64), np.minimum(self.starts[:-1], max(len(keep) - 1, 0)))
                 if len(self.vocab) and len(keep) else np.zeros(len(self.vocab), np.int64))
         empty = self.starts[:-1] == self.starts[1:]

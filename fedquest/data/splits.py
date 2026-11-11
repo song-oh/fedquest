@@ -1,3 +1,4 @@
+# next splits (final_test, live4, imgbridge, dev halves): drawn once, hashed
 from __future__ import annotations
 
 import hashlib
@@ -197,6 +198,7 @@ def musique_final_test(cfg: FederationCfg, questions: list[Question] | None = No
         summary[d["id"]] = (musique.single_hops(d), bool(d.get("answerable", True)), not support & titles)
         if d["id"] in calib_ids:
             hops |= musique.single_hops(d)
+    # unseen train questions: answerable, no single hop shared with eval or calib, no page in the corpus
     pool = sorted(q for q, (h, ok, own) in summary.items() if q not in held and ok and own and not h & hops)
     rng = random.Random(f"{qc.seed}:final_test")
     chosen: list[str] = []

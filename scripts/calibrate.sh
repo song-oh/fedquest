@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# probe and refit the rank and anchor-z calibrations; free: the live_free study
 set -euo pipefail
 WHAT=${1:?usage: calibrate.sh mmqa|musique|free}
 cd "$(dirname "$0")/.."

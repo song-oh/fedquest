@@ -1,3 +1,4 @@
+# coordinator and method behavior on the running example and small scripted worlds
 import json
 
 import pytest
@@ -31,6 +32,7 @@ FEDQUESTS = ("fedquest",)
 Q = Question("q1", "mmqa", RUNNING_QUESTION, ["baseball"], qtype="Compose(ImageQ,TableQ)", bridge=["The Bad News Bears"])
 
 
+# evidence rate by (kind, modality, round) and (rank, signal); typical() fits a calibrator to it
 TYPICAL = {
     ("question", "text", "first"): {(1, True): .35, (1, False): .08, (3, True): .15, (3, False): .04, (5, False): .02},
     ("question", "table", "first"): {(1, True): .4, (1, False): .1, (3, True): .2, (3, False): .05},

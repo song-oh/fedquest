@@ -1,3 +1,4 @@
+# paired tests: bootstrap intervals, sign-flip p values, Holm, weighted kappa
 from __future__ import annotations
 
 from collections.abc import Iterable, Mapping, Sequence

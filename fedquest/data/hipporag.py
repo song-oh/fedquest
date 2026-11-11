@@ -1,3 +1,4 @@
+# HotpotQA and 2WikiMultiHopQA from HippoRAG 2's release, with hop structure
 from __future__ import annotations
 
 import json
@@ -99,6 +100,7 @@ def _hotpot(d: dict[str, Any]) -> Question:
         named = [x for x, y in ((a, b), (b, a)) if _mentions(texts[y], x)]
         answer = norm_entity(d["answer"])
         holds = [t for t in titles if answer and answer in norm_entity(texts[t])]
+        # second hop: the title the other passage names, else the one holding the answer, else list order
         if len(named) == 1:
             second, rule = named[0], "title"
         elif len(holds) == 1:

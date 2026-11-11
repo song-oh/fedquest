@@ -1,3 +1,4 @@
+# the paper's report: tables and figures from the experiments' scored rows
 from __future__ import annotations
 
 import argparse
@@ -141,6 +142,7 @@ def _main_table(b: str, exp: str, runs: Path, out: dict[str, Any], extra: dict[s
     ref = "fedquest"
     leads = {lab: lead(rows[ref], rows[lab]) for lab in labs if lab != ref and ref in rows}
     leads_f1 = {lab: lead(rows[ref], rows[lab], key="f1") for lab in labs if lab != ref and ref in rows}
+    # Holm-adjusted p over FedQuest's leads against every other label
     adj = holm({k: (v or {}).get("p") for k, v in leads.items()})
     adj_f1 = holm({k: (v or {}).get("p") for k, v in leads_f1.items()})
     out[b] = {"stats": stats, "leads": leads, "holm": adj, "leads_f1": leads_f1, "holm_f1": adj_f1}
@@ -260,6 +262,7 @@ def section_frontier(runs: Path, out: dict[str, Any]) -> list[str]:
         table = []
         for x in BUDGETS:
             k = f"{x // 1000}k"
+            # the 16K point is the main run; other budgets come from the frontier study
             fq = load_rows(main, "fedquest", runs) if x == 16000 else load_rows(fr, f"fedquest@{k}", runs)
             fq = [r for r in fq if r["qid"] in sub]
             ir = {}
@@ -409,6 +412,7 @@ def section_ablations(runs: Path, out: dict[str, Any]) -> list[str]:
 
 
 SCALE_EXPS = ("scale_musique", "seeds_musique")
+# scale labels: <label>_s<N>[_k05]_r<seed>
 SCALE_LABEL = re.compile(r"(.+?)_s(\d+)(?:_k05)?_r(\d+)")
 
 

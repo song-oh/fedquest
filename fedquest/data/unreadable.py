@@ -1,3 +1,4 @@
+# MMQA images that cannot be read, left out of indexes and ground-truth checks
 from __future__ import annotations
 
 from collections.abc import Iterable

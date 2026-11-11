@@ -1,3 +1,4 @@
+# pydantic schemas and loaders for federation, models, experiment and remote configs
 from __future__ import annotations
 
 import hashlib
@@ -460,6 +461,7 @@ class ModelsCfg(_Cfg):
         if name not in self.profiles:
             raise KeyError(f"no models profile {name!r} (defined: {sorted(self.profiles)})")
         p = self.profiles[name]
+        # fields a profile sets replace the base's (api_key_env even as null); these four dicts merge by key
         merged = ("roles", "endpoints", "extra_body", "headroom")
         update: dict[str, Any] = {f: getattr(p, f) for f in p.model_fields_set
                                   if f not in merged and (getattr(p, f) is not None or f == "api_key_env")}
@@ -639,6 +641,7 @@ class RemoteCfg(_Cfg):
     def facility_of(self, machine: str) -> str | None:
         if machine in self.facilities:
             return machine
+        # a numbered machine such as aurora_3 runs at the facility aurora
         base, _, j = machine.rpartition("_")
         return base if j.isdigit() and base in self.facilities else None
 
@@ -756,6 +759,7 @@ def with_profile(cfg: ModelsCfg, profile: str | None) -> ModelsCfg:
     if not profile:
         return cfg
     merged = cfg.profile(profile)
+    # a replay run, or FEDQUEST_LLM=fake|replay, stays offline whatever provider the profile names
     offline = "replay" if cfg.provider == "replay" else os.environ.get("FEDQUEST_LLM")
     if offline in ("fake", "replay"):
         merged = merged.model_copy(update={"provider": offline})

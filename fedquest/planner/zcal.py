@@ -1,3 +1,4 @@
+# anchor-z calibration: logistic fits of evidence on z, signal and mention
 from __future__ import annotations
 
 import argparse
@@ -72,6 +73,7 @@ class ZCalibrator:
             x = np.array([_x(o) for o in rows], dtype=np.float64)
             model = LogisticRegression(C=C_REG, max_iter=1000).fit(x, y)
             coef = [float(model.intercept_[0]), *map(float, model.coef_[0])]
+            # a higher z must not lower the odds: a negative z slope is refit without z
             if coef[1] < 0:
                 model = LogisticRegression(C=C_REG, max_iter=1000).fit(x[:, 1:], y)
                 coef = [float(model.intercept_[0]), 0.0, *map(float, model.coef_[0])]

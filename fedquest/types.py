@@ -1,3 +1,4 @@
+# wire records (probes, candidates, facts, reads) and the query graph's edges and pattern
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field, fields
@@ -113,6 +114,7 @@ class ProbeRequest(Record):
     vocab: list[str] | None = None
 
     def to_dict(self) -> dict[str, Any]:
+        # value, sites and vocab never leave the coordinator; fields at their WIRE_V5 default are left out
         d = asdict(self)
         for name in ("value", "sites", "vocab"):
             d.pop(name, None)
@@ -218,6 +220,7 @@ class Usage(Record):
 
     @property
     def cost_units(self) -> int:
+        # the same weight as budget.OUT_WEIGHT
         return self.prompt_tokens + 4 * self.completion_tokens
 
     def add(self, other: Usage) -> None:

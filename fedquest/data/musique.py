@@ -1,3 +1,4 @@
+# MuSiQue questions with their hop decomposition, and the corpus passages
 from __future__ import annotations
 
 import json

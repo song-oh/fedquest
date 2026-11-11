@@ -1,3 +1,4 @@
+# virtual shards: a site as a hash or Dirichlet slice of a parent site's objects
 from __future__ import annotations
 
 import functools

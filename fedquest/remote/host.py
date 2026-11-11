@@ -1,3 +1,4 @@
+# site host of a node slot, opening its sites on first use per models profile
 from __future__ import annotations
 
 import asyncio

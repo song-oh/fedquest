@@ -1,3 +1,4 @@
+# coordinator: a fresh ledger and query context per question, run in its wire scope
 from __future__ import annotations
 
 from dataclasses import dataclass, field

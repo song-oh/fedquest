@@ -1,3 +1,4 @@
+# scripted databases (FakeSite) and the running example the offline tests share
 from __future__ import annotations
 
 import dataclasses

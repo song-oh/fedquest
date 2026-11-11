@@ -1,3 +1,4 @@
+# workload characterization: cost profiles and the late-binding gap
 from __future__ import annotations
 
 import logging
@@ -91,6 +92,7 @@ async def late_binding_gap(federation: str, *, mode: str = "local", limit: int |
                             ProbeRequest(value, "bound", k, collections=[coll]),
                             ProbeRequest(value, "title", k, collections=[coll], titles=[value])]
                     by_question, by_value, by_title = await fed.probe(reqs, sites=[site])
+                    # gold's rank by question, by bound value and by title probe; 0 if not returned
                     found = tuple(next((i + 1 for i, c in enumerate(cands) if c.doc_id == doc), 0)
                                   for cands in (by_question, by_value, by_title))
                     for g in (encoder, "all", *groups):

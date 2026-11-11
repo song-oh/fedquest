@@ -1,3 +1,4 @@
+# routing study: Hit@k of FedQuest, direct, FedGRAG and random source selection
 from __future__ import annotations
 
 import argparse
@@ -125,6 +126,7 @@ async def study(layout: str, mode: str = "remote", split: str | None = None) -> 
             note("fedquest", f"hit@{k}", bool(set(order[:k]) & gold))
             note("direct", f"hit@{k}", bool(set(dorder[:k]) & gold))
             note("random", f"hit@{k}", random_hit(n_sites, len(gold), k))
+        # the other half's threshold fit and FedGRAG router (one shared fit if not cross-fitted)
         fit, idx = fits[xfit.other(q.qid)], idxs[xfit.other(q.qid)]
         if fit is not None and fit.get("theta") is not None:
             sel = set(routing.Router.select(sc, "threshold", fit["theta"], None,

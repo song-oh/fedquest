@@ -1,3 +1,4 @@
+# FedGRAG build: OpenIE fact tables, site prototypes, trained routers, tuning
 from __future__ import annotations
 
 import argparse
@@ -253,6 +254,7 @@ def train_router(index: FedGRAGIndex, queries: np.ndarray, positives: list[set[i
     a_logit = torch.nn.Parameter(torch.zeros(()))
     opt = torch.optim.Adam([w, a_logit], lr=LR)
     q = torch.tensor(np.stack([index.fuse_query(v) for v in queries])) if len(queries) else torch.zeros((0, d))
+    # only questions whose gold sits on some sites but not all give the router a ranking to learn
     usable = [i for i, p in enumerate(positives) if 0 < len(p) < m]
     history = []
     for _epoch in range(EPOCHS):
@@ -325,6 +327,7 @@ def _train(index: FedGRAGIndex, qs: list[dict[str, Any]], sites: list[str], memb
     tune = list(range(len(qs)))[:: max(1, len(qs) // 300)]
     recalls = {b: gold_recall(trained, qvec[tune], [golds[i] for i in tune], b) for b in range(1, len(sites) + 1)}
     best = max(recalls.values()) if recalls else 0.0
+    # B: the fewest routed sites whose gold recall is within 0.01 of the best
     b = min((b for b, r in recalls.items() if r >= best - 0.01), default=1)
     hits = [float(bool(set(trained.route(qvec[i], b)) & pos[i])) for i in tune]
     rec = {"b": int(b), "recall_by_b": {str(k): round(v, 4) for k, v in recalls.items()},
@@ -360,6 +363,7 @@ def build_layout(federation: str, mode: str = "remote", members: dict[str, list[
         fids = np.asarray(sorted(f for o in members[site] for f in by_oid.get(o, [])), dtype=np.int64)
         nids = np.asarray(sorted({int(e) for f in fids for e in cor.facts[int(f)]}), dtype=np.int64)
         struct = _structure(cor, fids, nids) if len(nids) else np.zeros((0, cor.emb_nodes.shape[1]), np.float32)
+        # a node is its name vector beside its structure vector, scaled back to unit length
         fused = np.concatenate([cor.emb_nodes[nids], struct], axis=1) / np.sqrt(2.0) if len(nids) else \
             np.zeros((0, 2 * cor.emb_nodes.shape[1]), np.float32)
         p = _prototypes(fused, K_PROTOS) if len(fused) else np.zeros((0, fused.shape[1]), np.float32)
@@ -563,6 +567,7 @@ def _union(cor: Corpus, clients: list[Any]) -> tuple[Any, Any, np.ndarray]:
     from scipy import sparse
 
     offsets = np.cumsum([0] + [len(c.node_ids) for c in clients])
+    # one block per site: the union graph never links entities across sites
     blocks = [_norm_adj(cor, c.fact_ids, c.node_ids) for c in clients if len(c.node_ids)]
     a = sparse.block_diag(blocks, format="coo") if blocks else sparse.coo_matrix((0, 0), dtype=np.float32)
     a_t = torch.sparse_coo_tensor(torch.tensor(np.vstack([a.row, a.col]), dtype=torch.long),

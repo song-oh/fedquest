@@ -1,3 +1,4 @@
+# encoder vectors per collection, copies derived from a parent, Qdrant indexes
 from __future__ import annotations
 
 import argparse
@@ -46,6 +47,7 @@ def pixel_vectors(fused: np.ndarray, titles: np.ndarray, threshold: float = UNRE
                   ) -> tuple[np.ndarray, list[int]]:
     f, t = _unit(fused), _unit(titles)
     dot = np.einsum("ij,ij->i", f, t)
+    # fused bisects the unit pixel and title vectors; reflecting the title across it gives the pixels
     v = _unit(2.0 * dot[:, None] * f - t)
     missing = np.flatnonzero(dot > threshold)
     v[missing] = 0.0
@@ -165,6 +167,7 @@ def derive_collection(cfg: FederationCfg, site: str, collection: str, device: st
     if pmeta.get("encoder") != coll.encoder or parent.encoder != coll.encoder:
         raise RuntimeError(f"{cfg.name}/{site}/{collection} ({coll.encoder}) cannot copy the vectors of "
                            f"{coll.vectors_from} ({pmeta.get('encoder')}): another encoder's space")
+    # other modes only under CLIP: pixels reflect out of fused vectors, titles are encoded again
     if pmode != coll.vectors and not (clip and pmode == "fused") and not (clip and coll.vectors == "titles"):
         raise RuntimeError(f"{cfg.name}/{site}/{collection} wants {coll.vectors} vectors; {coll.vectors_from} holds "
                            f"{pmode} ones, which they cannot be recovered from")

@@ -1,3 +1,4 @@
+# remote federation, each site call sent through the login-node gateway
 from __future__ import annotations
 
 import asyncio
@@ -125,6 +126,7 @@ class GatewayEndpoint:
     async def call_timed(self, action: str, **kwargs: Any) -> tuple[Any, float, float]:
         from fedquest.llm import timing
 
+        # idempotent calls stop waiting after LOST_REPLY_S and fail as retryable; _fanout resends them
         timeout = min(self.timeout_s, LOST_REPLY_S) if action in IDEMPOTENT else self.timeout_s
         t0 = time.perf_counter()
         try:

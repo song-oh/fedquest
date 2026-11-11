@@ -1,3 +1,4 @@
+# length-prefixed pickle frames, socket paths and error envelopes
 from __future__ import annotations
 
 import asyncio

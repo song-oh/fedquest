@@ -1,3 +1,4 @@
+# FedGRAG baseline: b clients from its offline index, answer from their facts
 from __future__ import annotations
 
 import asyncio
@@ -60,6 +61,7 @@ class FedGRAG(Method):
         sites = [idx.clients[i].site for i in chosen]
         led = ctx.ledger
         t1 = time.perf_counter()
+        # one uncharged round trip to the chosen clients for latency; the facts come from the offline index
         try:
             await ctx.fed.probe([ProbeRequest(q.question, "question", 1)], sites=sites, ledger=None)
         except Exception as e:

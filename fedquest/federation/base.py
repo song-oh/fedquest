@@ -1,3 +1,4 @@
+# Federation: fans each round out to the sites and charges the ledger
 from __future__ import annotations
 
 import asyncio
@@ -112,6 +113,7 @@ SHARE_EPS = 0.05
 def share_slack(k: int, p: float, eps: float = SHARE_EPS) -> int:
     if k <= 0 or p <= 0 or p >= 1:
         return 0
+    # least s with E[(X - ceil(kp) - s)+] <= eps k p, X ~ Bin(k, p) the group's top k held here
     base = math.ceil(k * p - 1e-12)
     pmf = [math.comb(k, x) * p**x * (1 - p) ** (k - x) for x in range(k + 1)]
     s = 0
@@ -121,6 +123,7 @@ def share_slack(k: int, p: float, eps: float = SHARE_EPS) -> int:
 
 
 def may_mention(bf: BloomFilter, value: str) -> bool:
+    # yes/no judgments pass; else every whole-word key must be held, or a tau share of 4-char prefixes
     always, every, half = mention_keys(value)
     if always or (every and all(f"v:{w}" in bf for w in every)):
         return True
@@ -247,6 +250,7 @@ class Federation:
                     reply={s: out for s, out, _, _, _ in results},
                     retries={s: n for s, _, _, _, n in results if n},
                 )
+                # a round waits on its slowest site, so it adds that site's injected WAN delay
                 ledger.wan_seconds += max(results, key=lambda r: r[2])[3]
         return {s: out for s, out, *_ in results}
 
@@ -525,6 +529,7 @@ class Federation:
             extra["epoch"] = epoch
         objs: dict[Ref, RawObject] = {}
         pending = dict(by_site)
+        # a site stops at its byte budget; the rest of its oids go in the next round
         while pending:
             raw = await self._fanout({s: ("fetch_raw", {"oids": oids, **extra}) for s, oids in pending.items()},
                                      ledger)

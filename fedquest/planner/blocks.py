@@ -1,3 +1,4 @@
+# read scheduling: blocks per place, call order and the budget split across hops
 from __future__ import annotations
 
 import math
@@ -186,6 +187,7 @@ def allocate(curves: Sequence[Sequence[tuple[float, float]]], budget: float, fou
         have[h] += mass
         total += cost
 
+    # hops holding nothing get a first call (all if they fit, else hop 0 alone); then best log gain per cost
     fresh = [h for h in range(n) if curves[h] and have[h] <= 0.0 and curves[h][0][1] > 0.0]
     if sum(curves[h][0][0] for h in fresh) <= budget:
         for h in fresh:

@@ -1,3 +1,4 @@
+# typed query graph compiler: prompts, lowering to a Pattern, checks and repair
 from __future__ import annotations
 
 import copy
@@ -216,6 +217,7 @@ def _items(graph: dict[str, Any], key: str, required: bool = False) -> list[Any]
 
 def _parse(text: str) -> tuple[Any, bool]:
     graph = parse_json(text)
+    # retry once with keys that lost their closing quote and colon ("subject "...)
     if graph is None and _COLON.search(text or ""):
         graph = parse_json(_COLON.sub(r'"\1": "', text))
         return graph, graph is not None
@@ -321,6 +323,7 @@ def _read(graph: Any, question: str) -> _Reading:
         if not rel:
             notes.append(_note("dropped", f"{where} has no relation: left out"))
             continue
+        # one end given, or both ends equal: a fact about one term, a filter if it is a variable
         if h == t:
             if is_var(h):
                 if rel not in unary.get(h, []):
@@ -387,6 +390,7 @@ def _translate(graph: Any, question: str, note: Note | None = None,
             name = v[1:].strip()
             note("concept", f"{v} is the constant {name}" if name in constants else f"{v} contracted",
                  [t for t in was if v in (t[0], t[2])])
+    # an image atom folded into a composed relation passes its image evidence on
     for gone in (e for e in marked if all(e is not f for f in edges)):
         for f in edges:
             if before.get(id(f)) != f.relation and f.tail == gone.tail and f.relation.endswith(f" {gone.relation}"):
@@ -471,6 +475,7 @@ def prune(pattern: Pattern, question: str = "", typed: bool = False, note: Note 
         changed = False
         for x in list(pattern.variables):
             on = pattern.incident(x)
+            # only a leaf is pruned: not the answer, no filter, no constant neighbor, one atom at most
             if x == pattern.answer or pattern.conditions.get(x) or any(not is_var(e.other(x)) for e in on):
                 continue
             if len(on) > 1:
@@ -908,6 +913,7 @@ def _analysis(p: Pattern, question: str, form: str | None) -> dict[str, Any]:
         inputs = [a["key"]] if a["access"] == "join" else []
         full.setdefault(a["out"], []).extend(y for y in dict.fromkeys([*inputs, *a["uses"]]) if y not in full[a["out"]])
         keyed.setdefault(a["out"], []).extend(y for y in inputs if y not in keyed[a["out"]])
+    # binding order from join keys and relation uses; on a cycle, from join keys alone (loose)
     levels = _levels(full)
     loose = levels is None
     if levels is None:
@@ -972,6 +978,7 @@ def _adornments(p: Pattern, question: str) -> tuple[dict[int, dict[str, Any]], l
             continue
         if e.head == e.tail:
             continue
+        # an atom between two unknowns binds the end nearer the answer, keyed by the other
         if len(ends) == 2:
             out = min(ends, key=lambda x: (depth.get(x, 0), -index.get(x, 0)))
             access = "join"
@@ -1272,6 +1279,7 @@ def edits(first: Pattern, bound: Mapping[str, Sequence[str]], repaired: Pattern)
     def on(x: tuple[Edge, Any, Any]) -> list[str]:
         return [n for n in dict.fromkeys((x[0].head, x[0].tail)) if is_var(n)]
 
+    # ends compare by value: a first-graph variable is its bound values, any other variable None
     ones = [(e, end(e.head, bound), end(e.tail, bound)) for e in first.edges]
     twos = [(e, end(e.head, {}), end(e.tail, {})) for e in repaired.edges]
     found: list[str] = []

@@ -1,3 +1,4 @@
+# wire log: site replies recorded in SQLite, replayed by question scope
 from __future__ import annotations
 
 import asyncio
@@ -87,6 +88,7 @@ class WireLog:
 
     def get(self, federation: str, site: str, action: str, args: str, scope: str = "") -> Any | None:
         with self._lock:
+            # the question's own scope first, then an unscoped reply, then the newest
             row = self._db.execute(
                 "SELECT r.reply FROM wire w JOIN replies r ON r.sha = w.sha WHERE w.key = ? "
                 "ORDER BY w.scope = ? DESC, w.scope = '' DESC, w.created DESC LIMIT 1",

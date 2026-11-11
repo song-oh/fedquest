@@ -1,3 +1,4 @@
+# IRCoT baseline: retrieve, reason one sentence, retrieve again with it
 from __future__ import annotations
 
 import asyncio
@@ -154,6 +155,7 @@ class IterRAG(Method):
                 steps.append((sentence, "answer"))
                 answer, wrote = said, True
                 break
+            # a new thought is the next query; a repeat, a decline or nothing deepens the last probe by k
             grew = bool(sentence) and not found and sentence not in thoughts
             if grew:
                 thoughts.append(sentence)
@@ -265,6 +267,7 @@ class _Budgeted:
                 docs.append(c.doc_id or "")
                 added.append(c)
             messages = build()
+            # drop this hop's newest paragraphs until its step and the final answer both fit the budget
             while True:
                 need = budget.call_cost(messages, "ircot", 128) + self._answer_cost(
                     q, ctx, paragraphs, len(self.attached(pictures)))

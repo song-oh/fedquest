@@ -1,3 +1,4 @@
+# emulated WAN: seeded lognormal RTT jitter plus transfer time per call
 from __future__ import annotations
 
 import asyncio
@@ -14,6 +15,7 @@ from fedquest.utils import stable_int
 if TYPE_CHECKING:
     from fedquest.federation.base import Federation, SiteEndpoint
 
+# stable_int has 15 hex digits, so (x + 0.5) / _UNIT is uniform in (0, 1)
 _UNIT = float(16**15)
 _NORMAL = NormalDist()
 
