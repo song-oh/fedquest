@@ -70,6 +70,7 @@ def block_plan(cands: Sequence[Cand], kappa: float, survival: float = 1.0, cap: 
     for i in range(n - 1, -1, -1):
         best[i] = math.inf
         for k in range(i + 1, min(n, i + limit) + 1):
+            # a block costs kappa plus its reads, paid only if the earlier blocks missed
             v = (kappa + cost[k] - cost[i]) * left[i] + best[k]
             if v < best[i] - 1e-12:
                 best[i], cut[i] = v, k

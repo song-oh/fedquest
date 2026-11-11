@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# coordinator on the Aurora login node: start | resume | grid | status | stop
 set -uo pipefail
 cd "$(dirname "$0")/.."
 ME=$(id -u)

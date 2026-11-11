@@ -1098,6 +1098,7 @@ class _Run:
                 if not full and best and self.reask(x):
                     changed = True
                     continue
+                # values meeting every evaluated condition, else those meeting the most
                 chosen = full or best
                 if chosen:
                     pi = self.chances(chosen)
@@ -1474,6 +1475,7 @@ class _Run:
         if self.compiled is not None:
             compiler.recorded(self.compiled, self)
         self.decide()
+        # a round asks the pending hops with the values bound so far, then rebinds the variables
         while not self.done() and (not self.out_of_rounds() or self.deepening()):
             kind, asks = self.step()
             if not asks and not self.loose:

@@ -26,6 +26,7 @@ class BloomFilter:
         return bf
 
     def _positions(self, key: str) -> list[int]:
+        # double hashing: k positions from two 64-bit slices of one SHA-256 digest
         d = hashlib.sha256(key.encode("utf-8")).digest()
         h1, h2 = int.from_bytes(d[:8], "big"), int.from_bytes(d[8:16], "big") | 1
         return [(h1 + i * h2) % self.m for i in range(self.k)]

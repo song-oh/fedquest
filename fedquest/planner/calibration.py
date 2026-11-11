@@ -170,6 +170,7 @@ def _shrunk(table: dict[str, list[Any]], keys: Sequence[str], strength: float, b
     a = hit / n
     for key in keys:
         hit, n = table.get(key, (0, 0))
+        # each finer level shrinks toward the estimate of the level above it
         a = (hit + strength * a) / (n + strength)
     return a
 

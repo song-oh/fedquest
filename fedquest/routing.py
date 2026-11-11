@@ -94,6 +94,7 @@ class Router:
                 mu, sd = background(anchors, q) if anchors is not None else (0.0, 1.0)
                 by_enc[enc] = (q, mu, max(sd, 1e-6))
             q, mu, sd = by_enc[enc]
+            # a site scores its best centroid, z-scored against the anchor background
             z = float(((cents @ q) - mu).max() / sd) if len(cents) else -math.inf
             out[site] = max(out[site], z)
         for s in self.always:
@@ -176,6 +177,7 @@ def _fit(name: str, federation: str, split: str, router: Router, doc_sites: dict
     finite = sorted(v for v in pairs if math.isfinite(v))
     theta = None
     if finite:
+        # theta: the (1 - target) quantile of the gold sites' scores
         cut = int(math.floor((1.0 - target) * len(finite)))
         theta = float(finite[max(0, min(len(finite) - 1, cut))]) - 1e-6
     n = len(router.sites)

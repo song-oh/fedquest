@@ -76,6 +76,7 @@ def variant_rows(path: str) -> dict[str, np.ndarray]:
 TAIL_Q = 0.95
 
 
+# -log10 p of a cosine: empirical below the 0.95 quantile, exponential tail above it
 class TailBackground:
     def __init__(self, sims: np.ndarray) -> None:
         self.sims = np.sort(np.asarray(sims, dtype=np.float64))

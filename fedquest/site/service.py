@@ -455,6 +455,7 @@ class SiteService:
         return index.get(_title_key(value), _NONE)
 
     def _semijoin(self, r: ProbeRequest) -> tuple[list[Candidate], list[ProbeCounts]]:
+        # a sealed site runs the plain vector search, without the value join
         if self.site.policy == "sealed":
             return self._search(r), []
         out: list[Candidate] = []

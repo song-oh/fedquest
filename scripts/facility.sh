@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# this facility's Globus Compute endpoint: up | down | restart
 set -uo pipefail
 cd "$(dirname "$0")/.."
 case "$(hostname -f 2>/dev/null || hostname)" in

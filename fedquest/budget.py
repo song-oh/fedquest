@@ -7,6 +7,7 @@ from collections.abc import Sequence
 from functools import lru_cache
 from typing import Any
 
+# a generated token costs as much as four prompt tokens
 OUT_WEIGHT = 4
 FRAME_TOKENS = 10
 MESSAGE_TOKENS = 10
@@ -100,6 +101,7 @@ def call_cost(messages: Sequence[dict[str, Any]], task: str, max_tokens: int) ->
 
 def check(ledger: Any, messages: Sequence[dict[str, Any]], *, task: str, max_tokens: int, charge: str | None) -> None:
     limit = getattr(ledger, "budget", None)
+    # the answer call is never refused; ledger.reserve keeps room for it
     if limit is None or charge == "answer":
         return
     need = call_cost(messages, task, max_tokens)

@@ -39,6 +39,7 @@ class Coordinator:
         budget = getattr(method, "total_budget", None)
         if budget is not None:
             ctx.ledger.budget = int(budget)
+        # gold positions only feed the evidence log (eval/evidence.py)
         ctx.ledger.gold = gold_positions(q)
         with wire_scope(f"{ns}#{q.qid}"):
             return await method.run(q, ctx)

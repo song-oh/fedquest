@@ -24,6 +24,7 @@ def crossfitted(name: str | None) -> bool:
     return bool(name) and PLACEHOLDER in str(name)
 
 
+# cross-fitting: a question uses the fit from the half it is not in
 def resolve(name: str | None, qid: str) -> str | None:
     if not crossfitted(name):
         return name
