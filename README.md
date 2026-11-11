@@ -1,6 +1,6 @@
 # FedQuest
 
-Code and configurations for the paper *FedQuest: Graph-Guided Joins over Federated Vector Databases for Multi-Hop Queries*.
+Code for the submission *FedQuest: Graph-Guided Joins over Federated Vector Databases for Multi-Hop Queries*.
 
 FedQuest answers multi-hop questions over vector databases that keep their own data and encoders. It compiles a question into a query graph and runs each hop as a filtered vector search keyed by the values that earlier hops extracted. The coordinator merges the databases' results with anchor-normalized scores, reads the most promising candidates under one token budget, and records each extracted fact with its source in a knowledge graph.
 
