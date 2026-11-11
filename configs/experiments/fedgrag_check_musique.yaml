@@ -1,0 +1,15 @@
+name: fedgrag_check_musique
+federation: musique_s4_k05_r0
+split: test
+limit: 1000
+workload: cold
+concurrency: 24
+require_calibration: true
+interleave: true
+stage: 2
+lane: gemma
+after: ['tool:fedgrag_build', 'tool:fedgrag_tune', 'tool:fedgrag_tune_trained']
+optional: true
+methods:
+  - {method: fedgrag_tuned, label: fedgrag_tuned, params: {index: musique_s4_k05_r0}}
+  - {method: fedgrag_trained, label: fedgrag_trained, params: {index: musique_s4_k05_r0}}

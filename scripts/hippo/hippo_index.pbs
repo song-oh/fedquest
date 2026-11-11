@@ -1,0 +1,31 @@
+#!/bin/bash -l
+#PBS -N fq-hippo
+#PBS -A radix-io
+#PBS -l filesystems=home:flare
+#PBS -l place=scatter
+#PBS -k doe
+#PBS -j oe
+set -u
+cd "${PBS_O_WORKDIR:?}" || exit 1
+export TZ=/usr/share/zoneinfo/US/Central
+NODES=$(sort -u "$PBS_NODEFILE" | wc -l)
+if [[ -z ${HIPPO_PLAN:-} ]]; then
+  if ((NODES == 16)); then
+    HIPPO_PLAN="musique_next_home:8 hotpot_home:5 twowiki_home:3"
+  else
+    m=$(((NODES + 1) / 2)) h=$(((NODES * 3 + 5) / 10))
+    ((m < 1)) && m=1
+    ((h < 1)) && h=1
+    t=$((NODES - m - h))
+    if ((t < 1)); then t=1; m=$((NODES - h - t)); ((m < 1)) && m=1; fi
+    HIPPO_PLAN="musique_next_home:$m hotpot_home:$h twowiki_home:$t"
+  fi
+fi
+HOMES=$(for e in $HIPPO_PLAN; do printf '%s ' "${e%%:*}"; done)
+echo "== $(date '+%F %T') hippo index job ${PBS_JOBID%%.*}: $NODES nodes, plan $HIPPO_PLAN"
+mpiexec -n "$NODES" -ppn 1 --cpu-bind none --env HIPPO_PLAN="$HIPPO_PLAN" --env PBS_O_WORKDIR="$PBS_O_WORKDIR" \
+  --env PBS_JOBID="$PBS_JOBID" --env POD_GEMMA="${POD_GEMMA:-6}" --env HIPPO_CONCURRENCY="${HIPPO_CONCURRENCY:-160}" \
+  bash scripts/hippo/hippo_node.sh
+echo "== $(date '+%F %T') mpiexec exit $?"
+.venv/bin/python -m fedquest.site.hippo status $HOMES
+exit 0

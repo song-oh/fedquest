@@ -1,0 +1,28 @@
+idle_heartbeats_soft: 480
+idle_heartbeats_hard: 100000
+
+engine:
+  type: GlobusComputeEngine
+  label: fedquest-midway3-cn
+  max_workers_per_node: {{ workers|default(64) }}
+  prefetch_capacity: 0
+  provider:
+    type: SlurmProvider
+    partition: {{ partition|default('caslake') }}
+    account: {{ account|default('pi-chard') }}
+    nodes_per_block: {{ nodes|default(1) }}
+    walltime: {{ walltime|default('"12:00:00"') }}
+    exclusive: true
+    cmd_timeout: 60
+    init_blocks: 1
+    min_blocks: {{ min_blocks|default(1) }}
+    max_blocks: 1
+    launcher:
+      type: SrunLauncher
+    worker_init: >-
+      export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 FEDQUEST_TORCH_THREADS=8 OMP_NUM_THREADS=8
+      no_proxy=localhost,127.0.0.1,::1 NO_PROXY=localhost,127.0.0.1,::1;
+      R=$(sed -n 's/^FEDQUEST_RUNS=//p' $HOME/fedquest/.fedquest.env 2>/dev/null | tail -n 1);
+      export FEDQUEST_NODE_QDRANT=1 FEDQUEST_ANN=hnsw FEDQUEST_VIRTUAL_SHARDS=1 FEDQUEST_HOST_LLM_CACHE_DIR=${R:-$HOME/fedquest/runs}/cache/sites;
+      U=$HOME/.fedquest/fqproxy.url; if [ -s $U ]; then P=$(cat $U); export https_proxy=$P HTTPS_PROXY=$P; fi;
+      source $HOME/fedquest/.venv/bin/activate

@@ -1,0 +1,6 @@
+presets:
+  mgrag: {matcher: psgm, theta: 0.6, lp: 3, unary: ignore, image_titles: true, verify: false, order: relevance}
+  fu_alt: {matcher: psgm, theta: 0.6, lp: 3, unary: ignore, image_titles: true, verify: false, order: calib, frontier: psgm, objects: 32, batch: 4, tokens: 32000}
+  ircot: {hops: 8, demos: 3, max_paragraphs: 48}
+  ops: {tokens: 8000, max_steps: 32, demos: 2, prompt: v14}
+  final: {graph: typed, probe: semijoin, limits: share, route: all, ties: salted, direct: fail, context: union, size: cap, pages: 2, repair: true, compile_fix: true, mention: 2}

@@ -1,0 +1,51 @@
+name: scale_musique
+federation: musique_s4_k05_r0
+split: test
+limit: 300
+workload: cold
+concurrency: 24
+require_calibration: true
+interleave: true
+stage: 1
+lane: gemma
+after: ['tool:fedgrag_build', 'tool:route']
+env: {FEDQUEST_PROBE_TRACE: $FEDQUEST_RUNS/traces/scale_musique.jsonl, FEDQUEST_PROBE_TRACE_MATCH: '/fedquest(_all|_own)?_s\d+(_k05)?_r0/'}
+methods:
+  - {method: fedquest, label: fedquest_s2_r0, federation: musique_s2_r0, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto}}
+  - {method: fedquest, label: fedquest_all_s2_r0, federation: musique_s2_r0, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: all}}
+  - {method: fedquest, label: fedquest_own_s2_r0, federation: musique_s2_r0, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto, owners: titles}}
+  - {method: fedgrag, label: fedgrag_s2_r0, federation: musique_s2_r0, params: {index: musique_s2_r0}}
+  - {method: vanilla_rag, label: vanilla_rag@8_s2_r0, federation: musique_s2_r0, params: {order: relevance, budget: 8}}
+  - {method: mgrag, label: mgrag_fed@8_s2_r0, federation: musique_s2_r0, preset: mgrag, params: {budget: 8}}
+  - {method: ircot_b, label: ircot_t8@16k_s2_r0, federation: musique_s2_r0, params: {top: 8, k: 8, total_budget: 16000}}
+  - {method: fedquest, label: fedquest_s4_k05_r0, federation: musique_s4_k05_r0, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto}}
+  - {method: fedquest, label: fedquest_all_s4_k05_r0, federation: musique_s4_k05_r0, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: all}}
+  - {method: fedquest, label: fedquest_own_s4_k05_r0, federation: musique_s4_k05_r0, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto, owners: titles}}
+  - {method: fedgrag, label: fedgrag_s4_k05_r0, federation: musique_s4_k05_r0, params: {index: musique_s4_k05_r0}}
+  - {method: vanilla_rag, label: vanilla_rag@8_s4_k05_r0, federation: musique_s4_k05_r0, params: {order: relevance, budget: 8}}
+  - {method: mgrag, label: mgrag_fed@8_s4_k05_r0, federation: musique_s4_k05_r0, preset: mgrag, params: {budget: 8}}
+  - {method: ircot_b, label: ircot_t8@16k_s4_k05_r0, federation: musique_s4_k05_r0, params: {top: 8, k: 8, total_budget: 16000}}
+  - {method: fedquest, label: fedquest_s8_k05_r0, federation: musique_s8_k05_r0, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto}}
+  - {method: fedquest, label: fedquest_all_s8_k05_r0, federation: musique_s8_k05_r0, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: all}}
+  - {method: fedquest, label: fedquest_own_s8_k05_r0, federation: musique_s8_k05_r0, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto, owners: titles}}
+  - {method: fedgrag, label: fedgrag_s8_k05_r0, federation: musique_s8_k05_r0, params: {index: musique_s8_k05_r0}}
+  - {method: vanilla_rag, label: vanilla_rag@8_s8_k05_r0, federation: musique_s8_k05_r0, params: {order: relevance, budget: 8}}
+  - {method: mgrag, label: mgrag_fed@8_s8_k05_r0, federation: musique_s8_k05_r0, preset: mgrag, params: {budget: 8}}
+  - {method: ircot_b, label: ircot_t8@16k_s8_k05_r0, federation: musique_s8_k05_r0, params: {top: 8, k: 8, total_budget: 16000}}
+  - {method: fedquest, label: fedquest_s16_k05_r0, federation: musique_s16_k05_r0, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto}}
+  - {method: fedquest, label: fedquest_all_s16_k05_r0, federation: musique_s16_k05_r0, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: all}}
+  - {method: fedquest, label: fedquest_own_s16_k05_r0, federation: musique_s16_k05_r0, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto, owners: titles}}
+  - {method: fedgrag, label: fedgrag_s16_k05_r0, federation: musique_s16_k05_r0, params: {index: musique_s16_k05_r0}}
+  - {method: vanilla_rag, label: vanilla_rag@8_s16_k05_r0, federation: musique_s16_k05_r0, params: {order: relevance, budget: 8}}
+  - {method: mgrag, label: mgrag_fed@8_s16_k05_r0, federation: musique_s16_k05_r0, preset: mgrag, params: {budget: 8}}
+  - {method: ircot_b, label: ircot_t8@16k_s16_k05_r0, federation: musique_s16_k05_r0, params: {top: 8, k: 8, total_budget: 16000}}
+  - {method: fedquest, label: fedquest_s32_k05_r0, federation: musique_s32_k05_r0, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto}}
+  - {method: fedquest, label: fedquest_all_s32_k05_r0, federation: musique_s32_k05_r0, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: all}}
+  - {method: fedquest, label: fedquest_own_s32_k05_r0, federation: musique_s32_k05_r0, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto, owners: titles}}
+  - {method: fedgrag, label: fedgrag_s32_k05_r0, federation: musique_s32_k05_r0, params: {index: musique_s32_k05_r0}}
+  - {method: vanilla_rag, label: vanilla_rag@8_s32_k05_r0, federation: musique_s32_k05_r0, params: {order: relevance, budget: 8}}
+  - {method: mgrag, label: mgrag_fed@8_s32_k05_r0, federation: musique_s32_k05_r0, preset: mgrag, params: {budget: 8}}
+  - {method: ircot_b, label: ircot_t8@16k_s32_k05_r0, federation: musique_s32_k05_r0, params: {top: 8, k: 8, total_budget: 16000}}
+  - {method: fedquest, label: fedquest_rank_s32_k05_r0, federation: musique_s32_k05_r0, preset: final, params: {calibration: musique_v4e, scores: rank, zcal: null, views: true, total_budget: 16000, route: vocab+proto}}
+  - {method: fedquest, label: fedquest_ranknaive_s32_k05_r0, federation: musique_s32_k05_r0, preset: final, params: {calibration: musique_v4e, scores: ranknaive, zcal: null, views: true, total_budget: 16000, route: vocab+proto}}
+  - {method: fedquest, label: fedquest_e5held_s32_k05_r0, federation: musique_s32_k05_r0, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z_noe5, views: true, total_budget: 16000, route: vocab+proto}}

@@ -1,0 +1,482 @@
+{
+ "label": "evidence-v2",
+ "strength": 8.0,
+ "portable": true,
+ "excluded": [],
+ "meta": {
+  "command": "fedquest calibrate musique_fed --refit --portable --out configs/calibration/musique.json",
+  "federation": "musique_fed",
+  "depth": 5,
+  "observations": "runs/calibration/musique_fed.obs.jsonl",
+  "observations_sha256": "997508cb0858b29f6d088a27d8c8c819fbf1dc27c84df0fe754a44b31c2e747f",
+  "costs": "runs/calibration/musique_fed.costs.json",
+  "costs_sha256": "0190a953063d719a93b05cfcc3177c8de291b707fb9943bb2d5e40166ba5f8a0",
+  "questions": 100,
+  "sites": [
+   "aurora",
+   "laptop",
+   "midway3"
+  ],
+  "candidates": 5424,
+  "labeled": 5424,
+  "evidence": 300,
+  "fitted": {
+   "candidates": 5424,
+   "labeled": 5424,
+   "evidence": 300
+  }
+ },
+ "cross_fit": {
+  "2": -698.79,
+  "4": -696.97,
+  "8": -695.68,
+  "16": -695.7,
+  "32": -697.6,
+  "64": -701.87,
+  "128": -710.93,
+  "256": -726.11,
+  "512": -751.72
+ },
+ "counts": {
+  "all": [
+   300,
+   5424
+  ],
+  "signal|False": [
+   49,
+   4509
+  ],
+  "kind|bound|False": [
+   18,
+   2087
+  ],
+  "bucket|bound|1|False": [
+   13,
+   333
+  ],
+  "round|bound|1|first|False": [
+   13,
+   327
+  ],
+  "modality|text|bound|1|first|False": [
+   13,
+   327
+  ],
+  "bucket|bound|2-3|False": [
+   4,
+   850
+  ],
+  "round|bound|2-3|first|False": [
+   4,
+   836
+  ],
+  "modality|text|bound|2-3|first|False": [
+   4,
+   836
+  ],
+  "bucket|bound|4-5|False": [
+   1,
+   904
+  ],
+  "round|bound|4-5|first|False": [
+   1,
+   889
+  ],
+  "modality|text|bound|4-5|first|False": [
+   1,
+   889
+  ],
+  "signal|True": [
+   251,
+   915
+  ],
+  "kind|bound|True": [
+   87,
+   298
+  ],
+  "bucket|bound|1|True": [
+   77,
+   144
+  ],
+  "round|bound|1|first|True": [
+   75,
+   141
+  ],
+  "modality|text|bound|1|first|True": [
+   75,
+   141
+  ],
+  "kind|question|False": [
+   11,
+   1303
+  ],
+  "bucket|question|1|False": [
+   7,
+   209
+  ],
+  "round|question|1|first|False": [
+   7,
+   209
+  ],
+  "modality|text|question|1|first|False": [
+   7,
+   209
+  ],
+  "bucket|question|2-3|False": [
+   4,
+   532
+  ],
+  "round|question|2-3|first|False": [
+   4,
+   532
+  ],
+  "modality|text|question|2-3|first|False": [
+   4,
+   532
+  ],
+  "bucket|question|4-5|False": [
+   0,
+   562
+  ],
+  "round|question|4-5|first|False": [
+   0,
+   562
+  ],
+  "modality|text|question|4-5|first|False": [
+   0,
+   562
+  ],
+  "kind|question|True": [
+   70,
+   197
+  ],
+  "bucket|question|1|True": [
+   52,
+   91
+  ],
+  "round|question|1|first|True": [
+   52,
+   91
+  ],
+  "modality|text|question|1|first|True": [
+   52,
+   91
+  ],
+  "kind|bridge|False": [
+   20,
+   1119
+  ],
+  "bucket|bridge|1|False": [
+   12,
+   166
+  ],
+  "round|bridge|1|late|False": [
+   12,
+   166
+  ],
+  "modality|text|bridge|1|late|False": [
+   12,
+   166
+  ],
+  "bucket|bridge|2-3|False": [
+   5,
+   458
+  ],
+  "round|bridge|2-3|late|False": [
+   5,
+   458
+  ],
+  "modality|text|bridge|2-3|late|False": [
+   5,
+   458
+  ],
+  "bucket|bridge|4-5|False": [
+   3,
+   495
+  ],
+  "round|bridge|4-5|late|False": [
+   3,
+   495
+  ],
+  "modality|text|bridge|4-5|late|False": [
+   3,
+   495
+  ],
+  "kind|bridge|True": [
+   69,
+   336
+  ],
+  "bucket|bridge|1|True": [
+   49,
+   125
+  ],
+  "round|bridge|1|late|True": [
+   49,
+   125
+  ],
+  "modality|text|bridge|1|late|True": [
+   49,
+   125
+  ],
+  "bucket|bridge|2-3|True": [
+   15,
+   124
+  ],
+  "round|bridge|2-3|late|True": [
+   15,
+   124
+  ],
+  "modality|text|bridge|2-3|late|True": [
+   15,
+   124
+  ],
+  "kind|title|True": [
+   25,
+   84
+  ],
+  "bucket|title|1|True": [
+   19,
+   35
+  ],
+  "round|title|1|late|True": [
+   19,
+   35
+  ],
+  "modality|text|title|1|late|True": [
+   19,
+   35
+  ],
+  "bucket|title|2-3|True": [
+   6,
+   29
+  ],
+  "round|title|2-3|late|True": [
+   6,
+   29
+  ],
+  "modality|text|title|2-3|late|True": [
+   6,
+   29
+  ],
+  "bucket|bound|2-3|True": [
+   9,
+   104
+  ],
+  "round|bound|2-3|first|True": [
+   7,
+   100
+  ],
+  "modality|text|bound|2-3|first|True": [
+   7,
+   100
+  ],
+  "bucket|question|2-3|True": [
+   15,
+   68
+  ],
+  "round|question|2-3|first|True": [
+   15,
+   68
+  ],
+  "modality|text|question|2-3|first|True": [
+   15,
+   68
+  ],
+  "bucket|bridge|4-5|True": [
+   5,
+   87
+  ],
+  "round|bridge|4-5|late|True": [
+   5,
+   87
+  ],
+  "modality|text|bridge|4-5|late|True": [
+   5,
+   87
+  ],
+  "bucket|bound|4-5|True": [
+   1,
+   50
+  ],
+  "round|bound|4-5|first|True": [
+   1,
+   47
+  ],
+  "modality|text|bound|4-5|first|True": [
+   1,
+   47
+  ],
+  "bucket|question|4-5|True": [
+   3,
+   38
+  ],
+  "round|question|4-5|first|True": [
+   3,
+   38
+  ],
+  "modality|text|question|4-5|first|True": [
+   3,
+   38
+  ],
+  "bucket|title|4-5|True": [
+   0,
+   20
+  ],
+  "round|title|4-5|late|True": [
+   0,
+   20
+  ],
+  "modality|text|title|4-5|late|True": [
+   0,
+   20
+  ],
+  "round|bound|1|late|False": [
+   0,
+   6
+  ],
+  "modality|text|bound|1|late|False": [
+   0,
+   6
+  ],
+  "round|bound|2-3|late|False": [
+   0,
+   14
+  ],
+  "modality|text|bound|2-3|late|False": [
+   0,
+   14
+  ],
+  "round|bound|4-5|late|False": [
+   0,
+   15
+  ],
+  "modality|text|bound|4-5|late|False": [
+   0,
+   15
+  ],
+  "round|bound|4-5|late|True": [
+   0,
+   3
+  ],
+  "modality|text|bound|4-5|late|True": [
+   0,
+   3
+  ],
+  "round|bound|1|late|True": [
+   2,
+   3
+  ],
+  "modality|text|bound|1|late|True": [
+   2,
+   3
+  ],
+  "round|bound|2-3|late|True": [
+   2,
+   4
+  ],
+  "modality|text|bound|2-3|late|True": [
+   2,
+   4
+  ]
+ },
+ "signals": {
+  "bound|1": [
+   144,
+   477
+  ],
+  "bound|2-3": [
+   104,
+   954
+  ],
+  "bound|4-5": [
+   50,
+   954
+  ],
+  "question|1": [
+   91,
+   300
+  ],
+  "question|2-3": [
+   68,
+   600
+  ],
+  "question|4-5": [
+   38,
+   600
+  ],
+  "bridge|1": [
+   125,
+   291
+  ],
+  "bridge|2-3": [
+   124,
+   582
+  ],
+  "bridge|4-5": [
+   87,
+   582
+  ],
+  "title|1": [
+   35,
+   35
+  ],
+  "title|2-3": [
+   29,
+   29
+  ],
+  "title|4-5": [
+   20,
+   20
+  ]
+ },
+ "cover": {
+  "all": [
+   174,
+   188
+  ],
+  "first": [
+   93,
+   100
+  ],
+  "first|text": [
+   93,
+   100
+  ],
+  "late": [
+   81,
+   88
+  ],
+  "late|text": [
+   81,
+   88
+  ]
+ },
+ "snippets": {
+  "all": [
+   64,
+   94
+  ],
+  "text": [
+   64,
+   94
+  ],
+  "text|175-299": [
+   10,
+   22
+  ],
+  "text|100-174": [
+   30,
+   41
+  ],
+  "text|60-99": [
+   24,
+   31
+  ]
+ },
+ "sizes": {
+  "text": [
+   421661.0,
+   3351
+  ]
+ }
+}

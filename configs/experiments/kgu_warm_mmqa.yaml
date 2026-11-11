@@ -1,0 +1,13 @@
+name: kgu_warm_mmqa
+federation: mmqa_s4_k05_r0
+split: kg_base
+workload: cold
+concurrency: 24
+require_calibration: true
+stage: 2
+lane: gemma
+after: ['tool:route', 'tool:kgu_make_mmqa']
+before: [python, -m, fedquest.eval.kg_update, derive, --federation, mmqa_s4_k05_r0, --source, mmqa_s2_r0]
+kg: neo4j
+methods:
+  - {method: fedquest, label: fedquest_kg_warm, preset: final, params: {calibration: mmqa_v4e, scores: anchor, zcal: mmqa_z, views: true, total_budget: 16000, route: vocab+proto, kg: harvest, kg_check: version, kg_ns: kgu_mmqa, keep_probe: true}}

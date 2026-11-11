@@ -1,0 +1,15 @@
+name: abl_hotpot
+federation: hotpot_s4_k05_r0
+split: full
+limit: 300
+workload: cold
+concurrency: 24
+require_calibration: true
+interleave: true
+stage: 2
+lane: gemma
+after: ['tool:route_xfit']
+methods:
+  - {method: fedquest_q, label: fedquest_q, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto, route_fit: '{federation}_x{x}', scan: true}}
+  - {method: fedquest, label: fedquest_verify, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto, route_fit: '{federation}_x{x}', direct: budget}}
+  - {method: fedquest, label: fedquest_ctx1500, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto, route_fit: '{federation}_x{x}', context_max: 1500}}

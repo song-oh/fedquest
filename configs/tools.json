@@ -1,0 +1,436 @@
+{
+ "tools": [
+  {
+   "id": "tool:route",
+   "argv": [
+    "python",
+    "-m",
+    "fedquest.routing",
+    "calibrate",
+    "mmqa_s2_r0",
+    "mmqa_s4_k05_r0",
+    "musique_next_home",
+    "musique_s16_k05_r0",
+    "musique_s2_r0",
+    "musique_s32_k05_r0",
+    "musique_s4_k05_r0",
+    "musique_s8_k05_r0",
+    "--split",
+    "calib",
+    "--mode",
+    "remote"
+   ],
+   "lane": "probe",
+   "after": [],
+   "optional": true
+  },
+  {
+   "id": "tool:route_seeds",
+   "argv": [
+    "python",
+    "-m",
+    "fedquest.routing",
+    "calibrate",
+    "musique_s16_k05_r1",
+    "musique_s16_k05_r2",
+    "musique_s16_k05_r3",
+    "musique_s16_k05_r4",
+    "musique_s32_k05_r1",
+    "musique_s32_k05_r2",
+    "musique_s32_k05_r3",
+    "musique_s32_k05_r4",
+    "musique_s4_k05_r1",
+    "musique_s4_k05_r2",
+    "musique_s4_k05_r3",
+    "musique_s4_k05_r4",
+    "musique_s8_k05_r1",
+    "musique_s8_k05_r2",
+    "musique_s8_k05_r3",
+    "musique_s8_k05_r4",
+    "--split",
+    "calib",
+    "--mode",
+    "remote"
+   ],
+   "lane": "probe",
+   "after": [
+    "tool:route"
+   ],
+   "optional": true
+  },
+  {
+   "id": "tool:route_xfit",
+   "argv": [
+    "python",
+    "-m",
+    "fedquest.routing",
+    "calibrate",
+    "hotpot_home",
+    "hotpot_s2_r0",
+    "hotpot_s4_k05_r0",
+    "twowiki_home",
+    "twowiki_s2_r0",
+    "twowiki_s4_k05_r0",
+    "--split",
+    "full",
+    "--halves",
+    "--mode",
+    "remote"
+   ],
+   "lane": "probe",
+   "after": [],
+   "optional": true
+  },
+  {
+   "id": "tool:fedgrag_build",
+   "argv": [
+    "python",
+    "-m",
+    "fedquest.fedgrag",
+    "build",
+    "musique_s16_k05_r0",
+    "musique_s2_r0",
+    "musique_s32_k05_r0",
+    "musique_s4_k05_r0",
+    "musique_s8_k05_r0",
+    "--missing",
+    "--mode",
+    "remote"
+   ],
+   "lane": "cpu",
+   "after": [],
+   "optional": true
+  },
+  {
+   "id": "tool:fedgrag_seeds",
+   "argv": [
+    "python",
+    "-m",
+    "fedquest.fedgrag",
+    "build",
+    "musique_s16_k05_r1",
+    "musique_s16_k05_r2",
+    "musique_s16_k05_r3",
+    "musique_s16_k05_r4",
+    "musique_s32_k05_r1",
+    "musique_s32_k05_r2",
+    "musique_s32_k05_r3",
+    "musique_s32_k05_r4",
+    "musique_s4_k05_r1",
+    "musique_s4_k05_r2",
+    "musique_s4_k05_r3",
+    "musique_s4_k05_r4",
+    "musique_s8_k05_r1",
+    "musique_s8_k05_r2",
+    "musique_s8_k05_r3",
+    "musique_s8_k05_r4",
+    "--missing",
+    "--mode",
+    "remote"
+   ],
+   "lane": "cpu",
+   "after": [
+    "tool:fedgrag_build"
+   ],
+   "optional": true
+  },
+  {
+   "id": "tool:fedgrag_xfit",
+   "argv": [
+    "python",
+    "-m",
+    "fedquest.fedgrag",
+    "build",
+    "hotpot_s4_k05_r0",
+    "twowiki_s4_k05_r0",
+    "--halves",
+    "--split",
+    "full",
+    "--mode",
+    "remote"
+   ],
+   "lane": "cpu",
+   "after": [],
+   "optional": true
+  },
+  {
+   "id": "tool:fedgrag_trained",
+   "argv": [
+    "python",
+    "-m",
+    "fedquest.fedgrag",
+    "trained",
+    "musique_s4_k05_r0",
+    "hotpot_s4_k05_r0",
+    "musique_s16_k05_r0",
+    "musique_s16_k05_r1",
+    "musique_s16_k05_r2",
+    "musique_s16_k05_r3",
+    "musique_s16_k05_r4",
+    "musique_s2_r0",
+    "musique_s32_k05_r0",
+    "musique_s32_k05_r1",
+    "musique_s32_k05_r2",
+    "musique_s32_k05_r3",
+    "musique_s32_k05_r4",
+    "musique_s4_k05_r1",
+    "musique_s4_k05_r2",
+    "musique_s4_k05_r3",
+    "musique_s4_k05_r4",
+    "musique_s8_k05_r0",
+    "musique_s8_k05_r1",
+    "musique_s8_k05_r2",
+    "musique_s8_k05_r3",
+    "musique_s8_k05_r4",
+    "twowiki_s4_k05_r0",
+    "--encoder-from",
+    "musique_s4_k05_r0",
+    "--missing"
+   ],
+   "lane": "cpu",
+   "after": [
+    "tool:fedgrag_build",
+    "tool:fedgrag_seeds",
+    "tool:fedgrag_xfit"
+   ],
+   "optional": true
+  },
+  {
+   "id": "tool:fedgrag_tune",
+   "argv": [
+    "python",
+    "-m",
+    "fedquest.fedgrag",
+    "tune",
+    "musique_s4_k05_r0",
+    "hotpot_s4_k05_r0",
+    "musique_s16_k05_r0",
+    "musique_s16_k05_r1",
+    "musique_s16_k05_r2",
+    "musique_s16_k05_r3",
+    "musique_s16_k05_r4",
+    "musique_s2_r0",
+    "musique_s32_k05_r0",
+    "musique_s32_k05_r1",
+    "musique_s32_k05_r2",
+    "musique_s32_k05_r3",
+    "musique_s32_k05_r4",
+    "musique_s4_k05_r1",
+    "musique_s4_k05_r2",
+    "musique_s4_k05_r3",
+    "musique_s4_k05_r4",
+    "musique_s8_k05_r0",
+    "musique_s8_k05_r1",
+    "musique_s8_k05_r2",
+    "musique_s8_k05_r3",
+    "musique_s8_k05_r4",
+    "twowiki_s4_k05_r0",
+    "--from",
+    "musique_s4_k05_r0"
+   ],
+   "lane": "cpu",
+   "after": [
+    "tool:fedgrag_build",
+    "tool:fedgrag_seeds",
+    "tool:fedgrag_xfit"
+   ],
+   "optional": true
+  },
+  {
+   "id": "tool:fedgrag_tune_trained",
+   "argv": [
+    "python",
+    "-m",
+    "fedquest.fedgrag",
+    "tune",
+    "musique_s4_k05_r0",
+    "hotpot_s4_k05_r0",
+    "musique_s16_k05_r0",
+    "musique_s16_k05_r1",
+    "musique_s16_k05_r2",
+    "musique_s16_k05_r3",
+    "musique_s16_k05_r4",
+    "musique_s2_r0",
+    "musique_s32_k05_r0",
+    "musique_s32_k05_r1",
+    "musique_s32_k05_r2",
+    "musique_s32_k05_r3",
+    "musique_s32_k05_r4",
+    "musique_s4_k05_r1",
+    "musique_s4_k05_r2",
+    "musique_s4_k05_r3",
+    "musique_s4_k05_r4",
+    "musique_s8_k05_r0",
+    "musique_s8_k05_r1",
+    "musique_s8_k05_r2",
+    "musique_s8_k05_r3",
+    "musique_s8_k05_r4",
+    "twowiki_s4_k05_r0",
+    "--encoder",
+    "trained",
+    "--from",
+    "musique_s4_k05_r0"
+   ],
+   "lane": "cpu",
+   "after": [
+    "tool:fedgrag_trained"
+   ],
+   "optional": true
+  },
+  {
+   "id": "tool:dgrag_build",
+   "argv": [
+    "python",
+    "-m",
+    "fedquest.dgrag",
+    "build",
+    "hotpot_s4_k05_r0",
+    "musique_s4_k05_r0",
+    "twowiki_s4_k05_r0",
+    "--missing",
+    "--mode",
+    "remote"
+   ],
+   "lane": "cpu",
+   "after": [
+    "tool:fedgrag_build",
+    "tool:fedgrag_xfit"
+   ],
+   "optional": true
+  },
+  {
+   "id": "tool:kgu_make_mmqa",
+   "argv": [
+    "python",
+    "-m",
+    "fedquest.eval.kg_update",
+    "make",
+    "--federation",
+    "mmqa_s2_r0",
+    "--split",
+    "final_test",
+    "--n",
+    "300"
+   ],
+   "lane": "cpu",
+   "after": []
+  },
+  {
+   "id": "tool:kgu_make_musique",
+   "argv": [
+    "python",
+    "-m",
+    "fedquest.eval.kg_update",
+    "make",
+    "--federation",
+    "musique_s2_r0",
+    "--split",
+    "final_test",
+    "--n",
+    "300"
+   ],
+   "lane": "cpu",
+   "after": []
+  },
+  {
+   "id": "tool:live_free",
+   "argv": [
+    "bash",
+    "scripts/calibrate.sh",
+    "free"
+   ],
+   "lane": "cpu",
+   "after": [],
+   "optional": true
+  },
+  {
+   "id": "tool:merge_study",
+   "argv": [
+    "python",
+    "-m",
+    "fedquest.eval.merge_study"
+   ],
+   "lane": "cpu",
+   "after": [],
+   "optional": true
+  },
+  {
+   "id": "tool:routing_study",
+   "argv": [
+    "python",
+    "-m",
+    "fedquest.eval.routing_study"
+   ],
+   "lane": "cpu",
+   "after": [
+    "tool:route",
+    "tool:route_xfit",
+    "tool:fedgrag_build",
+    "tool:fedgrag_xfit"
+   ],
+   "optional": true
+  }
+ ],
+ "post": [
+  {
+   "id": "tool:post",
+   "argv": [
+    "bash",
+    "scripts/post.sh"
+   ],
+   "lane": "post",
+   "after": [
+    "main_mmqa",
+    "main_musique",
+    "main_twowiki",
+    "main_hotpot",
+    "dgrag_musique",
+    "dgrag_twowiki",
+    "dgrag_hotpot",
+    "heldout_musique",
+    "frontier_mmqa",
+    "frontier_musique",
+    "frontier_twowiki",
+    "frontier_hotpot",
+    "abl_mmqa",
+    "abl_musique",
+    "abl_twowiki",
+    "abl_hotpot",
+    "scale_musique",
+    "seeds_musique",
+    "fedgrag_check_musique",
+    "fedgrag_check_twowiki",
+    "fedgrag_check_hotpot",
+    "fedgrag_check_scale",
+    "session_musique",
+    "kgu_warm_mmqa",
+    "kgu_after_mmqa",
+    "kgu_warm_musique",
+    "kgu_after_musique",
+    "dist_mmqa",
+    "dist_musique",
+    "dist_twowiki",
+    "dist_hotpot",
+    "hippo_musique",
+    "hippo_twowiki",
+    "hippo_hotpot",
+    "hippo_heldout_musique",
+    "mx_gemma4_e4b_mmqa",
+    "mx_gemma4_e4b_musique",
+    "mx_gptoss_20b_mmqa",
+    "mx_gptoss_20b_musique",
+    "mx_gptoss_120b_mmqa",
+    "mx_gptoss_120b_musique",
+    "mx_llama31_8b_mmqa",
+    "mx_llama31_8b_musique",
+    "mx_llama31_70b_mmqa",
+    "mx_llama31_70b_musique",
+    "mx_nemotron3_ultra_mmqa",
+    "mx_nemotron3_ultra_musique",
+    "latency_mmqa",
+    "latency_musique"
+   ],
+   "after_any": true
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+  "federation": "musique_fed",
+  "out_empty": 7.4,
+  "out_hit": 12.4,
+  "modalities": {
+    "text": {
+      "kappa": 341.8,
+      "per_object": 130.2,
+      "kappa_s": 0.331,
+      "per_object_s": 0.005,
+      "recall": {
+        "1": 0.7333,
+        "2": 0.6333,
+        "3": 0.6333,
+        "4": 0.6333,
+        "6": 0.6333
+      },
+      "cap": 6
+    }
+  }
+}

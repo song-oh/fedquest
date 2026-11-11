@@ -1,0 +1,18 @@
+name: abl_musique
+federation: musique_s4_k05_r0
+split: test
+limit: 300
+workload: cold
+concurrency: 24
+require_calibration: true
+interleave: true
+stage: 2
+lane: gemma
+after: ['tool:route']
+methods:
+  - {method: fedquest_q, label: fedquest_q, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto, scan: true}}
+  - {method: fedquest, label: fedquest_verify, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto, direct: budget}}
+  - {method: fedquest, label: fedquest_ctx1500, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto, context_max: 1500}}
+  - {method: fedquest, label: fedquest_dense, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto, probe: dense, limits: fixed}}
+  - {method: fedquest, label: fedquest_norecover, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto, direct: 'off', repair: false}}
+  - {method: fedquest, label: fedquest_mgraph, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto, graph: mgrag}}

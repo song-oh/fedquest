@@ -1,0 +1,24 @@
+name: smoke_hotpot
+federation: hotpot_s4_k05_r0
+split: calib
+limit: 2
+workload: cold
+concurrency: 8
+require_calibration: true
+stage: 0
+lane: gemma
+judge: false
+methods:
+  - {method: fedquest, label: fedquest, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto}}
+  - {method: ircot_b, label: ircot_t4@16k, params: {top: 4, k: 4, total_budget: 16000}}
+  - {method: ircot_b, label: ircot_t8@16k, params: {top: 8, k: 8, total_budget: 16000}}
+  - {method: react, label: react@16k, params: {total_budget: 16000}}
+  - {method: rewoo, label: rewoo@16k, params: {total_budget: 16000}}
+  - {method: mgrag_fu, label: mgrag_fu@16k, preset: fu_alt, params: {probe: semijoin, limits: share, mention: 2, ties: salted, calibration: musique_v4, total_budget: 16000}}
+  - {method: llm_planner_ops, label: react_ops@16k, preset: ops, params: {max_steps: 16, views: true, total_budget: 16000, tokens: null}}
+  - {method: mgrag, label: mgrag_fed@8, preset: mgrag, params: {budget: 8}}
+  - {method: vanilla_rag, label: vanilla_rag@8, params: {order: relevance, budget: 8}}
+  - {method: closed_book}
+  - {method: iter_rag, label: ircot@8x8, preset: ircot, params: {order: relevance, budget: null, hops: 8, top: 8, k: 8, max_paragraphs: 48}}
+  - {method: fedgrag, label: fedgrag, params: {index: hotpot_s4_k05_r0}}
+  - {method: fedgrag_text, label: fedgrag_text, params: {index: hotpot_s4_k05_r0}}

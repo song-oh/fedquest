@@ -1,0 +1,29 @@
+name: mmqa_fed
+dataset: mmqa
+answer_style: short
+corpus: {scope: full}
+calibration: mmqa
+questions:
+  split: dev
+  quotas: {single: 100, table: 40, compose: 120, intersect: 20, compare: 20}
+  calib_split: train
+  calib_n: 100
+  seed: 13
+partition: {method: by_title, parts: 3, seed: 13}
+sites:
+  - name: aurora
+    machine: aurora
+    domain: alcf
+    policy: snippets
+    max_concurrency: 32
+    collections:
+      - {name: image, modality: image, encoder: clip, source: "image:*"}
+      - {name: text, modality: text, encoder: bge-base, source: "text:0,text:2", vectors_from: mmqa_home/home/all}
+      - {name: caption, modality: image, encoder: bge-base, source: "image:*"}
+  - name: midway3
+    machine: midway3
+    policy: snippets
+    max_concurrency: 32
+    collections:
+      - {name: text, modality: text, encoder: e5-base, source: "text:1"}
+      - {name: row, modality: table, encoder: e5-base, source: "table:*"}

@@ -1,0 +1,17 @@
+name: kgu_after_mmqa
+federation: mmqa_s4_k05_r0
+split: kg_update
+workload: cold
+concurrency: 24
+require_calibration: true
+stage: 3
+lane: gemma
+after: [kgu_warm_mmqa]
+before: [python, -m, fedquest.eval.kg_update, apply, --federation, mmqa_s4_k05_r0, --epoch, u1, --mode, remote]
+kg: neo4j
+methods:
+  - {method: fedquest, label: fedquest_kg_trust, preset: final, params: {calibration: mmqa_v4e, scores: anchor, zcal: mmqa_z, views: true, total_budget: 16000, route: vocab+proto, kg: reuse, kg_check: trust, kg_ns: kgu_mmqa, epoch: u1, kg_write: false, keep_probe: true}}
+  - {method: fedquest, label: fedquest_kg_version, preset: final, params: {calibration: mmqa_v4e, scores: anchor, zcal: mmqa_z, views: true, total_budget: 16000, route: vocab+proto, kg: reuse, kg_check: version, kg_ns: kgu_mmqa, epoch: u1, kg_write: false, keep_probe: true}}
+  - {method: fedquest, label: fedquest_kg_witness, preset: final, params: {calibration: mmqa_v4e, scores: anchor, zcal: mmqa_z, views: true, total_budget: 16000, route: vocab+proto, kg: reuse, kg_check: witness, kg_ns: kgu_mmqa, epoch: u1, kg_write: false, keep_probe: true}}
+  - {method: fedquest, label: fedquest_kg_version_noprobe, preset: final, params: {calibration: mmqa_v4e, scores: anchor, zcal: mmqa_z, views: true, total_budget: 16000, route: vocab+proto, kg: reuse, kg_check: version, kg_ns: kgu_mmqa, epoch: u1, kg_write: false}}
+  - {method: fedquest, label: fedquest_cold, preset: final, params: {calibration: mmqa_v4e, scores: anchor, zcal: mmqa_z, views: true, total_budget: 16000, route: vocab+proto, epoch: u1}}

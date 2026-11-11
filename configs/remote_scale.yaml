@@ -1,0 +1,184 @@
+facilities:
+  aurora:
+    endpoint: ${FEDQUEST_AURORA_CN_ENDPOINT}
+    config:
+      nodes: 4
+      workers: 128
+      walltime: 06:00:00
+      queue: capacity
+      min_blocks: 0
+    placement:
+      musique_s2_r0_n1/aurora_0: 0
+      musique_s4_k05_r0_n1/aurora_0: 0
+      musique_s4_k05_r0_n1/aurora_1: 0
+      musique_s8_k05_r0_n1/aurora_0: 0
+      musique_s8_k05_r0_n1/aurora_1: 0
+      musique_s8_k05_r0_n1/aurora_2: 0
+      musique_s8_k05_r0_n1/aurora_3: 0
+      musique_s16_k05_r0_n1/aurora_0: 0
+      musique_s16_k05_r0_n1/aurora_1: 0
+      musique_s16_k05_r0_n1/aurora_2: 0
+      musique_s16_k05_r0_n1/aurora_3: 0
+      musique_s16_k05_r0_n1/aurora_4: 0
+      musique_s16_k05_r0_n1/aurora_5: 0
+      musique_s16_k05_r0_n1/aurora_6: 0
+      musique_s16_k05_r0_n1/aurora_7: 0
+      musique_s4_k05_r0_n2/aurora_0: 0
+      musique_s4_k05_r0_n2/aurora_1: 1
+      musique_s8_k05_r0_n2/aurora_0: 0
+      musique_s8_k05_r0_n2/aurora_1: 1
+      musique_s8_k05_r0_n2/aurora_2: 0
+      musique_s8_k05_r0_n2/aurora_3: 1
+      musique_s16_k05_r0_n2/aurora_0: 0
+      musique_s16_k05_r0_n2/aurora_1: 1
+      musique_s16_k05_r0_n2/aurora_2: 0
+      musique_s16_k05_r0_n2/aurora_3: 1
+      musique_s16_k05_r0_n2/aurora_4: 0
+      musique_s16_k05_r0_n2/aurora_5: 1
+      musique_s16_k05_r0_n2/aurora_6: 0
+      musique_s16_k05_r0_n2/aurora_7: 1
+      musique_s32_k05_r0_n2/aurora_0: 0
+      musique_s32_k05_r0_n2/aurora_1: 1
+      musique_s32_k05_r0_n2/aurora_2: 0
+      musique_s32_k05_r0_n2/aurora_3: 1
+      musique_s32_k05_r0_n2/aurora_4: 0
+      musique_s32_k05_r0_n2/aurora_5: 1
+      musique_s32_k05_r0_n2/aurora_6: 0
+      musique_s32_k05_r0_n2/aurora_7: 1
+      musique_s32_k05_r0_n2/aurora_8: 0
+      musique_s32_k05_r0_n2/aurora_9: 1
+      musique_s32_k05_r0_n2/aurora_10: 0
+      musique_s32_k05_r0_n2/aurora_11: 1
+      musique_s32_k05_r0_n2/aurora_12: 0
+      musique_s32_k05_r0_n2/aurora_13: 1
+      musique_s32_k05_r0_n2/aurora_14: 0
+      musique_s32_k05_r0_n2/aurora_15: 1
+      musique_s8_k05_r0_n4/aurora_0: 0
+      musique_s8_k05_r0_n4/aurora_1: 1
+      musique_s8_k05_r0_n4/aurora_2: 2
+      musique_s8_k05_r0_n4/aurora_3: 3
+      musique_s16_k05_r0_n4/aurora_0: 0
+      musique_s16_k05_r0_n4/aurora_1: 1
+      musique_s16_k05_r0_n4/aurora_2: 2
+      musique_s16_k05_r0_n4/aurora_3: 3
+      musique_s16_k05_r0_n4/aurora_4: 0
+      musique_s16_k05_r0_n4/aurora_5: 1
+      musique_s16_k05_r0_n4/aurora_6: 2
+      musique_s16_k05_r0_n4/aurora_7: 3
+      musique_s32_k05_r0_n4/aurora_0: 0
+      musique_s32_k05_r0_n4/aurora_1: 1
+      musique_s32_k05_r0_n4/aurora_2: 2
+      musique_s32_k05_r0_n4/aurora_3: 3
+      musique_s32_k05_r0_n4/aurora_4: 0
+      musique_s32_k05_r0_n4/aurora_5: 1
+      musique_s32_k05_r0_n4/aurora_6: 2
+      musique_s32_k05_r0_n4/aurora_7: 3
+      musique_s32_k05_r0_n4/aurora_8: 0
+      musique_s32_k05_r0_n4/aurora_9: 1
+      musique_s32_k05_r0_n4/aurora_10: 2
+      musique_s32_k05_r0_n4/aurora_11: 3
+      musique_s32_k05_r0_n4/aurora_12: 0
+      musique_s32_k05_r0_n4/aurora_13: 1
+      musique_s32_k05_r0_n4/aurora_14: 2
+      musique_s32_k05_r0_n4/aurora_15: 3
+  midway3:
+    endpoint: ${FEDQUEST_MIDWAY3_CN_ENDPOINT}
+    config:
+      nodes: 4
+      workers: 128
+      walltime: 06:00:00
+      min_blocks: 0
+    placement:
+      musique_s2_r0_n1/midway3_0: 0
+      musique_s4_k05_r0_n1/midway3_0: 0
+      musique_s4_k05_r0_n1/midway3_1: 0
+      musique_s8_k05_r0_n1/midway3_0: 0
+      musique_s8_k05_r0_n1/midway3_1: 0
+      musique_s8_k05_r0_n1/midway3_2: 0
+      musique_s8_k05_r0_n1/midway3_3: 0
+      musique_s16_k05_r0_n1/midway3_0: 0
+      musique_s16_k05_r0_n1/midway3_1: 0
+      musique_s16_k05_r0_n1/midway3_2: 0
+      musique_s16_k05_r0_n1/midway3_3: 0
+      musique_s16_k05_r0_n1/midway3_4: 0
+      musique_s16_k05_r0_n1/midway3_5: 0
+      musique_s16_k05_r0_n1/midway3_6: 0
+      musique_s16_k05_r0_n1/midway3_7: 0
+      musique_s4_k05_r0_n2/midway3_0: 0
+      musique_s4_k05_r0_n2/midway3_1: 1
+      musique_s8_k05_r0_n2/midway3_0: 0
+      musique_s8_k05_r0_n2/midway3_1: 1
+      musique_s8_k05_r0_n2/midway3_2: 0
+      musique_s8_k05_r0_n2/midway3_3: 1
+      musique_s16_k05_r0_n2/midway3_0: 0
+      musique_s16_k05_r0_n2/midway3_1: 1
+      musique_s16_k05_r0_n2/midway3_2: 0
+      musique_s16_k05_r0_n2/midway3_3: 1
+      musique_s16_k05_r0_n2/midway3_4: 0
+      musique_s16_k05_r0_n2/midway3_5: 1
+      musique_s16_k05_r0_n2/midway3_6: 0
+      musique_s16_k05_r0_n2/midway3_7: 1
+      musique_s32_k05_r0_n2/midway3_0: 0
+      musique_s32_k05_r0_n2/midway3_1: 1
+      musique_s32_k05_r0_n2/midway3_2: 0
+      musique_s32_k05_r0_n2/midway3_3: 1
+      musique_s32_k05_r0_n2/midway3_4: 0
+      musique_s32_k05_r0_n2/midway3_5: 1
+      musique_s32_k05_r0_n2/midway3_6: 0
+      musique_s32_k05_r0_n2/midway3_7: 1
+      musique_s32_k05_r0_n2/midway3_8: 0
+      musique_s32_k05_r0_n2/midway3_9: 1
+      musique_s32_k05_r0_n2/midway3_10: 0
+      musique_s32_k05_r0_n2/midway3_11: 1
+      musique_s32_k05_r0_n2/midway3_12: 0
+      musique_s32_k05_r0_n2/midway3_13: 1
+      musique_s32_k05_r0_n2/midway3_14: 0
+      musique_s32_k05_r0_n2/midway3_15: 1
+      musique_s8_k05_r0_n4/midway3_0: 0
+      musique_s8_k05_r0_n4/midway3_1: 1
+      musique_s8_k05_r0_n4/midway3_2: 2
+      musique_s8_k05_r0_n4/midway3_3: 3
+      musique_s16_k05_r0_n4/midway3_0: 0
+      musique_s16_k05_r0_n4/midway3_1: 1
+      musique_s16_k05_r0_n4/midway3_2: 2
+      musique_s16_k05_r0_n4/midway3_3: 3
+      musique_s16_k05_r0_n4/midway3_4: 0
+      musique_s16_k05_r0_n4/midway3_5: 1
+      musique_s16_k05_r0_n4/midway3_6: 2
+      musique_s16_k05_r0_n4/midway3_7: 3
+      musique_s32_k05_r0_n4/midway3_0: 0
+      musique_s32_k05_r0_n4/midway3_1: 1
+      musique_s32_k05_r0_n4/midway3_2: 2
+      musique_s32_k05_r0_n4/midway3_3: 3
+      musique_s32_k05_r0_n4/midway3_4: 0
+      musique_s32_k05_r0_n4/midway3_5: 1
+      musique_s32_k05_r0_n4/midway3_6: 2
+      musique_s32_k05_r0_n4/midway3_7: 3
+      musique_s32_k05_r0_n4/midway3_8: 0
+      musique_s32_k05_r0_n4/midway3_9: 1
+      musique_s32_k05_r0_n4/midway3_10: 2
+      musique_s32_k05_r0_n4/midway3_11: 3
+      musique_s32_k05_r0_n4/midway3_12: 0
+      musique_s32_k05_r0_n4/midway3_13: 1
+      musique_s32_k05_r0_n4/midway3_14: 2
+      musique_s32_k05_r0_n4/midway3_15: 3
+federations:
+- musique_s2_r0_n1
+- musique_s4_k05_r0_n1
+- musique_s8_k05_r0_n1
+- musique_s16_k05_r0_n1
+- musique_s4_k05_r0_n2
+- musique_s8_k05_r0_n2
+- musique_s16_k05_r0_n2
+- musique_s32_k05_r0_n2
+- musique_s8_k05_r0_n4
+- musique_s16_k05_r0_n4
+- musique_s32_k05_r0_n4
+models: configs/models/final.yaml
+action_timeout_s: 900
+env:
+  FEDQUEST_LLM_AIMD: '1'
+  FEDQUEST_LLM_RATE: '4.5'
+  FEDQUEST_ANN: hnsw
+  FEDQUEST_VIRTUAL_SHARDS: '1'
+  FEDQUEST_REMOTE_CONFIG: configs/remote_scale.yaml

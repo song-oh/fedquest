@@ -1,0 +1,19 @@
+name: mx_gptoss_20b_musique
+federation: musique_s4_k05_r0
+split: test
+limit: 300
+workload: cold
+concurrency: 16
+require_calibration: true
+interleave: true
+stage: 2
+lane: mx
+after: ['tool:route']
+models: configs/models/cells/gptoss_20b.yaml
+site_profile: mx_gptoss_20b
+optional: true
+methods:
+  - {method: fedquest, label: fedquest, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto}}
+  - {method: ircot_b, label: ircot_t8@16k, params: {top: 8, k: 8, total_budget: 16000}}
+  - {method: mgrag_fu, label: mgrag_fu@16k, preset: fu_alt, params: {probe: semijoin, limits: share, mention: 2, ties: salted, calibration: musique_v4, total_budget: 16000}}
+  - {method: mgrag, label: mgrag_fed@8, preset: mgrag, params: {budget: 8}}

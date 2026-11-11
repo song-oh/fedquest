@@ -1,0 +1,145 @@
+provider: alcf
+base_url: https://inference-api.alcf.anl.gov/resource_server/sophia/vllm/v1
+trust: alcf
+roles:
+  pattern: google/gemma-4-31B-it
+  extract_text: google/gemma-4-31B-it
+  answer: google/gemma-4-31B-it
+  planner: google/gemma-4-31B-it
+  reader: google/gemma-4-31B-it
+  extract_image: google/gemma-4-31B-it
+  answer_vision: google/gemma-4-31B-it
+  judge: openai/gpt-oss-120b
+  judge2: nemotron-3-ultra
+endpoints:
+  openai/gpt-oss-120b:
+    provider: alcf
+    base_url: pool:https://inference-api.alcf.anl.gov/resource_server/tara/api/v1,https://inference-api.alcf.anl.gov/resource_server/sophia/vllm/v1
+  nemotron-3-ultra:
+    provider: alcf
+    base_url: https://inference-api.alcf.anl.gov/resource_server/tara/api/v1
+extra_body:
+  openai/gpt-oss-120b:
+    reasoning_effort: low
+  nemotron-3-ultra:
+    chat_template_kwargs:
+      enable_thinking: false
+headroom:
+  nemotron-3-ultra: 1024
+model_concurrency:
+  google/gemma-4-31B-it: 32
+  openai/gpt-oss-120b: 32
+  nemotron-3-ultra: 16
+max_concurrency: 64
+timeout_s: 330
+max_retries: 8
+token_refresh_s: 900
+profiles:
+  latency:
+    model_concurrency:
+      google/gemma-4-31B-it: 16
+      openai/gpt-oss-120b: 16
+      nemotron-3-ultra: 8
+  mx_gemma4_e4b:
+    roles:
+      pattern: google/gemma-4-E4B-it
+      extract_text: google/gemma-4-E4B-it
+      answer: google/gemma-4-E4B-it
+      planner: google/gemma-4-E4B-it
+      reader: google/gemma-4-E4B-it
+    model_concurrency:
+      google/gemma-4-31B-it: 16
+      google/gemma-4-E4B-it: 8
+      openai/gpt-oss-120b: 16
+    max_concurrency: 32
+  mx_gptoss_20b:
+    roles:
+      pattern: openai/gpt-oss-20b
+      extract_text: openai/gpt-oss-20b
+      answer: openai/gpt-oss-20b
+      planner: openai/gpt-oss-20b
+      reader: openai/gpt-oss-20b
+    endpoints:
+      openai/gpt-oss-20b:
+        provider: alcf
+        base_url: pool:https://inference-api.alcf.anl.gov/resource_server/tara/api/v1,https://inference-api.alcf.anl.gov/resource_server/sophia/vllm/v1
+    extra_body:
+      openai/gpt-oss-20b:
+        reasoning_effort: low
+    headroom:
+      openai/gpt-oss-20b: 512
+    model_concurrency:
+      google/gemma-4-31B-it: 16
+      openai/gpt-oss-20b: 16
+      openai/gpt-oss-120b: 16
+    max_concurrency: 32
+  mx_gptoss_120b:
+    roles:
+      pattern: openai/gpt-oss-120b
+      extract_text: openai/gpt-oss-120b
+      answer: openai/gpt-oss-120b
+      planner: openai/gpt-oss-120b
+      reader: openai/gpt-oss-120b
+    endpoints:
+      openai/gpt-oss-120b:
+        provider: alcf
+        base_url: pool:https://inference-api.alcf.anl.gov/resource_server/tara/api/v1,https://inference-api.alcf.anl.gov/resource_server/sophia/vllm/v1
+    extra_body:
+      openai/gpt-oss-120b:
+        reasoning_effort: low
+    headroom:
+      openai/gpt-oss-120b: 512
+    model_concurrency:
+      google/gemma-4-31B-it: 16
+      openai/gpt-oss-120b: 16
+    max_concurrency: 32
+  mx_llama31_8b:
+    roles:
+      pattern: meta-llama/Meta-Llama-3.1-8B-Instruct
+      extract_text: meta-llama/Meta-Llama-3.1-8B-Instruct
+      answer: meta-llama/Meta-Llama-3.1-8B-Instruct
+      planner: meta-llama/Meta-Llama-3.1-8B-Instruct
+      reader: meta-llama/Meta-Llama-3.1-8B-Instruct
+    json_mode:
+    - meta-llama/Meta-Llama-3.1-8B-Instruct
+    model_concurrency:
+      google/gemma-4-31B-it: 16
+      meta-llama/Meta-Llama-3.1-8B-Instruct: 8
+      openai/gpt-oss-120b: 16
+    max_concurrency: 32
+  mx_llama31_70b:
+    roles:
+      pattern: meta-llama/Meta-Llama-3.1-70B-Instruct
+      extract_text: meta-llama/Meta-Llama-3.1-70B-Instruct
+      answer: meta-llama/Meta-Llama-3.1-70B-Instruct
+      planner: meta-llama/Meta-Llama-3.1-70B-Instruct
+      reader: meta-llama/Meta-Llama-3.1-70B-Instruct
+    json_mode:
+    - meta-llama/Meta-Llama-3.1-70B-Instruct
+    model_concurrency:
+      google/gemma-4-31B-it: 16
+      meta-llama/Meta-Llama-3.1-70B-Instruct: 8
+      openai/gpt-oss-120b: 16
+    max_concurrency: 32
+  mx_nemotron3_ultra:
+    roles:
+      pattern: nemotron-3-ultra
+      extract_text: nemotron-3-ultra
+      answer: nemotron-3-ultra
+      planner: nemotron-3-ultra
+      reader: nemotron-3-ultra
+    endpoints:
+      nemotron-3-ultra:
+        provider: alcf
+        base_url: https://inference-api.alcf.anl.gov/resource_server/tara/api/v1
+    extra_body:
+      nemotron-3-ultra:
+        chat_template_kwargs:
+          enable_thinking: false
+    headroom:
+      nemotron-3-ultra: 4096
+    model_concurrency:
+      google/gemma-4-31B-it: 16
+      nemotron-3-ultra: 8
+      openai/gpt-oss-120b: 16
+    max_concurrency: 32

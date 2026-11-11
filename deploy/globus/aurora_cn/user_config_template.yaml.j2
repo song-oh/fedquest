@@ -1,0 +1,31 @@
+idle_heartbeats_soft: 480
+idle_heartbeats_hard: 100000
+
+engine:
+  type: GlobusComputeEngine
+  label: fedquest-aurora-cn
+  max_workers_per_node: {{ workers|default(64) }}
+  prefetch_capacity: 0
+  provider:
+    type: PBSProProvider
+    account: {{ account|default('radix-io') }}
+    queue: {{ queue|default('capacity') }}
+    scheduler_options: "#PBS -l filesystems=home:flare"
+    cpus_per_node: 208
+    nodes_per_block: {{ nodes|default(1) }}
+    walltime: {{ walltime|default('"12:00:00"') }}
+    init_blocks: 1
+    min_blocks: {{ min_blocks|default(1) }}
+    max_blocks: 1
+    launcher:
+      type: MpiExecLauncher
+      bind_cmd: --cpu-bind
+      overrides: --ppn 1
+    worker_init: >-
+      export http_proxy=http://proxy.alcf.anl.gov:3128 https_proxy=http://proxy.alcf.anl.gov:3128
+      HTTP_PROXY=http://proxy.alcf.anl.gov:3128 HTTPS_PROXY=http://proxy.alcf.anl.gov:3128
+      no_proxy=localhost,127.0.0.1,::1 NO_PROXY=localhost,127.0.0.1,::1;
+      export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TMPDIR=/tmp FEDQUEST_TORCH_THREADS=8 OMP_NUM_THREADS=8;
+      R=$(sed -n 's/^FEDQUEST_RUNS=//p' $HOME/fedquest/.fedquest.env 2>/dev/null | tail -n 1);
+      export FEDQUEST_NODE_QDRANT=1 FEDQUEST_ANN=hnsw FEDQUEST_VIRTUAL_SHARDS=1 FEDQUEST_HOST_LLM_CACHE_DIR=${R:-$HOME/fedquest/runs}/cache/sites;
+      source $HOME/fedquest/.venv/bin/activate

@@ -1,0 +1,16 @@
+name: hotpot_home
+dataset: hotpotqa
+answer_style: short
+calibration: musique
+questions:
+  n: 300
+  calib_n: 100
+  seed: 13
+partition: {method: single, parts: 1, seed: 13}
+sites:
+  - name: home
+    machine: aurora
+    domain: alcf
+    policy: snippets
+    collections:
+      - {name: all, modality: text, encoder: bge-base, source: "text:*"}

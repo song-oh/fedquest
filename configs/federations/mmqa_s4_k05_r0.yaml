@@ -1,0 +1,109 @@
+name: mmqa_s4_k05_r0
+dataset: mmqa
+answer_style: short
+corpus:
+  scope: full
+calibration: mmqa
+questions:
+  split: dev
+  quotas:
+    single: 100
+    table: 40
+    compose: 120
+    intersect: 20
+    compare: 20
+  calib_split: train
+  calib_n: 100
+  seed: 13
+partition:
+  method: dirichlet
+  parts: 3
+  seed: 13
+  shard_seed: 0
+  beta: 0.5
+  clusters: 8
+sites:
+- name: aurora_0
+  machine: aurora_0
+  domain: alcf
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: image
+    modality: image
+    encoder: clip
+    source: image:*
+    shard: 0/2
+    vectors_from: mmqa_fed/aurora/image
+  - name: text
+    modality: text
+    encoder: bge-base
+    source: text:0,text:2
+    shard: 0/2
+    vectors_from: mmqa_fed/aurora/text
+  - name: caption
+    modality: image
+    encoder: bge-base
+    source: image:*
+    shard: 0/2
+    vectors_from: mmqa_fed/aurora/caption
+- name: aurora_1
+  machine: aurora_1
+  domain: alcf
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: image
+    modality: image
+    encoder: clip
+    source: image:*
+    shard: 1/2
+    vectors_from: mmqa_fed/aurora/image
+  - name: text
+    modality: text
+    encoder: bge-base
+    source: text:0,text:2
+    shard: 1/2
+    vectors_from: mmqa_fed/aurora/text
+  - name: caption
+    modality: image
+    encoder: bge-base
+    source: image:*
+    shard: 1/2
+    vectors_from: mmqa_fed/aurora/caption
+- name: midway3_0
+  machine: midway3_0
+  domain: midway3
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: e5-base
+    source: text:1
+    shard: 0/2
+    vectors_from: mmqa_fed/midway3/text
+  - name: row
+    modality: table
+    encoder: e5-base
+    source: table:*
+    shard: 0/2
+    vectors_from: mmqa_fed/midway3/row
+- name: midway3_1
+  machine: midway3_1
+  domain: midway3
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: e5-base
+    source: text:1
+    shard: 1/2
+    vectors_from: mmqa_fed/midway3/text
+  - name: row
+    modality: table
+    encoder: e5-base
+    source: table:*
+    shard: 1/2
+    vectors_from: mmqa_fed/midway3/row

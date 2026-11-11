@@ -1,0 +1,12 @@
+name: dgrag_musique
+federation: musique_s4_k05_r0
+split: test
+limit: 1000
+workload: cold
+concurrency: 32
+require_calibration: true
+stage: 1
+lane: gemma
+after: ['tool:dgrag_build']
+methods:
+  - {method: dgrag, label: dgrag@16k, params: {index: musique_s4_k05_r0, total_budget: 16000}}

@@ -1,0 +1,61 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "fedquest"
+version = "1.0.0"
+description = "Graph-guided joins over federated vector databases for multi-hop queries"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=1.26",
+  "pydantic>=2.7",
+  "pyyaml>=6.0",
+  "typer>=0.12",
+  "rich>=13.7",
+  "rapidfuzz>=3.9",
+  "scikit-learn>=1.4",
+  "networkx>=3.5",
+  "openai>=1.106",
+  "globus-sdk>=3.50",
+  "qdrant-client>=1.19,<1.20",
+  "sentence-transformers>=3.0",
+  "torch>=2.3",
+  "pillow>=10.0",
+  "neo4j>=5.20",
+  "globus-compute-sdk==4.17.1",
+  "requests>=2.31",
+  "remotezip>=0.12",
+  "huggingface_hub>=0.30",
+  "pyarrow>=15",
+  "rouge-score>=0.1.2",
+  "nltk>=3.8",
+  "pandas>=2.1",
+  "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+endpoint = ["globus-compute-endpoint==4.17.1", "texttable<1.7.2"]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23", "ruff>=0.5"]
+
+[project.scripts]
+fedquest = "fedquest.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["fedquest"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+markers = ["neo4j: needs a running Neo4j (NEO4J_URI)", "network: needs internet access"]
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+ignore = ["E501", "SIM905", "SIM108"]

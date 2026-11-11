@@ -1,0 +1,17 @@
+name: dist_musique
+federation: musique_s4_k05_r0
+split: test
+limit: 300
+workload: cold
+concurrency: 24
+require_calibration: true
+interleave: true
+stage: 2
+lane: gemma
+after: ['tool:route']
+optional: true
+methods:
+  - {method: fedquest, label: fedquest_s2_r0, federation: musique_s2_r0, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto}}
+  - {method: mgrag, label: mgrag_fed@8_s2_r0, federation: musique_s2_r0, preset: mgrag, params: {budget: 8}}
+  - {method: fedquest, label: fedquest_pooled, federation: musique_next_home, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto}}
+  - {method: mgrag, label: mgrag_fed@8_pooled, federation: musique_next_home, preset: mgrag, params: {budget: 8}}

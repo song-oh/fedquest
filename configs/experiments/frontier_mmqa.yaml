@@ -1,0 +1,27 @@
+name: frontier_mmqa
+federation: mmqa_s4_k05_r0
+split: full
+limit: 300
+workload: cold
+concurrency: 24
+require_calibration: true
+interleave: true
+stage: 2
+lane: gemma
+after: ['tool:route']
+methods:
+  - {method: fedquest, label: fedquest@4k, preset: final, params: {calibration: mmqa_v4e, scores: anchor, zcal: mmqa_z, views: true, total_budget: 4000, route: vocab+proto}}
+  - {method: ircot_mm_b, label: ircot_t4@4k, params: {top: 4, k: 4, total_budget: 4000}}
+  - {method: ircot_mm_b, label: ircot_t8@4k, params: {top: 8, k: 8, total_budget: 4000}}
+  - {method: fedquest, label: fedquest@8k, preset: final, params: {calibration: mmqa_v4e, scores: anchor, zcal: mmqa_z, views: true, total_budget: 8000, route: vocab+proto}}
+  - {method: ircot_mm_b, label: ircot_t4@8k, params: {top: 4, k: 4, total_budget: 8000}}
+  - {method: ircot_mm_b, label: ircot_t8@8k, params: {top: 8, k: 8, total_budget: 8000}}
+  - {method: react, label: react@8k, params: {total_budget: 8000}}
+  - {method: rewoo, label: rewoo@8k, params: {total_budget: 8000}}
+  - {method: mgrag_fu, label: mgrag_fu@8k, preset: fu_alt, params: {probe: semijoin, limits: share, mention: 2, ties: salted, calibration: mmqa_v4, total_budget: 8000, answer_images: true}}
+  - {method: fedquest, label: fedquest@32k, preset: final, params: {calibration: mmqa_v4e, scores: anchor, zcal: mmqa_z, views: true, total_budget: 32000, route: vocab+proto}}
+  - {method: ircot_mm_b, label: ircot_t4@32k, params: {top: 4, k: 4, total_budget: 32000}}
+  - {method: ircot_mm_b, label: ircot_t8@32k, params: {top: 8, k: 8, total_budget: 32000}}
+  - {method: react, label: react@32k, params: {total_budget: 32000}}
+  - {method: rewoo, label: rewoo@32k, params: {total_budget: 32000}}
+  - {method: mgrag_fu, label: mgrag_fu@32k, preset: fu_alt, params: {probe: semijoin, limits: share, mention: 2, ties: salted, calibration: mmqa_v4, total_budget: 32000, answer_images: true}}

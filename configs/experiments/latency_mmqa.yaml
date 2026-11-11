@@ -1,0 +1,19 @@
+name: latency_mmqa
+federation: mmqa_s4_k05_r0
+split: full
+limit: 300
+workload: cold
+concurrency: 4
+require_calibration: true
+interleave: true
+stage: 9
+lane: latency
+after: [main_mmqa, main_musique, main_twowiki, main_hotpot, dgrag_musique, dgrag_twowiki, dgrag_hotpot, heldout_musique, frontier_mmqa, frontier_musique, frontier_twowiki, frontier_hotpot, abl_mmqa, abl_musique, abl_twowiki, abl_hotpot, scale_musique, seeds_musique, session_musique, kgu_warm_mmqa, kgu_after_mmqa, kgu_warm_musique, kgu_after_musique, 'tool:route']
+site_profile: latency
+live_calls: true
+methods:
+  - {method: fedquest, label: fedquest, preset: final, params: {calibration: mmqa_v4e, scores: anchor, zcal: mmqa_z, views: true, total_budget: 16000, route: vocab+proto}}
+  - {method: ircot_mm_b, label: ircot_t8@16k, params: {top: 8, k: 8, total_budget: 16000}}
+  - {method: react, label: react@16k, params: {total_budget: 16000}}
+  - {method: mgrag, label: mgrag_fed@8, preset: mgrag, params: {budget: 8, answer_images: true}}
+  - {method: vanilla_rag, label: vanilla_rag@8, params: {order: relevance, budget: 8}}

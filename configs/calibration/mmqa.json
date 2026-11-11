@@ -1,0 +1,1014 @@
+{
+ "label": "evidence-v2",
+ "strength": 256.0,
+ "portable": true,
+ "excluded": [],
+ "meta": {
+  "command": "fedquest calibrate mmqa_fed --refit --portable --out configs/calibration/mmqa.json",
+  "federation": "mmqa_fed",
+  "depth": 5,
+  "observations": "runs/calibration/mmqa_fed.obs.jsonl",
+  "observations_sha256": "293f4b3876547f60bb3c9d94634478b5e137278ab21b7f7f4974ad85d59261c2",
+  "costs": "runs/calibration/mmqa_fed.costs.json",
+  "costs_sha256": "875501ad474f835c838ead13d1d54c52d0b76ccb124bb334663df3bcbd91d612",
+  "questions": 100,
+  "sites": [
+   "aurora",
+   "laptop",
+   "midway3"
+  ],
+  "candidates": 8983,
+  "labeled": 8938,
+  "evidence": 363,
+  "fitted": {
+   "candidates": 8983,
+   "labeled": 8938,
+   "evidence": 363
+  }
+ },
+ "cross_fit": {
+  "2": -1450.6,
+  "4": -1417.42,
+  "8": -1380.85,
+  "16": -1347.55,
+  "32": -1321.15,
+  "64": -1304.18,
+  "128": -1296.64,
+  "256": -1296.59,
+  "512": -1301.53
+ },
+ "counts": {
+  "all": [
+   363,
+   8938
+  ],
+  "signal|False": [
+   62,
+   5903
+  ],
+  "kind|bound|False": [
+   25,
+   2213
+  ],
+  "bucket|bound|1|False": [
+   10,
+   368
+  ],
+  "round|bound|1|first|False": [
+   10,
+   365
+  ],
+  "modality|text|bound|1|first|False": [
+   7,
+   308
+  ],
+  "bucket|bound|2-3|False": [
+   10,
+   891
+  ],
+  "round|bound|2-3|first|False": [
+   10,
+   883
+  ],
+  "modality|text|bound|2-3|first|False": [
+   6,
+   730
+  ],
+  "bucket|bound|4-5|False": [
+   5,
+   954
+  ],
+  "round|bound|4-5|first|False": [
+   5,
+   946
+  ],
+  "modality|text|bound|4-5|first|False": [
+   2,
+   787
+  ],
+  "modality|table|bound|1|first|False": [
+   3,
+   56
+  ],
+  "modality|table|bound|2-3|first|False": [
+   4,
+   145
+  ],
+  "modality|table|bound|4-5|first|False": [
+   3,
+   151
+  ],
+  "kind|question|False": [
+   17,
+   1275
+  ],
+  "bucket|question|1|False": [
+   9,
+   202
+  ],
+  "round|question|1|first|False": [
+   9,
+   202
+  ],
+  "modality|text|question|1|first|False": [
+   7,
+   175
+  ],
+  "bucket|question|2-3|False": [
+   6,
+   522
+  ],
+  "round|question|2-3|first|False": [
+   6,
+   522
+  ],
+  "modality|text|question|2-3|first|False": [
+   4,
+   445
+  ],
+  "bucket|question|4-5|False": [
+   2,
+   551
+  ],
+  "round|question|4-5|first|False": [
+   2,
+   551
+  ],
+  "modality|text|question|4-5|first|False": [
+   1,
+   471
+  ],
+  "modality|table|question|1|first|False": [
+   2,
+   26
+  ],
+  "modality|table|question|2-3|first|False": [
+   2,
+   69
+  ],
+  "modality|table|question|4-5|first|False": [
+   1,
+   72
+  ],
+  "kind|sibling|False": [
+   12,
+   1945
+  ],
+  "bucket|sibling|1|False": [
+   1,
+   129
+  ],
+  "round|sibling|1|first|False": [
+   1,
+   87
+  ],
+  "modality|table|sibling|1|first|False": [
+   1,
+   87
+  ],
+  "bucket|sibling|2-3|False": [
+   3,
+   252
+  ],
+  "round|sibling|2-3|first|False": [
+   3,
+   166
+  ],
+  "modality|table|sibling|2-3|first|False": [
+   3,
+   166
+  ],
+  "bucket|sibling|4-5|False": [
+   2,
+   247
+  ],
+  "round|sibling|4-5|first|False": [
+   1,
+   166
+  ],
+  "modality|table|sibling|4-5|first|False": [
+   1,
+   166
+  ],
+  "bucket|sibling|6-10|False": [
+   3,
+   615
+  ],
+  "round|sibling|6-10|first|False": [
+   2,
+   412
+  ],
+  "modality|table|sibling|6-10|first|False": [
+   2,
+   412
+  ],
+  "bucket|sibling|11+|False": [
+   3,
+   702
+  ],
+  "round|sibling|11+|first|False": [
+   2,
+   458
+  ],
+  "modality|table|sibling|11+|first|False": [
+   2,
+   458
+  ],
+  "signal|True": [
+   301,
+   3035
+  ],
+  "kind|title|True": [
+   34,
+   324
+  ],
+  "bucket|title|11+|True": [
+   1,
+   50
+  ],
+  "round|title|11+|filter|True": [
+   1,
+   50
+  ],
+  "modality|image|title|11+|filter|True": [
+   1,
+   50
+  ],
+  "bucket|title|1|True": [
+   16,
+   76
+  ],
+  "round|title|1|filter|True": [
+   4,
+   15
+  ],
+  "modality|image|title|1|filter|True": [
+   4,
+   15
+  ],
+  "bucket|title|2-3|True": [
+   6,
+   82
+  ],
+  "round|title|2-3|filter|True": [
+   1,
+   30
+  ],
+  "modality|image|title|2-3|filter|True": [
+   1,
+   30
+  ],
+  "bucket|title|6-10|True": [
+   6,
+   61
+  ],
+  "round|title|6-10|filter|True": [
+   6,
+   61
+  ],
+  "modality|image|title|6-10|filter|True": [
+   6,
+   61
+  ],
+  "bucket|title|4-5|True": [
+   5,
+   55
+  ],
+  "round|title|4-5|filter|True": [
+   4,
+   30
+  ],
+  "modality|image|title|4-5|filter|True": [
+   4,
+   30
+  ],
+  "kind|bound|True": [
+   90,
+   952
+  ],
+  "bucket|bound|1|True": [
+   42,
+   265
+  ],
+  "round|bound|1|first|True": [
+   41,
+   264
+  ],
+  "modality|text|bound|1|first|True": [
+   15,
+   163
+  ],
+  "bucket|bound|2-3|True": [
+   26,
+   376
+  ],
+  "round|bound|2-3|first|True": [
+   26,
+   376
+  ],
+  "modality|text|bound|2-3|first|True": [
+   8,
+   212
+  ],
+  "bucket|bound|4-5|True": [
+   22,
+   311
+  ],
+  "round|bound|4-5|first|True": [
+   22,
+   311
+  ],
+  "modality|text|bound|4-5|first|True": [
+   2,
+   155
+  ],
+  "modality|table|bound|1|first|True": [
+   23,
+   98
+  ],
+  "modality|table|bound|2-3|first|True": [
+   18,
+   164
+  ],
+  "modality|table|bound|4-5|first|True": [
+   20,
+   156
+  ],
+  "kind|question|True": [
+   92,
+   636
+  ],
+  "bucket|question|1|True": [
+   52,
+   180
+  ],
+  "round|question|1|first|True": [
+   52,
+   180
+  ],
+  "modality|text|question|1|first|True": [
+   21,
+   110
+  ],
+  "bucket|question|2-3|True": [
+   28,
+   242
+  ],
+  "round|question|2-3|first|True": [
+   28,
+   242
+  ],
+  "modality|text|question|2-3|first|True": [
+   5,
+   125
+  ],
+  "bucket|question|4-5|True": [
+   12,
+   214
+  ],
+  "round|question|4-5|first|True": [
+   12,
+   214
+  ],
+  "modality|text|question|4-5|first|True": [
+   0,
+   99
+  ],
+  "modality|table|question|1|first|True": [
+   28,
+   67
+  ],
+  "modality|table|question|2-3|first|True": [
+   23,
+   117
+  ],
+  "modality|table|question|4-5|first|True": [
+   12,
+   115
+  ],
+  "kind|title|False": [
+   2,
+   97
+  ],
+  "bucket|title|1|False": [
+   2,
+   70
+  ],
+  "round|title|1|first|False": [
+   2,
+   52
+  ],
+  "modality|image|title|1|first|False": [
+   2,
+   52
+  ],
+  "bucket|title|2-3|False": [
+   0,
+   26
+  ],
+  "round|title|2-3|first|False": [
+   0,
+   21
+  ],
+  "modality|image|title|2-3|first|False": [
+   0,
+   21
+  ],
+  "kind|sibling|True": [
+   65,
+   876
+  ],
+  "bucket|sibling|4-5|True": [
+   16,
+   125
+  ],
+  "round|sibling|4-5|first|True": [
+   14,
+   108
+  ],
+  "modality|table|sibling|4-5|first|True": [
+   14,
+   108
+  ],
+  "bucket|sibling|11+|True": [
+   13,
+   283
+  ],
+  "round|sibling|11+|first|True": [
+   13,
+   257
+  ],
+  "modality|table|sibling|11+|first|True": [
+   13,
+   257
+  ],
+  "modality|image|bound|1|first|False": [
+   0,
+   1
+  ],
+  "modality|image|bound|2-3|first|False": [
+   0,
+   8
+  ],
+  "modality|image|bound|4-5|first|False": [
+   0,
+   8
+  ],
+  "modality|image|question|1|first|False": [
+   0,
+   1
+  ],
+  "modality|image|question|2-3|first|False": [
+   0,
+   8
+  ],
+  "modality|image|question|4-5|first|False": [
+   0,
+   8
+  ],
+  "bucket|sibling|1|True": [
+   4,
+   57
+  ],
+  "round|sibling|1|first|True": [
+   4,
+   51
+  ],
+  "modality|table|sibling|1|first|True": [
+   4,
+   51
+  ],
+  "bucket|sibling|2-3|True": [
+   13,
+   121
+  ],
+  "round|sibling|2-3|first|True": [
+   12,
+   109
+  ],
+  "modality|table|sibling|2-3|first|True": [
+   12,
+   109
+  ],
+  "bucket|sibling|6-10|True": [
+   19,
+   290
+  ],
+  "round|sibling|6-10|first|True": [
+   19,
+   257
+  ],
+  "modality|table|sibling|6-10|first|True": [
+   19,
+   257
+  ],
+  "round|title|1|first|True": [
+   3,
+   10
+  ],
+  "modality|image|title|1|first|True": [
+   3,
+   10
+  ],
+  "round|bound|1|late|False": [
+   0,
+   3
+  ],
+  "modality|image|bound|1|late|False": [
+   0,
+   3
+  ],
+  "round|bound|2-3|late|False": [
+   0,
+   6
+  ],
+  "modality|image|bound|2-3|late|False": [
+   0,
+   6
+  ],
+  "round|bound|4-5|late|False": [
+   0,
+   6
+  ],
+  "modality|image|bound|4-5|late|False": [
+   0,
+   6
+  ],
+  "kind|bridge|False": [
+   6,
+   373
+  ],
+  "bucket|bridge|1|False": [
+   3,
+   53
+  ],
+  "round|bridge|1|late|False": [
+   3,
+   53
+  ],
+  "modality|text|bridge|1|late|False": [
+   0,
+   45
+  ],
+  "bucket|bridge|2-3|False": [
+   2,
+   144
+  ],
+  "round|bridge|2-3|late|False": [
+   2,
+   144
+  ],
+  "modality|text|bridge|2-3|late|False": [
+   2,
+   114
+  ],
+  "bucket|bridge|4-5|False": [
+   1,
+   176
+  ],
+  "round|bridge|4-5|late|False": [
+   1,
+   176
+  ],
+  "modality|text|bridge|4-5|late|False": [
+   1,
+   136
+  ],
+  "modality|table|bridge|1|late|False": [
+   3,
+   8
+  ],
+  "modality|table|bridge|2-3|late|False": [
+   0,
+   24
+  ],
+  "modality|table|bridge|4-5|late|False": [
+   0,
+   32
+  ],
+  "round|title|1|late|True": [
+   9,
+   51
+  ],
+  "modality|image|title|1|late|True": [
+   5,
+   14
+  ],
+  "round|sibling|1|late|False": [
+   0,
+   42
+  ],
+  "modality|table|sibling|1|late|False": [
+   0,
+   42
+  ],
+  "round|sibling|2-3|late|False": [
+   0,
+   86
+  ],
+  "modality|table|sibling|2-3|late|False": [
+   0,
+   86
+  ],
+  "round|sibling|4-5|late|False": [
+   1,
+   81
+  ],
+  "modality|table|sibling|4-5|late|False": [
+   1,
+   81
+  ],
+  "round|sibling|6-10|late|False": [
+   1,
+   203
+  ],
+  "modality|table|sibling|6-10|late|False": [
+   1,
+   203
+  ],
+  "round|sibling|11+|late|False": [
+   1,
+   244
+  ],
+  "modality|table|sibling|11+|late|False": [
+   1,
+   244
+  ],
+  "kind|bridge|True": [
+   20,
+   247
+  ],
+  "bucket|bridge|1|True": [
+   11,
+   71
+  ],
+  "round|bridge|1|late|True": [
+   11,
+   71
+  ],
+  "modality|text|bridge|1|late|True": [
+   4,
+   45
+  ],
+  "bucket|bridge|2-3|True": [
+   5,
+   104
+  ],
+  "round|bridge|2-3|late|True": [
+   5,
+   104
+  ],
+  "modality|text|bridge|2-3|late|True": [
+   5,
+   66
+  ],
+  "bucket|bridge|4-5|True": [
+   4,
+   72
+  ],
+  "round|bridge|4-5|late|True": [
+   4,
+   72
+  ],
+  "modality|text|bridge|4-5|late|True": [
+   4,
+   44
+  ],
+  "modality|table|bridge|1|late|True": [
+   3,
+   22
+  ],
+  "modality|table|bridge|2-3|late|True": [
+   0,
+   36
+  ],
+  "modality|table|bridge|4-5|late|True": [
+   0,
+   28
+  ],
+  "modality|text|title|1|late|True": [
+   4,
+   32
+  ],
+  "round|title|2-3|late|True": [
+   5,
+   50
+  ],
+  "modality|text|title|2-3|late|True": [
+   5,
+   37
+  ],
+  "round|title|4-5|late|True": [
+   1,
+   25
+  ],
+  "modality|text|title|4-5|late|True": [
+   1,
+   15
+  ],
+  "round|title|1|late|False": [
+   0,
+   18
+  ],
+  "modality|image|title|1|late|False": [
+   0,
+   18
+  ],
+  "round|sibling|11+|late|True": [
+   0,
+   26
+  ],
+  "modality|table|sibling|11+|late|True": [
+   0,
+   26
+  ],
+  "round|sibling|6-10|late|True": [
+   0,
+   33
+  ],
+  "modality|table|sibling|6-10|late|True": [
+   0,
+   33
+  ],
+  "round|sibling|4-5|late|True": [
+   2,
+   17
+  ],
+  "modality|table|sibling|4-5|late|True": [
+   2,
+   17
+  ],
+  "modality|image|bound|1|first|True": [
+   3,
+   3
+  ],
+  "modality|image|question|1|first|True": [
+   3,
+   3
+  ],
+  "modality|image|bridge|1|late|True": [
+   4,
+   4
+  ],
+  "modality|image|bridge|2-3|late|False": [
+   0,
+   6
+  ],
+  "modality|image|bridge|4-5|late|False": [
+   0,
+   8
+  ],
+  "modality|image|title|2-3|late|True": [
+   0,
+   3
+  ],
+  "modality|table|title|1|late|True": [
+   0,
+   5
+  ],
+  "modality|table|title|2-3|late|True": [
+   0,
+   10
+  ],
+  "modality|table|title|4-5|late|True": [
+   0,
+   10
+  ],
+  "round|sibling|1|late|True": [
+   0,
+   6
+  ],
+  "modality|table|sibling|1|late|True": [
+   0,
+   6
+  ],
+  "round|sibling|2-3|late|True": [
+   1,
+   12
+  ],
+  "modality|table|sibling|2-3|late|True": [
+   1,
+   12
+  ],
+  "round|title|2-3|late|False": [
+   0,
+   5
+  ],
+  "modality|image|title|2-3|late|False": [
+   0,
+   5
+  ],
+  "round|title|2-3|first|True": [
+   0,
+   2
+  ],
+  "modality|image|title|2-3|first|True": [
+   0,
+   2
+  ],
+  "round|bound|1|filter|True": [
+   1,
+   1
+  ],
+  "modality|image|bound|1|filter|True": [
+   1,
+   1
+  ],
+  "round|bound|2-3|filter|False": [
+   0,
+   2
+  ],
+  "modality|image|bound|2-3|filter|False": [
+   0,
+   2
+  ],
+  "round|bound|4-5|filter|False": [
+   0,
+   2
+  ],
+  "modality|image|bound|4-5|filter|False": [
+   0,
+   2
+  ],
+  "modality|image|bridge|2-3|late|True": [
+   0,
+   2
+  ],
+  "bucket|title|4-5|False": [
+   0,
+   1
+  ],
+  "round|title|4-5|late|False": [
+   0,
+   1
+  ],
+  "modality|image|title|4-5|late|False": [
+   0,
+   1
+  ]
+ },
+ "signals": {
+  "bound|1": [
+   267,
+   636
+  ],
+  "bound|2-3": [
+   380,
+   1272
+  ],
+  "bound|4-5": [
+   316,
+   1272
+  ],
+  "question|1": [
+   182,
+   384
+  ],
+  "question|2-3": [
+   246,
+   768
+  ],
+  "question|4-5": [
+   217,
+   768
+  ],
+  "sibling|1": [
+   58,
+   188
+  ],
+  "sibling|2-3": [
+   123,
+   377
+  ],
+  "sibling|4-5": [
+   127,
+   376
+  ],
+  "sibling|6-10": [
+   295,
+   915
+  ],
+  "sibling|11+": [
+   283,
+   986
+  ],
+  "title|11+": [
+   50,
+   50
+  ],
+  "title|1": [
+   76,
+   146
+  ],
+  "title|2-3": [
+   82,
+   108
+  ],
+  "title|6-10": [
+   61,
+   61
+  ],
+  "title|4-5": [
+   55,
+   56
+  ],
+  "bridge|1": [
+   71,
+   124
+  ],
+  "bridge|2-3": [
+   104,
+   248
+  ],
+  "bridge|4-5": [
+   72,
+   248
+  ]
+ },
+ "cover": {
+  "all": [
+   127,
+   147
+  ],
+  "filter": [
+   16,
+   16
+  ],
+  "filter|image": [
+   16,
+   16
+  ],
+  "first": [
+   87,
+   100
+  ],
+  "first|text": [
+   82,
+   88
+  ],
+  "late": [
+   24,
+   31
+  ],
+  "late|text": [
+   19,
+   26
+  ],
+  "late|image": [
+   5,
+   5
+  ],
+  "first|image": [
+   5,
+   12
+  ]
+ },
+ "snippets": {
+  "all": [
+   29,
+   48
+  ],
+  "text": [
+   13,
+   30
+  ],
+  "text|175-299": [
+   2,
+   7
+  ],
+  "text|100-174": [
+   5,
+   12
+  ],
+  "table": [
+   16,
+   18
+  ],
+  "table|60-99": [
+   13,
+   14
+  ],
+  "text|60-99": [
+   6,
+   11
+  ],
+  "table|100-174": [
+   3,
+   4
+  ]
+ },
+ "sizes": {
+  "text": [
+   373705.0,
+   3435
+  ],
+  "table": [
+   110946.0,
+   3201
+  ],
+  "image": [
+   98560.0,
+   352
+  ]
+ }
+}

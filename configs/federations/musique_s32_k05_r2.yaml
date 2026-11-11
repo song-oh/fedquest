@@ -1,0 +1,404 @@
+name: musique_s32_k05_r2
+dataset: musique
+answer_style: short
+calibration: musique
+corpus:
+  paragraphs_of: final_test
+questions:
+  split: hipporag
+  n: 300
+  calib_split: train
+  calib_n: 100
+  seed: 13
+partition:
+  method: dirichlet
+  parts: 3
+  seed: 13
+  shard_seed: 2
+  beta: 0.5
+  clusters: 8
+sites:
+- name: aurora_0
+  machine: aurora_0
+  domain: alcf
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: bge-base
+    source: text:0,text:2
+    shard: 0/16
+    vectors_from: musique_next/aurora/text
+- name: aurora_1
+  machine: aurora_1
+  domain: alcf
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: bge-base
+    source: text:0,text:2
+    shard: 1/16
+    vectors_from: musique_next/aurora/text
+- name: aurora_2
+  machine: aurora_2
+  domain: alcf
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: bge-base
+    source: text:0,text:2
+    shard: 2/16
+    vectors_from: musique_next/aurora/text
+- name: aurora_3
+  machine: aurora_3
+  domain: alcf
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: bge-base
+    source: text:0,text:2
+    shard: 3/16
+    vectors_from: musique_next/aurora/text
+- name: aurora_4
+  machine: aurora_4
+  domain: alcf
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: bge-base
+    source: text:0,text:2
+    shard: 4/16
+    vectors_from: musique_next/aurora/text
+- name: aurora_5
+  machine: aurora_5
+  domain: alcf
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: bge-base
+    source: text:0,text:2
+    shard: 5/16
+    vectors_from: musique_next/aurora/text
+- name: aurora_6
+  machine: aurora_6
+  domain: alcf
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: bge-base
+    source: text:0,text:2
+    shard: 6/16
+    vectors_from: musique_next/aurora/text
+- name: aurora_7
+  machine: aurora_7
+  domain: alcf
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: bge-base
+    source: text:0,text:2
+    shard: 7/16
+    vectors_from: musique_next/aurora/text
+- name: aurora_8
+  machine: aurora_8
+  domain: alcf
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: bge-base
+    source: text:0,text:2
+    shard: 8/16
+    vectors_from: musique_next/aurora/text
+- name: aurora_9
+  machine: aurora_9
+  domain: alcf
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: bge-base
+    source: text:0,text:2
+    shard: 9/16
+    vectors_from: musique_next/aurora/text
+- name: aurora_10
+  machine: aurora_10
+  domain: alcf
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: bge-base
+    source: text:0,text:2
+    shard: 10/16
+    vectors_from: musique_next/aurora/text
+- name: aurora_11
+  machine: aurora_11
+  domain: alcf
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: bge-base
+    source: text:0,text:2
+    shard: 11/16
+    vectors_from: musique_next/aurora/text
+- name: aurora_12
+  machine: aurora_12
+  domain: alcf
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: bge-base
+    source: text:0,text:2
+    shard: 12/16
+    vectors_from: musique_next/aurora/text
+- name: aurora_13
+  machine: aurora_13
+  domain: alcf
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: bge-base
+    source: text:0,text:2
+    shard: 13/16
+    vectors_from: musique_next/aurora/text
+- name: aurora_14
+  machine: aurora_14
+  domain: alcf
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: bge-base
+    source: text:0,text:2
+    shard: 14/16
+    vectors_from: musique_next/aurora/text
+- name: aurora_15
+  machine: aurora_15
+  domain: alcf
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: bge-base
+    source: text:0,text:2
+    shard: 15/16
+    vectors_from: musique_next/aurora/text
+- name: midway3_0
+  machine: midway3_0
+  domain: midway3
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: e5-base
+    source: text:1
+    shard: 0/16
+    vectors_from: musique_next/midway3/text
+- name: midway3_1
+  machine: midway3_1
+  domain: midway3
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: e5-base
+    source: text:1
+    shard: 1/16
+    vectors_from: musique_next/midway3/text
+- name: midway3_2
+  machine: midway3_2
+  domain: midway3
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: e5-base
+    source: text:1
+    shard: 2/16
+    vectors_from: musique_next/midway3/text
+- name: midway3_3
+  machine: midway3_3
+  domain: midway3
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: e5-base
+    source: text:1
+    shard: 3/16
+    vectors_from: musique_next/midway3/text
+- name: midway3_4
+  machine: midway3_4
+  domain: midway3
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: e5-base
+    source: text:1
+    shard: 4/16
+    vectors_from: musique_next/midway3/text
+- name: midway3_5
+  machine: midway3_5
+  domain: midway3
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: e5-base
+    source: text:1
+    shard: 5/16
+    vectors_from: musique_next/midway3/text
+- name: midway3_6
+  machine: midway3_6
+  domain: midway3
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: e5-base
+    source: text:1
+    shard: 6/16
+    vectors_from: musique_next/midway3/text
+- name: midway3_7
+  machine: midway3_7
+  domain: midway3
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: e5-base
+    source: text:1
+    shard: 7/16
+    vectors_from: musique_next/midway3/text
+- name: midway3_8
+  machine: midway3_8
+  domain: midway3
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: e5-base
+    source: text:1
+    shard: 8/16
+    vectors_from: musique_next/midway3/text
+- name: midway3_9
+  machine: midway3_9
+  domain: midway3
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: e5-base
+    source: text:1
+    shard: 9/16
+    vectors_from: musique_next/midway3/text
+- name: midway3_10
+  machine: midway3_10
+  domain: midway3
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: e5-base
+    source: text:1
+    shard: 10/16
+    vectors_from: musique_next/midway3/text
+- name: midway3_11
+  machine: midway3_11
+  domain: midway3
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: e5-base
+    source: text:1
+    shard: 11/16
+    vectors_from: musique_next/midway3/text
+- name: midway3_12
+  machine: midway3_12
+  domain: midway3
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: e5-base
+    source: text:1
+    shard: 12/16
+    vectors_from: musique_next/midway3/text
+- name: midway3_13
+  machine: midway3_13
+  domain: midway3
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: e5-base
+    source: text:1
+    shard: 13/16
+    vectors_from: musique_next/midway3/text
+- name: midway3_14
+  machine: midway3_14
+  domain: midway3
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: e5-base
+    source: text:1
+    shard: 14/16
+    vectors_from: musique_next/midway3/text
+- name: midway3_15
+  machine: midway3_15
+  domain: midway3
+  policy: snippets
+  max_concurrency: 32
+  collections:
+  - name: text
+    modality: text
+    encoder: e5-base
+    source: text:1
+    shard: 15/16
+    vectors_from: musique_next/midway3/text

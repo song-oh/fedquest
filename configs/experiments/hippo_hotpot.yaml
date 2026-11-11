@@ -1,0 +1,13 @@
+name: hippo_hotpot
+federation: hotpot_s4_k05_r0
+split: full
+limit: 1000
+workload: cold
+concurrency: 24
+require_calibration: true
+stage: 3
+lane: hippo
+before: [python, -m, fedquest.site.hippo, wait, --remote, --timeout, '21600', hotpot_home]
+optional: true
+methods:
+  - {method: hipporag2, label: hipporag2_pooled, federation: hotpot_home, params: {k: 5, top: 5}}

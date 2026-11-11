@@ -1,0 +1,6985 @@
+{
+ "label": "evidence-v4",
+ "strength": 256.0,
+ "depth": 80,
+ "portable": true,
+ "excluded": [],
+ "meta": {
+  "command": "fedquest calibrate --refit --portable --label v4 --inputs runs/calibration/mmqa_s2_r0.obs.jsonl --out configs/calibration/mmqa_v4.json",
+  "label": "evidence-v4",
+  "depth": 80,
+  "inputs": [
+   {
+    "observations": "runs/calibration/mmqa_s2_r0.obs.jsonl",
+    "sha256": "6a4f61dc4dcf4080473eedf169ccc88edc5d16d24ab8d930af08d781e1a38754",
+    "layouts": [
+     "mmqa_s2_r0"
+    ],
+    "k": [
+     80
+    ],
+    "questions": 100,
+    "candidates": 55610
+   }
+  ],
+  "costs": "runs/calibration/mmqa_s2_r0.costs.json",
+  "costs_sha256": "875501ad474f835c838ead13d1d54c52d0b76ccb124bb334663df3bcbd91d612",
+  "questions": 100,
+  "sites": [
+   "aurora_0",
+   "midway3_0"
+  ],
+  "candidates": 55610,
+  "labeled": 55555,
+  "evidence": 498,
+  "fitted": {
+   "candidates": 55610,
+   "labeled": 55555,
+   "evidence": 498
+  },
+  "views": {
+   "from": "runs/calibration/mmqa_s2_r0.obs.jsonl",
+   "base": "mmqa_v4.json",
+   "view_version": "edge-view-v1",
+   "reps": [
+    "view@240",
+    "qview@240",
+    "view@360",
+    "lead@360",
+    "lead@480"
+   ],
+   "records": {
+    "first bound: no key": 27,
+    "kept": 60
+   },
+   "lead@240_on_kept": {
+    "all": [
+     29,
+     60
+    ],
+    "text": [
+     29,
+     60
+    ],
+    "text|60-99": [
+     12,
+     16
+    ],
+    "text|175-299": [
+     6,
+     18
+    ],
+    "text|100-174": [
+     11,
+     26
+    ]
+   },
+   "command": "python -m fedquest.eval.views_free fit --family mmqa"
+  }
+ },
+ "cross_fit": {
+  "2": -2189.47,
+  "4": -2129.8,
+  "8": -2074.08,
+  "16": -2023.23,
+  "32": -1964.84,
+  "64": -1898.13,
+  "128": -1855.89,
+  "256": -1853.51,
+  "512": -1898.63
+ },
+ "counts": {
+  "all": [
+   498,
+   55555
+  ],
+  "signal|True": [
+   413,
+   10801
+  ],
+  "kind|bound|True": [
+   153,
+   5797
+  ],
+  "bucket|bound|1|True": [
+   47,
+   213
+  ],
+  "round|bound|1|first|True": [
+   46,
+   212
+  ],
+  "modality|image|bound|1|first|True": [
+   8,
+   8
+  ],
+  "coll|image|image|bound|1|first|True": [
+   5,
+   5
+  ],
+  "bucket|bound|2-3|True": [
+   27,
+   337
+  ],
+  "round|bound|2-3|first|True": [
+   27,
+   335
+  ],
+  "modality|image|bound|2-3|first|True": [
+   0,
+   3
+  ],
+  "coll|image|image|bound|2-3|first|True": [
+   0,
+   2
+  ],
+  "signal|False": [
+   85,
+   44754
+  ],
+  "kind|bound|False": [
+   16,
+   18334
+  ],
+  "bucket|bound|4-5|False": [
+   1,
+   428
+  ],
+  "round|bound|4-5|first|False": [
+   1,
+   384
+  ],
+  "modality|image|bound|4-5|first|False": [
+   0,
+   23
+  ],
+  "coll|image|image|bound|4-5|first|False": [
+   0,
+   12
+  ],
+  "bucket|bound|6-10|False": [
+   1,
+   1125
+  ],
+  "round|bound|6-10|first|False": [
+   1,
+   1014
+  ],
+  "modality|image|bound|6-10|first|False": [
+   0,
+   60
+  ],
+  "coll|image|image|bound|6-10|first|False": [
+   0,
+   30
+  ],
+  "bucket|bound|11-20|False": [
+   1,
+   2358
+  ],
+  "round|bound|11-20|first|False": [
+   1,
+   2135
+  ],
+  "modality|image|bound|11-20|first|False": [
+   0,
+   118
+  ],
+  "coll|image|image|bound|11-20|first|False": [
+   0,
+   58
+  ],
+  "bucket|bound|21-40|False": [
+   2,
+   4864
+  ],
+  "round|bound|21-40|first|False": [
+   2,
+   4408
+  ],
+  "modality|image|bound|21-40|first|False": [
+   0,
+   240
+  ],
+  "coll|image|image|bound|21-40|first|False": [
+   0,
+   120
+  ],
+  "bucket|bound|41-80|False": [
+   0,
+   8997
+  ],
+  "round|bound|41-80|first|False": [
+   0,
+   8087
+  ],
+  "modality|image|bound|41-80|first|False": [
+   0,
+   480
+  ],
+  "coll|image|image|bound|41-80|first|False": [
+   0,
+   240
+  ],
+  "coll|image|caption|bound|1|first|True": [
+   3,
+   3
+  ],
+  "coll|image|caption|bound|2-3|first|True": [
+   0,
+   1
+  ],
+  "bucket|bound|2-3|False": [
+   4,
+   397
+  ],
+  "round|bound|2-3|first|False": [
+   4,
+   353
+  ],
+  "modality|image|bound|2-3|first|False": [
+   0,
+   21
+  ],
+  "coll|image|caption|bound|2-3|first|False": [
+   0,
+   11
+  ],
+  "bucket|bound|4-5|True": [
+   19,
+   293
+  ],
+  "round|bound|4-5|first|True": [
+   19,
+   291
+  ],
+  "modality|image|bound|4-5|first|True": [
+   0,
+   1
+  ],
+  "coll|image|caption|bound|4-5|first|True": [
+   0,
+   1
+  ],
+  "coll|image|caption|bound|4-5|first|False": [
+   0,
+   11
+  ],
+  "coll|image|caption|bound|6-10|first|False": [
+   0,
+   30
+  ],
+  "coll|image|caption|bound|11-20|first|False": [
+   0,
+   60
+  ],
+  "coll|image|caption|bound|21-40|first|False": [
+   0,
+   120
+  ],
+  "coll|image|caption|bound|41-80|first|False": [
+   0,
+   240
+  ],
+  "kind|question|True": [
+   121,
+   2420
+  ],
+  "bucket|question|1|True": [
+   49,
+   127
+  ],
+  "round|question|1|first|True": [
+   49,
+   127
+  ],
+  "modality|image|question|1|first|True": [
+   8,
+   8
+  ],
+  "coll|image|image|question|1|first|True": [
+   5,
+   5
+  ],
+  "kind|question|False": [
+   38,
+   20999
+  ],
+  "bucket|question|2-3|False": [
+   9,
+   405
+  ],
+  "round|question|2-3|first|False": [
+   7,
+   377
+  ],
+  "modality|image|question|2-3|first|False": [
+   0,
+   23
+  ],
+  "coll|image|image|question|2-3|first|False": [
+   0,
+   12
+  ],
+  "bucket|question|4-5|False": [
+   1,
+   430
+  ],
+  "round|question|4-5|first|False": [
+   1,
+   402
+  ],
+  "modality|image|question|4-5|first|False": [
+   0,
+   23
+  ],
+  "coll|image|image|question|4-5|first|False": [
+   0,
+   12
+  ],
+  "bucket|question|6-10|True": [
+   19,
+   319
+  ],
+  "round|question|6-10|first|True": [
+   19,
+   319
+  ],
+  "modality|image|question|6-10|first|True": [
+   0,
+   2
+  ],
+  "coll|image|image|question|6-10|first|True": [
+   0,
+   2
+  ],
+  "bucket|question|6-10|False": [
+   7,
+   1138
+  ],
+  "round|question|6-10|first|False": [
+   5,
+   1068
+  ],
+  "modality|image|question|6-10|first|False": [
+   0,
+   58
+  ],
+  "coll|image|image|question|6-10|first|False": [
+   0,
+   28
+  ],
+  "bucket|question|11-20|False": [
+   4,
+   2485
+  ],
+  "round|question|11-20|first|False": [
+   3,
+   2345
+  ],
+  "modality|image|question|11-20|first|False": [
+   0,
+   120
+  ],
+  "coll|image|image|question|11-20|first|False": [
+   0,
+   60
+  ],
+  "bucket|question|21-40|False": [
+   3,
+   5379
+  ],
+  "round|question|21-40|first|False": [
+   3,
+   5099
+  ],
+  "modality|image|question|21-40|first|False": [
+   0,
+   238
+  ],
+  "coll|image|image|question|21-40|first|False": [
+   0,
+   118
+  ],
+  "bucket|question|41-80|False": [
+   1,
+   10998
+  ],
+  "round|question|41-80|first|False": [
+   1,
+   10438
+  ],
+  "modality|image|question|41-80|first|False": [
+   0,
+   480
+  ],
+  "coll|image|image|question|41-80|first|False": [
+   0,
+   240
+  ],
+  "coll|image|caption|question|1|first|True": [
+   3,
+   3
+  ],
+  "bucket|question|2-3|True": [
+   28,
+   177
+  ],
+  "round|question|2-3|first|True": [
+   28,
+   177
+  ],
+  "modality|image|question|2-3|first|True": [
+   0,
+   1
+  ],
+  "coll|image|caption|question|2-3|first|True": [
+   0,
+   1
+  ],
+  "coll|image|caption|question|2-3|first|False": [
+   0,
+   11
+  ],
+  "bucket|question|4-5|True": [
+   14,
+   153
+  ],
+  "round|question|4-5|first|True": [
+   14,
+   153
+  ],
+  "modality|image|question|4-5|first|True": [
+   0,
+   1
+  ],
+  "coll|image|caption|question|4-5|first|True": [
+   0,
+   1
+  ],
+  "coll|image|caption|question|4-5|first|False": [
+   0,
+   11
+  ],
+  "coll|image|caption|question|6-10|first|False": [
+   0,
+   30
+  ],
+  "coll|image|caption|question|11-20|first|False": [
+   0,
+   60
+  ],
+  "coll|image|caption|question|21-40|first|False": [
+   0,
+   120
+  ],
+  "coll|image|caption|question|41-80|first|False": [
+   0,
+   240
+  ],
+  "kind|title|True": [
+   48,
+   254
+  ],
+  "bucket|title|1|True": [
+   41,
+   84
+  ],
+  "round|title|1|first|True": [
+   8,
+   16
+  ],
+  "modality|image|title|1|first|True": [
+   8,
+   16
+  ],
+  "coll|image|image|title|1|first|True": [
+   4,
+   8
+  ],
+  "bucket|title|2-3|True": [
+   6,
+   51
+  ],
+  "round|title|2-3|first|True": [
+   0,
+   6
+  ],
+  "modality|image|title|2-3|first|True": [
+   0,
+   6
+  ],
+  "coll|image|image|title|2-3|first|True": [
+   0,
+   3
+  ],
+  "coll|image|caption|title|1|first|True": [
+   4,
+   8
+  ],
+  "coll|image|caption|title|2-3|first|True": [
+   0,
+   3
+  ],
+  "modality|text|bound|1|first|True": [
+   13,
+   121
+  ],
+  "coll|text|text|bound|1|first|True": [
+   13,
+   121
+  ],
+  "modality|text|bound|2-3|first|True": [
+   7,
+   183
+  ],
+  "coll|text|text|bound|2-3|first|True": [
+   7,
+   183
+  ],
+  "modality|text|bound|4-5|first|True": [
+   3,
+   153
+  ],
+  "coll|text|text|bound|4-5|first|True": [
+   3,
+   153
+  ],
+  "bucket|bound|6-10|True": [
+   32,
+   603
+  ],
+  "round|bound|6-10|first|True": [
+   32,
+   599
+  ],
+  "modality|text|bound|6-10|first|True": [
+   4,
+   281
+  ],
+  "coll|text|text|bound|6-10|first|True": [
+   4,
+   281
+  ],
+  "modality|text|bound|6-10|first|False": [
+   0,
+   757
+  ],
+  "coll|text|text|bound|6-10|first|False": [
+   0,
+   757
+  ],
+  "modality|text|bound|11-20|first|False": [
+   0,
+   1511
+  ],
+  "coll|text|text|bound|11-20|first|False": [
+   0,
+   1511
+  ],
+  "bucket|bound|11-20|True": [
+   15,
+   968
+  ],
+  "round|bound|11-20|first|True": [
+   15,
+   961
+  ],
+  "modality|text|bound|11-20|first|True": [
+   1,
+   467
+  ],
+  "coll|text|text|bound|11-20|first|True": [
+   1,
+   467
+  ],
+  "bucket|bound|21-40|True": [
+   9,
+   1307
+  ],
+  "round|bound|21-40|first|True": [
+   9,
+   1303
+  ],
+  "modality|text|bound|21-40|first|True": [
+   0,
+   744
+  ],
+  "coll|text|text|bound|21-40|first|True": [
+   0,
+   744
+  ],
+  "modality|text|bound|21-40|first|False": [
+   0,
+   2908
+  ],
+  "coll|text|text|bound|21-40|first|False": [
+   0,
+   2908
+  ],
+  "bucket|bound|41-80|True": [
+   4,
+   2076
+  ],
+  "round|bound|41-80|first|True": [
+   4,
+   2076
+  ],
+  "modality|text|bound|41-80|first|True": [
+   2,
+   1265
+  ],
+  "coll|text|text|bound|41-80|first|True": [
+   2,
+   1265
+  ],
+  "modality|text|bound|41-80|first|False": [
+   0,
+   5331
+  ],
+  "coll|text|text|bound|41-80|first|False": [
+   0,
+   5331
+  ],
+  "modality|table|bound|1|first|True": [
+   25,
+   83
+  ],
+  "coll|table|row|bound|1|first|True": [
+   25,
+   83
+  ],
+  "modality|table|bound|2-3|first|True": [
+   20,
+   149
+  ],
+  "coll|table|row|bound|2-3|first|True": [
+   20,
+   149
+  ],
+  "modality|table|bound|4-5|first|True": [
+   16,
+   137
+  ],
+  "coll|table|row|bound|4-5|first|True": [
+   16,
+   137
+  ],
+  "modality|table|bound|6-10|first|True": [
+   28,
+   318
+  ],
+  "coll|table|row|bound|6-10|first|True": [
+   28,
+   318
+  ],
+  "modality|table|bound|11-20|first|True": [
+   14,
+   492
+  ],
+  "coll|table|row|bound|11-20|first|True": [
+   14,
+   492
+  ],
+  "modality|table|bound|21-40|first|True": [
+   9,
+   559
+  ],
+  "coll|table|row|bound|21-40|first|True": [
+   9,
+   559
+  ],
+  "modality|table|bound|21-40|first|False": [
+   2,
+   1260
+  ],
+  "coll|table|row|bound|21-40|first|False": [
+   2,
+   1260
+  ],
+  "modality|text|question|1|first|True": [
+   14,
+   65
+  ],
+  "coll|text|text|question|1|first|True": [
+   14,
+   65
+  ],
+  "mention|question|1|True|1": [
+   36,
+   103
+  ],
+  "round|question:m1|1|first|True": [
+   36,
+   103
+  ],
+  "modality|text|question:m1|1|first|True": [
+   12,
+   56
+  ],
+  "coll|text|text|question:m1|1|first|True": [
+   12,
+   56
+  ],
+  "modality|text|question|2-3|first|True": [
+   7,
+   85
+  ],
+  "coll|text|text|question|2-3|first|True": [
+   7,
+   85
+  ],
+  "mention|question|2-3|True|1": [
+   25,
+   154
+  ],
+  "round|question:m1|2-3|first|True": [
+   25,
+   154
+  ],
+  "modality|text|question:m1|2-3|first|True": [
+   5,
+   75
+  ],
+  "coll|text|text|question:m1|2-3|first|True": [
+   5,
+   75
+  ],
+  "modality|text|question|4-5|first|True": [
+   2,
+   65
+  ],
+  "coll|text|text|question|4-5|first|True": [
+   2,
+   65
+  ],
+  "mention|question|4-5|True|0": [
+   0,
+   6
+  ],
+  "round|question:m0|4-5|first|True": [
+   0,
+   6
+  ],
+  "modality|text|question:m0|4-5|first|True": [
+   0,
+   4
+  ],
+  "coll|text|text|question:m0|4-5|first|True": [
+   0,
+   4
+  ],
+  "modality|text|question|6-10|first|True": [
+   1,
+   115
+  ],
+  "coll|text|text|question|6-10|first|True": [
+   1,
+   115
+  ],
+  "mention|question|6-10|True|0": [
+   0,
+   12
+  ],
+  "round|question:m0|6-10|first|True": [
+   0,
+   12
+  ],
+  "modality|text|question:m0|6-10|first|True": [
+   0,
+   5
+  ],
+  "coll|text|text|question:m0|6-10|first|True": [
+   0,
+   5
+  ],
+  "modality|text|question|6-10|first|False": [
+   2,
+   775
+  ],
+  "coll|text|text|question|6-10|first|False": [
+   2,
+   775
+  ],
+  "mention|question|6-10|False|0": [
+   0,
+   664
+  ],
+  "round|question:m0|6-10|first|False": [
+   0,
+   608
+  ],
+  "modality|text|question:m0|6-10|first|False": [
+   0,
+   478
+  ],
+  "coll|text|text|question:m0|6-10|first|False": [
+   0,
+   478
+  ],
+  "mention|question|6-10|True|1": [
+   18,
+   272
+  ],
+  "round|question:m1|6-10|first|True": [
+   18,
+   272
+  ],
+  "modality|text|question:m1|6-10|first|True": [
+   0,
+   98
+  ],
+  "coll|text|text|question:m1|6-10|first|True": [
+   0,
+   98
+  ],
+  "bucket|question|11-20|True": [
+   9,
+   441
+  ],
+  "round|question|11-20|first|True": [
+   9,
+   441
+  ],
+  "modality|text|question|11-20|first|True": [
+   0,
+   171
+  ],
+  "coll|text|text|question|11-20|first|True": [
+   0,
+   171
+  ],
+  "mention|question|11-20|True|0": [
+   0,
+   34
+  ],
+  "round|question:m0|11-20|first|True": [
+   0,
+   34
+  ],
+  "modality|text|question:m0|11-20|first|True": [
+   0,
+   14
+  ],
+  "coll|text|text|question:m0|11-20|first|True": [
+   0,
+   14
+  ],
+  "modality|text|question|11-20|first|False": [
+   1,
+   1609
+  ],
+  "coll|text|text|question|11-20|first|False": [
+   1,
+   1609
+  ],
+  "mention|question|11-20|False|0": [
+   2,
+   1526
+  ],
+  "round|question:m0|11-20|first|False": [
+   2,
+   1412
+  ],
+  "modality|text|question:m0|11-20|first|False": [
+   1,
+   1041
+  ],
+  "coll|text|text|question:m0|11-20|first|False": [
+   1,
+   1041
+  ],
+  "modality|text|question|21-40|first|False": [
+   0,
+   3350
+  ],
+  "coll|text|text|question|21-40|first|False": [
+   0,
+   3350
+  ],
+  "mention|question|21-40|False|0": [
+   2,
+   3396
+  ],
+  "round|question:m0|21-40|first|False": [
+   2,
+   3169
+  ],
+  "modality|text|question:m0|21-40|first|False": [
+   0,
+   2209
+  ],
+  "coll|text|text|question:m0|21-40|first|False": [
+   0,
+   2209
+  ],
+  "bucket|question|21-40|True": [
+   1,
+   481
+  ],
+  "round|question|21-40|first|True": [
+   1,
+   481
+  ],
+  "modality|text|question|21-40|first|True": [
+   1,
+   210
+  ],
+  "coll|text|text|question|21-40|first|True": [
+   1,
+   210
+  ],
+  "mention|question|21-40|True|1": [
+   1,
+   395
+  ],
+  "round|question:m1|21-40|first|True": [
+   1,
+   395
+  ],
+  "modality|text|question:m1|21-40|first|True": [
+   1,
+   187
+  ],
+  "coll|text|text|question:m1|21-40|first|True": [
+   1,
+   187
+  ],
+  "mention|question|21-40|False|1": [
+   1,
+   741
+  ],
+  "round|question:m1|21-40|first|False": [
+   1,
+   728
+  ],
+  "modality|text|question:m1|21-40|first|False": [
+   0,
+   475
+  ],
+  "coll|text|text|question:m1|21-40|first|False": [
+   0,
+   475
+  ],
+  "bucket|question|41-80|True": [
+   1,
+   722
+  ],
+  "round|question|41-80|first|True": [
+   1,
+   722
+  ],
+  "modality|text|question|41-80|first|True": [
+   1,
+   339
+  ],
+  "coll|text|text|question|41-80|first|True": [
+   1,
+   339
+  ],
+  "mention|question|41-80|True|1": [
+   1,
+   600
+  ],
+  "round|question:m1|41-80|first|True": [
+   1,
+   600
+  ],
+  "modality|text|question:m1|41-80|first|True": [
+   1,
+   301
+  ],
+  "coll|text|text|question:m1|41-80|first|True": [
+   1,
+   301
+  ],
+  "mention|question|41-80|True|0": [
+   0,
+   39
+  ],
+  "round|question:m0|41-80|first|True": [
+   0,
+   39
+  ],
+  "modality|text|question:m0|41-80|first|True": [
+   0,
+   21
+  ],
+  "coll|text|text|question:m0|41-80|first|True": [
+   0,
+   21
+  ],
+  "modality|text|question|41-80|first|False": [
+   0,
+   6781
+  ],
+  "coll|text|text|question|41-80|first|False": [
+   0,
+   6781
+  ],
+  "mention|question|41-80|False|0": [
+   1,
+   7231
+  ],
+  "round|question:m0|41-80|first|False": [
+   1,
+   6781
+  ],
+  "modality|text|question:m0|41-80|first|False": [
+   0,
+   4596
+  ],
+  "coll|text|text|question:m0|41-80|first|False": [
+   0,
+   4596
+  ],
+  "bucket|question|1|False": [
+   13,
+   164
+  ],
+  "round|question|1|first|False": [
+   13,
+   150
+  ],
+  "modality|text|question|1|first|False": [
+   11,
+   113
+  ],
+  "coll|text|text|question|1|first|False": [
+   11,
+   113
+  ],
+  "mention|question|1|False|0": [
+   1,
+   80
+  ],
+  "round|question:m0|1|first|False": [
+   1,
+   68
+  ],
+  "modality|text|question:m0|1|first|False": [
+   1,
+   53
+  ],
+  "coll|text|text|question:m0|1|first|False": [
+   1,
+   53
+  ],
+  "modality|text|question|2-3|first|False": [
+   6,
+   271
+  ],
+  "coll|text|text|question|2-3|first|False": [
+   6,
+   271
+  ],
+  "mention|question|2-3|False|0": [
+   3,
+   200
+  ],
+  "round|question:m0|2-3|first|False": [
+   3,
+   180
+  ],
+  "modality|text|question:m0|2-3|first|False": [
+   2,
+   142
+  ],
+  "coll|text|text|question:m0|2-3|first|False": [
+   2,
+   142
+  ],
+  "mention|question|2-3|True|0": [
+   1,
+   5
+  ],
+  "round|question:m0|2-3|first|True": [
+   1,
+   5
+  ],
+  "modality|text|question:m0|2-3|first|True": [
+   1,
+   2
+  ],
+  "coll|text|text|question:m0|2-3|first|True": [
+   1,
+   2
+  ],
+  "modality|text|question|4-5|first|False": [
+   0,
+   291
+  ],
+  "coll|text|text|question|4-5|first|False": [
+   0,
+   291
+  ],
+  "mention|question|4-5|False|0": [
+   0,
+   240
+  ],
+  "round|question:m0|4-5|first|False": [
+   0,
+   219
+  ],
+  "modality|text|question:m0|4-5|first|False": [
+   0,
+   171
+  ],
+  "coll|text|text|question:m0|4-5|first|False": [
+   0,
+   171
+  ],
+  "mention|question|41-80|False|1": [
+   0,
+   1250
+  ],
+  "round|question:m1|41-80|first|False": [
+   0,
+   1220
+  ],
+  "modality|text|question:m1|41-80|first|False": [
+   0,
+   842
+  ],
+  "coll|text|text|question:m1|41-80|first|False": [
+   0,
+   842
+  ],
+  "modality|table|question|1|first|True": [
+   27,
+   54
+  ],
+  "coll|table|row|question|1|first|True": [
+   27,
+   54
+  ],
+  "mention|question|1|True|0": [
+   0,
+   2
+  ],
+  "round|question:m0|1|first|True": [
+   0,
+   2
+  ],
+  "modality|table|question:m0|1|first|True": [
+   0,
+   2
+  ],
+  "coll|table|row|question:m0|1|first|True": [
+   0,
+   2
+  ],
+  "modality|table|question|2-3|first|True": [
+   21,
+   91
+  ],
+  "coll|table|row|question|2-3|first|True": [
+   21,
+   91
+  ],
+  "modality|table|question:m0|2-3|first|True": [
+   0,
+   3
+  ],
+  "coll|table|row|question:m0|2-3|first|True": [
+   0,
+   3
+  ],
+  "modality|table|question:m1|2-3|first|True": [
+   20,
+   79
+  ],
+  "coll|table|row|question:m1|2-3|first|True": [
+   20,
+   79
+  ],
+  "modality|table|question|4-5|first|True": [
+   12,
+   87
+  ],
+  "coll|table|row|question|4-5|first|True": [
+   12,
+   87
+  ],
+  "mention|question|4-5|True|1": [
+   14,
+   130
+  ],
+  "round|question:m1|4-5|first|True": [
+   14,
+   130
+  ],
+  "modality|table|question:m1|4-5|first|True": [
+   12,
+   76
+  ],
+  "coll|table|row|question:m1|4-5|first|True": [
+   12,
+   76
+  ],
+  "modality|table|question:m0|4-5|first|True": [
+   0,
+   2
+  ],
+  "coll|table|row|question:m0|4-5|first|True": [
+   0,
+   2
+  ],
+  "modality|table|question|6-10|first|False": [
+   3,
+   235
+  ],
+  "coll|table|row|question|6-10|first|False": [
+   3,
+   235
+  ],
+  "modality|table|question:m0|6-10|first|False": [
+   0,
+   130
+  ],
+  "coll|table|row|question:m0|6-10|first|False": [
+   0,
+   130
+  ],
+  "modality|table|question|6-10|first|True": [
+   18,
+   202
+  ],
+  "coll|table|row|question|6-10|first|True": [
+   18,
+   202
+  ],
+  "modality|table|question:m1|6-10|first|True": [
+   18,
+   174
+  ],
+  "coll|table|row|question:m1|6-10|first|True": [
+   18,
+   174
+  ],
+  "modality|table|question:m0|6-10|first|True": [
+   0,
+   7
+  ],
+  "coll|table|row|question:m0|6-10|first|True": [
+   0,
+   7
+  ],
+  "modality|table|question|11-20|first|True": [
+   9,
+   270
+  ],
+  "coll|table|row|question|11-20|first|True": [
+   9,
+   270
+  ],
+  "modality|table|question:m0|11-20|first|True": [
+   0,
+   20
+  ],
+  "coll|table|row|question:m0|11-20|first|True": [
+   0,
+   20
+  ],
+  "modality|table|question|11-20|first|False": [
+   2,
+   616
+  ],
+  "coll|table|row|question|11-20|first|False": [
+   2,
+   616
+  ],
+  "modality|table|question:m0|11-20|first|False": [
+   1,
+   371
+  ],
+  "coll|table|row|question:m0|11-20|first|False": [
+   1,
+   371
+  ],
+  "mention|question|11-20|True|1": [
+   8,
+   358
+  ],
+  "round|question:m1|11-20|first|True": [
+   8,
+   358
+  ],
+  "modality|table|question:m1|11-20|first|True": [
+   8,
+   212
+  ],
+  "coll|table|row|question:m1|11-20|first|True": [
+   8,
+   212
+  ],
+  "modality|table|question|21-40|first|True": [
+   0,
+   269
+  ],
+  "coll|table|row|question|21-40|first|True": [
+   0,
+   269
+  ],
+  "mention|question|21-40|True|0": [
+   0,
+   28
+  ],
+  "round|question:m0|21-40|first|True": [
+   0,
+   28
+  ],
+  "modality|table|question:m0|21-40|first|True": [
+   0,
+   19
+  ],
+  "coll|table|row|question:m0|21-40|first|True": [
+   0,
+   19
+  ],
+  "modality|table|question|21-40|first|False": [
+   3,
+   1511
+  ],
+  "coll|table|row|question|21-40|first|False": [
+   3,
+   1511
+  ],
+  "modality|table|question:m0|21-40|first|False": [
+   2,
+   960
+  ],
+  "coll|table|row|question:m0|21-40|first|False": [
+   2,
+   960
+  ],
+  "modality|table|question|41-80|first|False": [
+   1,
+   3177
+  ],
+  "coll|table|row|question|41-80|first|False": [
+   1,
+   3177
+  ],
+  "modality|table|question:m0|41-80|first|False": [
+   1,
+   2185
+  ],
+  "coll|table|row|question:m0|41-80|first|False": [
+   1,
+   2185
+  ],
+  "modality|table|question|41-80|first|True": [
+   0,
+   383
+  ],
+  "coll|table|row|question|41-80|first|True": [
+   0,
+   383
+  ],
+  "modality|table|question:m0|41-80|first|True": [
+   0,
+   18
+  ],
+  "coll|table|row|question:m0|41-80|first|True": [
+   0,
+   18
+  ],
+  "kind|title|False": [
+   12,
+   170
+  ],
+  "bucket|title|1|False": [
+   8,
+   112
+  ],
+  "round|title|1|first|False": [
+   4,
+   78
+  ],
+  "modality|image|title|1|first|False": [
+   4,
+   78
+  ],
+  "coll|image|image|title|1|first|False": [
+   2,
+   39
+  ],
+  "bucket|title|2-3|False": [
+   4,
+   48
+  ],
+  "round|title|2-3|first|False": [
+   0,
+   34
+  ],
+  "modality|image|title|2-3|first|False": [
+   0,
+   34
+  ],
+  "coll|image|image|title|2-3|first|False": [
+   0,
+   17
+  ],
+  "coll|image|caption|title|1|first|False": [
+   2,
+   39
+  ],
+  "coll|image|caption|title|2-3|first|False": [
+   0,
+   17
+  ],
+  "kind|sibling|False": [
+   11,
+   2276
+  ],
+  "bucket|sibling|1|False": [
+   0,
+   148
+  ],
+  "round|sibling|1|first|False": [
+   0,
+   104
+  ],
+  "modality|table|sibling|1|first|False": [
+   0,
+   104
+  ],
+  "coll|table|row|sibling|1|first|False": [
+   0,
+   104
+  ],
+  "bucket|sibling|2-3|False": [
+   4,
+   294
+  ],
+  "round|sibling|2-3|first|False": [
+   4,
+   209
+  ],
+  "modality|table|sibling|2-3|first|False": [
+   4,
+   209
+  ],
+  "coll|table|row|sibling|2-3|first|False": [
+   4,
+   209
+  ],
+  "bucket|sibling|4-5|False": [
+   2,
+   290
+  ],
+  "round|sibling|4-5|first|False": [
+   0,
+   208
+  ],
+  "modality|table|sibling|4-5|first|False": [
+   0,
+   208
+  ],
+  "coll|table|row|sibling|4-5|first|False": [
+   0,
+   208
+  ],
+  "kind|sibling|True": [
+   70,
+   810
+  ],
+  "bucket|sibling|4-5|True": [
+   16,
+   113
+  ],
+  "round|sibling|4-5|first|True": [
+   14,
+   99
+  ],
+  "modality|table|sibling|4-5|first|True": [
+   14,
+   99
+  ],
+  "coll|table|row|sibling|4-5|first|True": [
+   14,
+   99
+  ],
+  "bucket|sibling|6-10|False": [
+   1,
+   718
+  ],
+  "round|sibling|6-10|first|False": [
+   0,
+   509
+  ],
+  "modality|table|sibling|6-10|first|False": [
+   0,
+   509
+  ],
+  "coll|table|row|sibling|6-10|first|False": [
+   0,
+   509
+  ],
+  "bucket|sibling|11-20|True": [
+   13,
+   239
+  ],
+  "round|sibling|11-20|first|True": [
+   13,
+   217
+  ],
+  "modality|table|sibling|11-20|first|True": [
+   13,
+   217
+  ],
+  "coll|table|row|sibling|11-20|first|True": [
+   13,
+   217
+  ],
+  "bucket|bound|1|False": [
+   7,
+   165
+  ],
+  "round|bound|1|first|False": [
+   7,
+   143
+  ],
+  "modality|text|bound|1|first|False": [
+   4,
+   109
+  ],
+  "coll|text|text|bound|1|first|False": [
+   4,
+   109
+  ],
+  "modality|text|bound|2-3|first|False": [
+   0,
+   262
+  ],
+  "coll|text|text|bound|2-3|first|False": [
+   0,
+   262
+  ],
+  "modality|text|bound|4-5|first|False": [
+   0,
+   283
+  ],
+  "coll|text|text|bound|4-5|first|False": [
+   0,
+   283
+  ],
+  "modality|table|bound|1|first|False": [
+   3,
+   30
+  ],
+  "coll|table|row|bound|1|first|False": [
+   3,
+   30
+  ],
+  "modality|table|bound|2-3|first|False": [
+   4,
+   70
+  ],
+  "coll|table|row|bound|2-3|first|False": [
+   4,
+   70
+  ],
+  "modality|table|bound|4-5|first|False": [
+   1,
+   78
+  ],
+  "coll|table|row|bound|4-5|first|False": [
+   1,
+   78
+  ],
+  "modality|table|bound|6-10|first|False": [
+   1,
+   197
+  ],
+  "coll|table|row|bound|6-10|first|False": [
+   1,
+   197
+  ],
+  "modality|table|bound|11-20|first|False": [
+   1,
+   506
+  ],
+  "coll|table|row|bound|11-20|first|False": [
+   1,
+   506
+  ],
+  "mention|question|2-3|False|1": [
+   3,
+   95
+  ],
+  "round|question:m1|2-3|first|False": [
+   1,
+   91
+  ],
+  "modality|text|question:m1|2-3|first|False": [
+   1,
+   69
+  ],
+  "coll|text|text|question:m1|2-3|first|False": [
+   1,
+   69
+  ],
+  "mention|question|4-5|False|1": [
+   0,
+   79
+  ],
+  "round|question:m1|4-5|first|False": [
+   0,
+   76
+  ],
+  "modality|text|question:m1|4-5|first|False": [
+   0,
+   59
+  ],
+  "coll|text|text|question:m1|4-5|first|False": [
+   0,
+   59
+  ],
+  "mention|question|6-10|False|1": [
+   1,
+   189
+  ],
+  "round|question:m1|6-10|first|False": [
+   0,
+   185
+  ],
+  "modality|text|question:m1|6-10|first|False": [
+   0,
+   139
+  ],
+  "coll|text|text|question:m1|6-10|first|False": [
+   0,
+   139
+  ],
+  "mention|question|11-20|False|1": [
+   1,
+   358
+  ],
+  "round|question:m1|11-20|first|False": [
+   0,
+   352
+  ],
+  "modality|text|question:m1|11-20|first|False": [
+   0,
+   239
+  ],
+  "coll|text|text|question:m1|11-20|first|False": [
+   0,
+   239
+  ],
+  "mention|question|1|False|1": [
+   5,
+   42
+  ],
+  "round|question:m1|1|first|False": [
+   5,
+   42
+  ],
+  "modality|text|question:m1|1|first|False": [
+   3,
+   35
+  ],
+  "coll|text|text|question:m1|1|first|False": [
+   3,
+   35
+  ],
+  "modality|table|question|1|first|False": [
+   2,
+   33
+  ],
+  "coll|table|row|question|1|first|False": [
+   2,
+   33
+  ],
+  "modality|table|question:m1|1|first|False": [
+   2,
+   7
+  ],
+  "coll|table|row|question:m1|1|first|False": [
+   2,
+   7
+  ],
+  "modality|table|question|2-3|first|False": [
+   1,
+   83
+  ],
+  "coll|table|row|question|2-3|first|False": [
+   1,
+   83
+  ],
+  "modality|table|question:m1|2-3|first|False": [
+   0,
+   22
+  ],
+  "coll|table|row|question:m1|2-3|first|False": [
+   0,
+   22
+  ],
+  "modality|table|question|4-5|first|False": [
+   1,
+   88
+  ],
+  "coll|table|row|question|4-5|first|False": [
+   1,
+   88
+  ],
+  "modality|table|question:m1|4-5|first|False": [
+   0,
+   17
+  ],
+  "coll|table|row|question:m1|4-5|first|False": [
+   0,
+   17
+  ],
+  "modality|table|question:m1|6-10|first|False": [
+   0,
+   46
+  ],
+  "coll|table|row|question:m1|6-10|first|False": [
+   0,
+   46
+  ],
+  "modality|table|question:m1|11-20|first|False": [
+   0,
+   113
+  ],
+  "coll|table|row|question:m1|11-20|first|False": [
+   0,
+   113
+  ],
+  "modality|table|question:m1|21-40|first|False": [
+   1,
+   253
+  ],
+  "coll|table|row|question:m1|21-40|first|False": [
+   1,
+   253
+  ],
+  "modality|table|question:m1|41-80|first|False": [
+   0,
+   378
+  ],
+  "coll|table|row|question:m1|41-80|first|False": [
+   0,
+   378
+  ],
+  "bucket|sibling|11-20|False": [
+   3,
+   725
+  ],
+  "round|sibling|11-20|first|False": [
+   2,
+   530
+  ],
+  "modality|table|sibling|11-20|first|False": [
+   2,
+   530
+  ],
+  "coll|table|row|sibling|11-20|first|False": [
+   2,
+   530
+  ],
+  "modality|image|bound|1|first|False": [
+   0,
+   4
+  ],
+  "coll|image|image|bound|1|first|False": [
+   0,
+   1
+  ],
+  "coll|image|image|bound|2-3|first|False": [
+   0,
+   10
+  ],
+  "coll|image|caption|bound|1|first|False": [
+   0,
+   3
+  ],
+  "modality|image|question|1|first|False": [
+   0,
+   4
+  ],
+  "coll|image|image|question|1|first|False": [
+   0,
+   1
+  ],
+  "coll|image|caption|question|1|first|False": [
+   0,
+   3
+  ],
+  "modality|table|bound|41-80|first|False": [
+   0,
+   2276
+  ],
+  "coll|table|row|bound|41-80|first|False": [
+   0,
+   2276
+  ],
+  "modality|table|question:m0|2-3|first|False": [
+   1,
+   38
+  ],
+  "coll|table|row|question:m0|2-3|first|False": [
+   1,
+   38
+  ],
+  "modality|table|question:m0|4-5|first|False": [
+   0,
+   48
+  ],
+  "coll|table|row|question:m0|4-5|first|False": [
+   0,
+   48
+  ],
+  "modality|text|question:m1|11-20|first|True": [
+   0,
+   146
+  ],
+  "coll|text|text|question:m1|11-20|first|True": [
+   0,
+   146
+  ],
+  "modality|table|question:m1|1|first|True": [
+   24,
+   47
+  ],
+  "coll|table|row|question:m1|1|first|True": [
+   24,
+   47
+  ],
+  "bucket|sibling|1|True": [
+   6,
+   54
+  ],
+  "round|sibling|1|first|True": [
+   6,
+   50
+  ],
+  "modality|table|sibling|1|first|True": [
+   6,
+   50
+  ],
+  "coll|table|row|sibling|1|first|True": [
+   6,
+   50
+  ],
+  "bucket|sibling|2-3|True": [
+   12,
+   110
+  ],
+  "round|sibling|2-3|first|True": [
+   11,
+   99
+  ],
+  "modality|table|sibling|2-3|first|True": [
+   11,
+   99
+  ],
+  "coll|table|row|sibling|2-3|first|True": [
+   11,
+   99
+  ],
+  "bucket|sibling|6-10|True": [
+   22,
+   267
+  ],
+  "round|sibling|6-10|first|True": [
+   22,
+   243
+  ],
+  "modality|table|sibling|6-10|first|True": [
+   22,
+   243
+  ],
+  "coll|table|row|sibling|6-10|first|True": [
+   22,
+   243
+  ],
+  "kind|bridge|True": [
+   21,
+   1520
+  ],
+  "bucket|bridge|1|True": [
+   17,
+   64
+  ],
+  "round|bridge|1|late|True": [
+   17,
+   64
+  ],
+  "modality|text|bridge|1|late|True": [
+   9,
+   39
+  ],
+  "coll|text|text|bridge|1|late|True": [
+   9,
+   39
+  ],
+  "bucket|bridge|2-3|True": [
+   1,
+   93
+  ],
+  "round|bridge|2-3|late|True": [
+   1,
+   93
+  ],
+  "modality|text|bridge|2-3|late|True": [
+   1,
+   52
+  ],
+  "coll|text|text|bridge|2-3|late|True": [
+   1,
+   52
+  ],
+  "bucket|bridge|4-5|True": [
+   0,
+   75
+  ],
+  "round|bridge|4-5|late|True": [
+   0,
+   75
+  ],
+  "modality|text|bridge|4-5|late|True": [
+   0,
+   43
+  ],
+  "coll|text|text|bridge|4-5|late|True": [
+   0,
+   43
+  ],
+  "bucket|bridge|6-10|True": [
+   1,
+   155
+  ],
+  "round|bridge|6-10|late|True": [
+   1,
+   155
+  ],
+  "modality|text|bridge|6-10|late|True": [
+   0,
+   89
+  ],
+  "coll|text|text|bridge|6-10|late|True": [
+   0,
+   89
+  ],
+  "bucket|bridge|11-20|True": [
+   0,
+   221
+  ],
+  "round|bridge|11-20|late|True": [
+   0,
+   221
+  ],
+  "modality|text|bridge|11-20|late|True": [
+   0,
+   133
+  ],
+  "coll|text|text|bridge|11-20|late|True": [
+   0,
+   133
+  ],
+  "kind|bridge|False": [
+   8,
+   2975
+  ],
+  "bucket|bridge|11-20|False": [
+   0,
+   358
+  ],
+  "round|bridge|11-20|late|False": [
+   0,
+   358
+  ],
+  "modality|text|bridge|11-20|late|False": [
+   0,
+   224
+  ],
+  "coll|text|text|bridge|11-20|late|False": [
+   0,
+   224
+  ],
+  "bucket|bridge|21-40|True": [
+   1,
+   356
+  ],
+  "round|bridge|21-40|late|True": [
+   1,
+   356
+  ],
+  "modality|text|bridge|21-40|late|True": [
+   1,
+   224
+  ],
+  "coll|text|text|bridge|21-40|late|True": [
+   1,
+   224
+  ],
+  "bucket|bridge|21-40|False": [
+   1,
+   736
+  ],
+  "round|bridge|21-40|late|False": [
+   1,
+   736
+  ],
+  "modality|text|bridge|21-40|late|False": [
+   1,
+   459
+  ],
+  "coll|text|text|bridge|21-40|late|False": [
+   1,
+   459
+  ],
+  "bucket|bridge|41-80|True": [
+   1,
+   556
+  ],
+  "round|bridge|41-80|late|True": [
+   1,
+   556
+  ],
+  "modality|text|bridge|41-80|late|True": [
+   1,
+   360
+  ],
+  "coll|text|text|bridge|41-80|late|True": [
+   1,
+   360
+  ],
+  "bucket|bridge|41-80|False": [
+   0,
+   1571
+  ],
+  "round|bridge|41-80|late|False": [
+   0,
+   1571
+  ],
+  "modality|text|bridge|41-80|late|False": [
+   0,
+   987
+  ],
+  "coll|text|text|bridge|41-80|late|False": [
+   0,
+   987
+  ],
+  "modality|table|bridge|1|late|True": [
+   3,
+   20
+  ],
+  "coll|table|row|bridge|1|late|True": [
+   3,
+   20
+  ],
+  "modality|table|bridge|2-3|late|True": [
+   0,
+   36
+  ],
+  "coll|table|row|bridge|2-3|late|True": [
+   0,
+   36
+  ],
+  "modality|table|bridge|4-5|late|True": [
+   0,
+   32
+  ],
+  "coll|table|row|bridge|4-5|late|True": [
+   0,
+   32
+  ],
+  "modality|table|bridge|6-10|late|True": [
+   1,
+   64
+  ],
+  "coll|table|row|bridge|6-10|late|True": [
+   1,
+   64
+  ],
+  "bucket|bridge|6-10|False": [
+   1,
+   166
+  ],
+  "round|bridge|6-10|late|False": [
+   1,
+   166
+  ],
+  "modality|table|bridge|6-10|late|False": [
+   0,
+   31
+  ],
+  "coll|table|row|bridge|6-10|late|False": [
+   0,
+   31
+  ],
+  "modality|table|bridge|11-20|late|True": [
+   0,
+   87
+  ],
+  "coll|table|row|bridge|11-20|late|True": [
+   0,
+   87
+  ],
+  "modality|table|bridge|21-40|late|False": [
+   0,
+   157
+  ],
+  "coll|table|row|bridge|21-40|late|False": [
+   0,
+   157
+  ],
+  "modality|table|bridge|21-40|late|True": [
+   0,
+   132
+  ],
+  "coll|table|row|bridge|21-40|late|True": [
+   0,
+   132
+  ],
+  "modality|table|bridge|41-80|late|True": [
+   0,
+   196
+  ],
+  "coll|table|row|bridge|41-80|late|True": [
+   0,
+   196
+  ],
+  "modality|table|bridge|41-80|late|False": [
+   0,
+   344
+  ],
+  "coll|table|row|bridge|41-80|late|False": [
+   0,
+   344
+  ],
+  "round|sibling|1|late|False": [
+   0,
+   44
+  ],
+  "modality|table|sibling|1|late|False": [
+   0,
+   44
+  ],
+  "coll|table|row|sibling|1|late|False": [
+   0,
+   44
+  ],
+  "round|sibling|2-3|late|False": [
+   0,
+   85
+  ],
+  "modality|table|sibling|2-3|late|False": [
+   0,
+   85
+  ],
+  "coll|table|row|sibling|2-3|late|False": [
+   0,
+   85
+  ],
+  "round|sibling|4-5|late|False": [
+   2,
+   82
+  ],
+  "modality|table|sibling|4-5|late|False": [
+   2,
+   82
+  ],
+  "coll|table|row|sibling|4-5|late|False": [
+   2,
+   82
+  ],
+  "round|sibling|6-10|late|False": [
+   1,
+   209
+  ],
+  "modality|table|sibling|6-10|late|False": [
+   1,
+   209
+  ],
+  "coll|table|row|sibling|6-10|late|False": [
+   1,
+   209
+  ],
+  "round|sibling|11-20|late|False": [
+   1,
+   195
+  ],
+  "modality|table|sibling|11-20|late|False": [
+   1,
+   195
+  ],
+  "coll|table|row|sibling|11-20|late|False": [
+   1,
+   195
+  ],
+  "round|sibling|11-20|late|True": [
+   0,
+   22
+  ],
+  "modality|table|sibling|11-20|late|True": [
+   0,
+   22
+  ],
+  "coll|table|row|sibling|11-20|late|True": [
+   0,
+   22
+  ],
+  "modality|text|question:m1|4-5|first|True": [
+   2,
+   54
+  ],
+  "coll|text|text|question:m1|4-5|first|True": [
+   2,
+   54
+  ],
+  "modality|table|question:m1|41-80|first|True": [
+   0,
+   299
+  ],
+  "coll|table|row|question:m1|41-80|first|True": [
+   0,
+   299
+  ],
+  "bucket|sibling|21-40|False": [
+   1,
+   101
+  ],
+  "round|sibling|21-40|first|False": [
+   1,
+   71
+  ],
+  "modality|table|sibling|21-40|first|False": [
+   1,
+   71
+  ],
+  "coll|table|row|sibling|21-40|first|False": [
+   1,
+   71
+  ],
+  "modality|table|question:m1|21-40|first|True": [
+   0,
+   208
+  ],
+  "coll|table|row|question:m1|21-40|first|True": [
+   0,
+   208
+  ],
+  "round|bound|1|filter|False": [
+   0,
+   10
+  ],
+  "modality|image|bound|1|filter|False": [
+   0,
+   10
+  ],
+  "coll|image|image|bound|1|filter|False": [
+   0,
+   5
+  ],
+  "round|bound|2-3|filter|False": [
+   0,
+   20
+  ],
+  "modality|image|bound|2-3|filter|False": [
+   0,
+   20
+  ],
+  "coll|image|image|bound|2-3|filter|False": [
+   0,
+   10
+  ],
+  "round|bound|4-5|filter|False": [
+   0,
+   20
+  ],
+  "modality|image|bound|4-5|filter|False": [
+   0,
+   20
+  ],
+  "coll|image|image|bound|4-5|filter|False": [
+   0,
+   10
+  ],
+  "round|bound|6-10|filter|False": [
+   0,
+   50
+  ],
+  "modality|image|bound|6-10|filter|False": [
+   0,
+   50
+  ],
+  "coll|image|image|bound|6-10|filter|False": [
+   0,
+   25
+  ],
+  "round|bound|11-20|filter|False": [
+   0,
+   100
+  ],
+  "modality|image|bound|11-20|filter|False": [
+   0,
+   100
+  ],
+  "coll|image|image|bound|11-20|filter|False": [
+   0,
+   50
+  ],
+  "round|bound|21-40|filter|False": [
+   0,
+   200
+  ],
+  "modality|image|bound|21-40|filter|False": [
+   0,
+   200
+  ],
+  "coll|image|image|bound|21-40|filter|False": [
+   0,
+   100
+  ],
+  "round|bound|41-80|filter|False": [
+   0,
+   400
+  ],
+  "modality|image|bound|41-80|filter|False": [
+   0,
+   400
+  ],
+  "coll|image|image|bound|41-80|filter|False": [
+   0,
+   200
+  ],
+  "coll|image|caption|bound|1|filter|False": [
+   0,
+   5
+  ],
+  "coll|image|caption|bound|2-3|filter|False": [
+   0,
+   10
+  ],
+  "coll|image|caption|bound|4-5|filter|False": [
+   0,
+   10
+  ],
+  "coll|image|caption|bound|6-10|filter|False": [
+   0,
+   25
+  ],
+  "coll|image|caption|bound|11-20|filter|False": [
+   0,
+   50
+  ],
+  "coll|image|caption|bound|21-40|filter|False": [
+   0,
+   100
+  ],
+  "coll|image|caption|bound|41-80|filter|False": [
+   0,
+   200
+  ],
+  "bucket|bridge|1|False": [
+   4,
+   15
+  ],
+  "round|bridge|1|late|False": [
+   4,
+   15
+  ],
+  "modality|text|bridge|1|late|False": [
+   0,
+   9
+  ],
+  "coll|text|text|bridge|1|late|False": [
+   0,
+   9
+  ],
+  "bucket|bridge|2-3|False": [
+   2,
+   61
+  ],
+  "round|bridge|2-3|late|False": [
+   2,
+   61
+  ],
+  "modality|text|bridge|2-3|late|False": [
+   2,
+   43
+  ],
+  "coll|text|text|bridge|2-3|late|False": [
+   2,
+   43
+  ],
+  "bucket|bridge|4-5|False": [
+   0,
+   68
+  ],
+  "round|bridge|4-5|late|False": [
+   0,
+   68
+  ],
+  "modality|text|bridge|4-5|late|False": [
+   0,
+   44
+  ],
+  "coll|text|text|bridge|4-5|late|False": [
+   0,
+   44
+  ],
+  "modality|text|bridge|6-10|late|False": [
+   1,
+   107
+  ],
+  "coll|text|text|bridge|6-10|late|False": [
+   1,
+   107
+  ],
+  "modality|table|bridge|1|late|False": [
+   4,
+   5
+  ],
+  "coll|table|row|bridge|1|late|False": [
+   4,
+   5
+  ],
+  "round|question|1|late|False": [
+   0,
+   14
+  ],
+  "modality|text|question|1|late|False": [
+   0,
+   8
+  ],
+  "coll|text|text|question|1|late|False": [
+   0,
+   8
+  ],
+  "round|question:m0|1|late|False": [
+   0,
+   12
+  ],
+  "modality|text|question:m0|1|late|False": [
+   0,
+   8
+  ],
+  "coll|text|text|question:m0|1|late|False": [
+   0,
+   8
+  ],
+  "round|question|2-3|late|False": [
+   2,
+   28
+  ],
+  "modality|text|question|2-3|late|False": [
+   0,
+   16
+  ],
+  "coll|text|text|question|2-3|late|False": [
+   0,
+   16
+  ],
+  "round|question:m0|2-3|late|False": [
+   0,
+   20
+  ],
+  "modality|text|question:m0|2-3|late|False": [
+   0,
+   15
+  ],
+  "coll|text|text|question:m0|2-3|late|False": [
+   0,
+   15
+  ],
+  "round|question|4-5|late|False": [
+   0,
+   28
+  ],
+  "modality|text|question|4-5|late|False": [
+   0,
+   16
+  ],
+  "coll|text|text|question|4-5|late|False": [
+   0,
+   16
+  ],
+  "round|question:m0|4-5|late|False": [
+   0,
+   21
+  ],
+  "modality|text|question:m0|4-5|late|False": [
+   0,
+   13
+  ],
+  "coll|text|text|question:m0|4-5|late|False": [
+   0,
+   13
+  ],
+  "round|question|6-10|late|False": [
+   2,
+   70
+  ],
+  "modality|text|question|6-10|late|False": [
+   0,
+   40
+  ],
+  "coll|text|text|question|6-10|late|False": [
+   0,
+   40
+  ],
+  "round|question:m0|6-10|late|False": [
+   0,
+   56
+  ],
+  "modality|text|question:m0|6-10|late|False": [
+   0,
+   38
+  ],
+  "coll|text|text|question:m0|6-10|late|False": [
+   0,
+   38
+  ],
+  "round|question|11-20|late|False": [
+   1,
+   140
+  ],
+  "modality|text|question|11-20|late|False": [
+   0,
+   80
+  ],
+  "coll|text|text|question|11-20|late|False": [
+   0,
+   80
+  ],
+  "round|question:m0|11-20|late|False": [
+   0,
+   114
+  ],
+  "modality|text|question:m0|11-20|late|False": [
+   0,
+   78
+  ],
+  "coll|text|text|question:m0|11-20|late|False": [
+   0,
+   78
+  ],
+  "round|question|21-40|late|False": [
+   0,
+   280
+  ],
+  "modality|text|question|21-40|late|False": [
+   0,
+   160
+  ],
+  "coll|text|text|question|21-40|late|False": [
+   0,
+   160
+  ],
+  "round|question:m0|21-40|late|False": [
+   0,
+   227
+  ],
+  "modality|text|question:m0|21-40|late|False": [
+   0,
+   151
+  ],
+  "coll|text|text|question:m0|21-40|late|False": [
+   0,
+   151
+  ],
+  "round|question|41-80|late|False": [
+   0,
+   560
+  ],
+  "modality|text|question|41-80|late|False": [
+   0,
+   320
+  ],
+  "coll|text|text|question|41-80|late|False": [
+   0,
+   320
+  ],
+  "round|question:m0|41-80|late|False": [
+   0,
+   450
+  ],
+  "modality|text|question:m0|41-80|late|False": [
+   0,
+   300
+  ],
+  "coll|text|text|question:m0|41-80|late|False": [
+   0,
+   300
+  ],
+  "modality|table|question|1|late|False": [
+   0,
+   4
+  ],
+  "coll|table|row|question|1|late|False": [
+   0,
+   4
+  ],
+  "modality|table|question:m0|1|late|False": [
+   0,
+   4
+  ],
+  "coll|table|row|question:m0|1|late|False": [
+   0,
+   4
+  ],
+  "modality|table|question|2-3|late|False": [
+   2,
+   8
+  ],
+  "coll|table|row|question|2-3|late|False": [
+   2,
+   8
+  ],
+  "round|question:m1|2-3|late|False": [
+   2,
+   4
+  ],
+  "modality|table|question:m1|2-3|late|False": [
+   2,
+   3
+  ],
+  "coll|table|row|question:m1|2-3|late|False": [
+   2,
+   3
+  ],
+  "modality|table|question:m0|2-3|late|False": [
+   0,
+   5
+  ],
+  "coll|table|row|question:m0|2-3|late|False": [
+   0,
+   5
+  ],
+  "modality|table|question|4-5|late|False": [
+   0,
+   8
+  ],
+  "coll|table|row|question|4-5|late|False": [
+   0,
+   8
+  ],
+  "modality|table|question:m0|4-5|late|False": [
+   0,
+   8
+  ],
+  "coll|table|row|question:m0|4-5|late|False": [
+   0,
+   8
+  ],
+  "modality|table|question|6-10|late|False": [
+   1,
+   20
+  ],
+  "coll|table|row|question|6-10|late|False": [
+   1,
+   20
+  ],
+  "modality|table|question:m0|6-10|late|False": [
+   0,
+   18
+  ],
+  "coll|table|row|question:m0|6-10|late|False": [
+   0,
+   18
+  ],
+  "modality|table|question|11-20|late|False": [
+   1,
+   40
+  ],
+  "coll|table|row|question|11-20|late|False": [
+   1,
+   40
+  ],
+  "modality|table|question:m0|11-20|late|False": [
+   0,
+   36
+  ],
+  "coll|table|row|question:m0|11-20|late|False": [
+   0,
+   36
+  ],
+  "modality|table|question|21-40|late|False": [
+   0,
+   80
+  ],
+  "coll|table|row|question|21-40|late|False": [
+   0,
+   80
+  ],
+  "modality|table|question:m0|21-40|late|False": [
+   0,
+   76
+  ],
+  "coll|table|row|question:m0|21-40|late|False": [
+   0,
+   76
+  ],
+  "modality|table|question|41-80|late|False": [
+   0,
+   160
+  ],
+  "coll|table|row|question|41-80|late|False": [
+   0,
+   160
+  ],
+  "modality|table|question:m0|41-80|late|False": [
+   0,
+   150
+  ],
+  "coll|table|row|question:m0|41-80|late|False": [
+   0,
+   150
+  ],
+  "round|title|1|late|True": [
+   15,
+   46
+  ],
+  "modality|image|title|1|late|True": [
+   8,
+   22
+  ],
+  "coll|image|image|title|1|late|True": [
+   4,
+   11
+  ],
+  "coll|image|caption|title|1|late|True": [
+   4,
+   11
+  ],
+  "round|sibling|21-40|late|False": [
+   0,
+   30
+  ],
+  "modality|table|sibling|21-40|late|False": [
+   0,
+   30
+  ],
+  "coll|table|row|sibling|21-40|late|False": [
+   0,
+   30
+  ],
+  "modality|table|bound|41-80|first|True": [
+   2,
+   811
+  ],
+  "coll|table|row|bound|41-80|first|True": [
+   2,
+   811
+  ],
+  "modality|table|question:m0|1|first|False": [
+   0,
+   15
+  ],
+  "coll|table|row|question:m0|1|first|False": [
+   0,
+   15
+  ],
+  "bucket|sibling|21-40|True": [
+   1,
+   27
+  ],
+  "round|sibling|21-40|first|True": [
+   1,
+   25
+  ],
+  "modality|table|sibling|21-40|first|True": [
+   1,
+   25
+  ],
+  "coll|table|row|sibling|21-40|first|True": [
+   1,
+   25
+  ],
+  "modality|table|bridge|4-5|late|False": [
+   0,
+   12
+  ],
+  "coll|table|row|bridge|4-5|late|False": [
+   0,
+   12
+  ],
+  "modality|table|bridge|11-20|late|False": [
+   0,
+   75
+  ],
+  "coll|table|row|bridge|11-20|late|False": [
+   0,
+   75
+  ],
+  "modality|text|title|1|late|True": [
+   7,
+   19
+  ],
+  "coll|text|text|title|1|late|True": [
+   7,
+   19
+  ],
+  "round|title|2-3|late|True": [
+   0,
+   39
+  ],
+  "modality|text|title|2-3|late|True": [
+   0,
+   23
+  ],
+  "coll|text|text|title|2-3|late|True": [
+   0,
+   23
+  ],
+  "bucket|title|4-5|True": [
+   0,
+   20
+  ],
+  "round|title|4-5|late|True": [
+   0,
+   20
+  ],
+  "modality|text|title|4-5|late|True": [
+   0,
+   10
+  ],
+  "coll|text|text|title|4-5|late|True": [
+   0,
+   10
+  ],
+  "round|sibling|4-5|late|True": [
+   2,
+   14
+  ],
+  "modality|table|sibling|4-5|late|True": [
+   2,
+   14
+  ],
+  "coll|table|row|sibling|4-5|late|True": [
+   2,
+   14
+  ],
+  "round|bound|1|late|False": [
+   0,
+   12
+  ],
+  "modality|image|bound|1|late|False": [
+   0,
+   10
+  ],
+  "coll|image|image|bound|1|late|False": [
+   0,
+   5
+  ],
+  "round|bound|2-3|late|False": [
+   0,
+   24
+  ],
+  "modality|image|bound|2-3|late|False": [
+   0,
+   20
+  ],
+  "coll|image|image|bound|2-3|late|False": [
+   0,
+   10
+  ],
+  "round|bound|4-5|late|False": [
+   0,
+   24
+  ],
+  "modality|image|bound|4-5|late|False": [
+   0,
+   20
+  ],
+  "coll|image|image|bound|4-5|late|False": [
+   0,
+   10
+  ],
+  "round|bound|6-10|late|False": [
+   0,
+   61
+  ],
+  "modality|image|bound|6-10|late|False": [
+   0,
+   50
+  ],
+  "coll|image|image|bound|6-10|late|False": [
+   0,
+   25
+  ],
+  "round|bound|11-20|late|False": [
+   0,
+   123
+  ],
+  "modality|image|bound|11-20|late|False": [
+   0,
+   100
+  ],
+  "coll|image|image|bound|11-20|late|False": [
+   0,
+   50
+  ],
+  "round|bound|21-40|late|False": [
+   0,
+   256
+  ],
+  "modality|image|bound|21-40|late|False": [
+   0,
+   200
+  ],
+  "coll|image|image|bound|21-40|late|False": [
+   0,
+   100
+  ],
+  "round|bound|41-80|late|False": [
+   0,
+   510
+  ],
+  "modality|image|bound|41-80|late|False": [
+   0,
+   400
+  ],
+  "coll|image|image|bound|41-80|late|False": [
+   0,
+   200
+  ],
+  "coll|image|caption|bound|1|late|False": [
+   0,
+   5
+  ],
+  "coll|image|caption|bound|2-3|late|False": [
+   0,
+   10
+  ],
+  "coll|image|caption|bound|4-5|late|False": [
+   0,
+   10
+  ],
+  "coll|image|caption|bound|6-10|late|False": [
+   0,
+   25
+  ],
+  "coll|image|caption|bound|11-20|late|False": [
+   0,
+   50
+  ],
+  "coll|image|caption|bound|21-40|late|False": [
+   0,
+   100
+  ],
+  "coll|image|caption|bound|41-80|late|False": [
+   0,
+   200
+  ],
+  "modality|image|question|1|late|False": [
+   0,
+   2
+  ],
+  "coll|image|image|question|1|late|False": [
+   0,
+   1
+  ],
+  "modality|image|question|2-3|late|False": [
+   0,
+   4
+  ],
+  "coll|image|image|question|2-3|late|False": [
+   0,
+   2
+  ],
+  "modality|image|question|4-5|late|False": [
+   0,
+   4
+  ],
+  "coll|image|image|question|4-5|late|False": [
+   0,
+   2
+  ],
+  "modality|image|question|6-10|late|False": [
+   1,
+   10
+  ],
+  "coll|image|image|question|6-10|late|False": [
+   0,
+   5
+  ],
+  "modality|image|question|11-20|late|False": [
+   0,
+   20
+  ],
+  "coll|image|image|question|11-20|late|False": [
+   0,
+   10
+  ],
+  "modality|image|question|21-40|late|False": [
+   0,
+   40
+  ],
+  "coll|image|image|question|21-40|late|False": [
+   0,
+   20
+  ],
+  "modality|image|question|41-80|late|False": [
+   0,
+   80
+  ],
+  "coll|image|image|question|41-80|late|False": [
+   0,
+   40
+  ],
+  "coll|image|caption|question|1|late|False": [
+   0,
+   1
+  ],
+  "coll|image|caption|question|2-3|late|False": [
+   0,
+   2
+  ],
+  "coll|image|caption|question|4-5|late|False": [
+   0,
+   2
+  ],
+  "coll|image|caption|question|6-10|late|False": [
+   1,
+   5
+  ],
+  "coll|image|caption|question|11-20|late|False": [
+   0,
+   10
+  ],
+  "coll|image|caption|question|21-40|late|False": [
+   0,
+   20
+  ],
+  "coll|image|caption|question|41-80|late|False": [
+   0,
+   40
+  ],
+  "modality|image|bridge|1|late|True": [
+   5,
+   5
+  ],
+  "coll|image|image|bridge|1|late|True": [
+   3,
+   3
+  ],
+  "modality|image|bridge|2-3|late|True": [
+   0,
+   5
+  ],
+  "coll|image|image|bridge|2-3|late|True": [
+   0,
+   3
+  ],
+  "modality|image|bridge|2-3|late|False": [
+   0,
+   7
+  ],
+  "coll|image|image|bridge|2-3|late|False": [
+   0,
+   3
+  ],
+  "modality|image|bridge|4-5|late|False": [
+   0,
+   12
+  ],
+  "coll|image|image|bridge|4-5|late|False": [
+   0,
+   6
+  ],
+  "modality|image|bridge|6-10|late|True": [
+   0,
+   2
+  ],
+  "coll|image|image|bridge|6-10|late|True": [
+   0,
+   1
+  ],
+  "modality|image|bridge|6-10|late|False": [
+   0,
+   28
+  ],
+  "coll|image|image|bridge|6-10|late|False": [
+   0,
+   14
+  ],
+  "modality|image|bridge|11-20|late|False": [
+   0,
+   59
+  ],
+  "coll|image|image|bridge|11-20|late|False": [
+   0,
+   29
+  ],
+  "modality|image|bridge|11-20|late|True": [
+   0,
+   1
+  ],
+  "coll|image|image|bridge|11-20|late|True": [
+   0,
+   1
+  ],
+  "modality|image|bridge|21-40|late|False": [
+   0,
+   120
+  ],
+  "coll|image|image|bridge|21-40|late|False": [
+   0,
+   60
+  ],
+  "modality|image|bridge|41-80|late|False": [
+   0,
+   240
+  ],
+  "coll|image|image|bridge|41-80|late|False": [
+   0,
+   120
+  ],
+  "coll|image|caption|bridge|1|late|True": [
+   2,
+   2
+  ],
+  "coll|image|caption|bridge|2-3|late|True": [
+   0,
+   2
+  ],
+  "coll|image|caption|bridge|4-5|late|False": [
+   0,
+   6
+  ],
+  "coll|image|caption|bridge|6-10|late|True": [
+   0,
+   1
+  ],
+  "coll|image|caption|bridge|6-10|late|False": [
+   0,
+   14
+  ],
+  "coll|image|caption|bridge|11-20|late|False": [
+   0,
+   30
+  ],
+  "coll|image|caption|bridge|21-40|late|False": [
+   0,
+   60
+  ],
+  "coll|image|caption|bridge|41-80|late|False": [
+   0,
+   120
+  ],
+  "modality|image|title|2-3|late|True": [
+   0,
+   6
+  ],
+  "coll|image|image|title|2-3|late|True": [
+   0,
+   3
+  ],
+  "coll|image|caption|title|2-3|late|True": [
+   0,
+   3
+  ],
+  "modality|table|bridge|2-3|late|False": [
+   0,
+   11
+  ],
+  "coll|table|row|bridge|2-3|late|False": [
+   0,
+   11
+  ],
+  "round|question:m1|6-10|late|False": [
+   1,
+   4
+  ],
+  "modality|table|question:m1|6-10|late|False": [
+   1,
+   2
+  ],
+  "coll|table|row|question:m1|6-10|late|False": [
+   1,
+   2
+  ],
+  "round|question:m1|21-40|late|False": [
+   0,
+   13
+  ],
+  "modality|table|question:m1|21-40|late|False": [
+   0,
+   4
+  ],
+  "coll|table|row|question:m1|21-40|late|False": [
+   0,
+   4
+  ],
+  "modality|table|title|1|late|True": [
+   0,
+   5
+  ],
+  "coll|table|row|title|1|late|True": [
+   0,
+   5
+  ],
+  "modality|table|title|2-3|late|True": [
+   0,
+   10
+  ],
+  "coll|table|row|title|2-3|late|True": [
+   0,
+   10
+  ],
+  "modality|table|title|4-5|late|True": [
+   0,
+   10
+  ],
+  "coll|table|row|title|4-5|late|True": [
+   0,
+   10
+  ],
+  "bucket|title|6-10|True": [
+   0,
+   36
+  ],
+  "round|title|6-10|late|True": [
+   0,
+   36
+  ],
+  "modality|table|title|6-10|late|True": [
+   0,
+   25
+  ],
+  "coll|table|row|title|6-10|late|True": [
+   0,
+   25
+  ],
+  "modality|image|bridge|1|late|False": [
+   0,
+   1
+  ],
+  "coll|image|caption|bridge|1|late|False": [
+   0,
+   1
+  ],
+  "coll|image|caption|bridge|2-3|late|False": [
+   0,
+   4
+  ],
+  "round|title|1|late|False": [
+   0,
+   30
+  ],
+  "modality|image|title|1|late|False": [
+   0,
+   30
+  ],
+  "coll|image|image|title|1|late|False": [
+   0,
+   15
+  ],
+  "round|title|2-3|late|False": [
+   0,
+   10
+  ],
+  "modality|image|title|2-3|late|False": [
+   0,
+   10
+  ],
+  "coll|image|image|title|2-3|late|False": [
+   0,
+   5
+  ],
+  "coll|image|caption|title|1|late|False": [
+   0,
+   15
+  ],
+  "coll|image|caption|title|2-3|late|False": [
+   0,
+   5
+  ],
+  "round|sibling|6-10|late|True": [
+   0,
+   24
+  ],
+  "modality|table|sibling|6-10|late|True": [
+   0,
+   24
+  ],
+  "coll|table|row|sibling|6-10|late|True": [
+   0,
+   24
+  ],
+  "modality|text|question:m0|21-40|first|True": [
+   0,
+   9
+  ],
+  "coll|text|text|question:m0|21-40|first|True": [
+   0,
+   9
+  ],
+  "round|title|1|filter|True": [
+   18,
+   22
+  ],
+  "modality|image|title|1|filter|True": [
+   18,
+   22
+  ],
+  "coll|image|image|title|1|filter|True": [
+   9,
+   11
+  ],
+  "coll|image|caption|title|1|filter|True": [
+   9,
+   11
+  ],
+  "round|sibling|2-3|late|True": [
+   1,
+   11
+  ],
+  "modality|table|sibling|2-3|late|True": [
+   1,
+   11
+  ],
+  "coll|table|row|sibling|2-3|late|True": [
+   1,
+   11
+  ],
+  "round|title|1|filter|False": [
+   4,
+   4
+  ],
+  "modality|image|title|1|filter|False": [
+   4,
+   4
+  ],
+  "coll|image|image|title|1|filter|False": [
+   2,
+   2
+  ],
+  "round|title|2-3|filter|False": [
+   4,
+   4
+  ],
+  "modality|image|title|2-3|filter|False": [
+   4,
+   4
+  ],
+  "coll|image|image|title|2-3|filter|False": [
+   2,
+   2
+  ],
+  "coll|image|caption|title|2-3|filter|False": [
+   2,
+   2
+  ],
+  "coll|image|caption|title|1|filter|False": [
+   2,
+   2
+  ],
+  "modality|text|question:m1|21-40|late|False": [
+   0,
+   9
+  ],
+  "coll|text|text|question:m1|21-40|late|False": [
+   0,
+   9
+  ],
+  "round|question:m1|41-80|late|False": [
+   0,
+   30
+  ],
+  "modality|text|question:m1|41-80|late|False": [
+   0,
+   20
+  ],
+  "coll|text|text|question:m1|41-80|late|False": [
+   0,
+   20
+  ],
+  "modality|text|question:m1|2-3|late|False": [
+   0,
+   1
+  ],
+  "coll|text|text|question:m1|2-3|late|False": [
+   0,
+   1
+  ],
+  "round|question:m1|4-5|late|False": [
+   0,
+   3
+  ],
+  "modality|text|question:m1|4-5|late|False": [
+   0,
+   3
+  ],
+  "coll|text|text|question:m1|4-5|late|False": [
+   0,
+   3
+  ],
+  "modality|text|question:m1|6-10|late|False": [
+   0,
+   2
+  ],
+  "coll|text|text|question:m1|6-10|late|False": [
+   0,
+   2
+  ],
+  "round|question:m1|11-20|late|False": [
+   1,
+   6
+  ],
+  "modality|text|question:m1|11-20|late|False": [
+   0,
+   2
+  ],
+  "coll|text|text|question:m1|11-20|late|False": [
+   0,
+   2
+  ],
+  "modality|table|question:m1|11-20|late|False": [
+   1,
+   4
+  ],
+  "coll|table|row|question:m1|11-20|late|False": [
+   1,
+   4
+  ],
+  "modality|table|question:m1|41-80|late|False": [
+   0,
+   10
+  ],
+  "coll|table|row|question:m1|41-80|late|False": [
+   0,
+   10
+  ],
+  "bucket|title|11-20|True": [
+   1,
+   36
+  ],
+  "round|title|11-20|late|True": [
+   1,
+   36
+  ],
+  "modality|table|title|11-20|late|True": [
+   0,
+   30
+  ],
+  "coll|table|row|title|11-20|late|True": [
+   0,
+   30
+  ],
+  "bucket|title|21-40|True": [
+   0,
+   27
+  ],
+  "round|title|21-40|late|True": [
+   0,
+   27
+  ],
+  "modality|table|title|21-40|late|True": [
+   0,
+   27
+  ],
+  "coll|table|row|title|21-40|late|True": [
+   0,
+   27
+  ],
+  "round|sibling|1|late|True": [
+   0,
+   4
+  ],
+  "modality|table|sibling|1|late|True": [
+   0,
+   4
+  ],
+  "coll|table|row|sibling|1|late|True": [
+   0,
+   4
+  ],
+  "round|sibling|21-40|late|True": [
+   0,
+   2
+  ],
+  "modality|table|sibling|21-40|late|True": [
+   0,
+   2
+  ],
+  "coll|table|row|sibling|21-40|late|True": [
+   0,
+   2
+  ],
+  "round|title|2-3|filter|True": [
+   6,
+   6
+  ],
+  "modality|image|title|2-3|filter|True": [
+   6,
+   6
+  ],
+  "coll|image|image|title|2-3|filter|True": [
+   3,
+   3
+  ],
+  "coll|image|caption|title|2-3|filter|True": [
+   3,
+   3
+  ],
+  "modality|image|bound|11-20|first|True": [
+   0,
+   2
+  ],
+  "coll|image|image|bound|11-20|first|True": [
+   0,
+   2
+  ],
+  "modality|image|question|21-40|first|True": [
+   0,
+   2
+  ],
+  "coll|image|image|question|21-40|first|True": [
+   0,
+   2
+  ],
+  "modality|text|title|6-10|late|True": [
+   0,
+   11
+  ],
+  "coll|text|text|title|6-10|late|True": [
+   0,
+   11
+  ],
+  "modality|text|title|11-20|late|True": [
+   1,
+   6
+  ],
+  "coll|text|text|title|11-20|late|True": [
+   1,
+   6
+  ],
+  "bucket|title|4-5|False": [
+   0,
+   6
+  ],
+  "round|title|4-5|first|False": [
+   0,
+   4
+  ],
+  "modality|image|title|4-5|first|False": [
+   0,
+   4
+  ],
+  "coll|image|image|title|4-5|first|False": [
+   0,
+   2
+  ],
+  "bucket|title|6-10|False": [
+   0,
+   4
+  ],
+  "round|title|6-10|first|False": [
+   0,
+   4
+  ],
+  "modality|image|title|6-10|first|False": [
+   0,
+   4
+  ],
+  "coll|image|image|title|6-10|first|False": [
+   0,
+   2
+  ],
+  "coll|image|caption|title|4-5|first|False": [
+   0,
+   2
+  ],
+  "coll|image|caption|title|6-10|first|False": [
+   0,
+   2
+  ],
+  "modality|text|bound|1|late|False": [
+   0,
+   2
+  ],
+  "coll|text|text|bound|1|late|False": [
+   0,
+   2
+  ],
+  "modality|text|bound|2-3|late|False": [
+   0,
+   4
+  ],
+  "coll|text|text|bound|2-3|late|False": [
+   0,
+   4
+  ],
+  "modality|text|bound|4-5|late|False": [
+   0,
+   4
+  ],
+  "coll|text|text|bound|4-5|late|False": [
+   0,
+   4
+  ],
+  "modality|text|bound|6-10|late|False": [
+   0,
+   10
+  ],
+  "coll|text|text|bound|6-10|late|False": [
+   0,
+   10
+  ],
+  "modality|text|bound|11-20|late|False": [
+   0,
+   20
+  ],
+  "coll|text|text|bound|11-20|late|False": [
+   0,
+   20
+  ],
+  "modality|text|bound|21-40|late|False": [
+   0,
+   40
+  ],
+  "coll|text|text|bound|21-40|late|False": [
+   0,
+   40
+  ],
+  "modality|text|bound|41-80|late|False": [
+   0,
+   70
+  ],
+  "coll|text|text|bound|41-80|late|False": [
+   0,
+   70
+  ],
+  "round|bound|1|late|True": [
+   1,
+   1
+  ],
+  "modality|table|bound|1|late|True": [
+   1,
+   1
+  ],
+  "coll|table|row|bound|1|late|True": [
+   1,
+   1
+  ],
+  "round|bound|2-3|late|True": [
+   0,
+   2
+  ],
+  "modality|table|bound|2-3|late|True": [
+   0,
+   2
+  ],
+  "coll|table|row|bound|2-3|late|True": [
+   0,
+   2
+  ],
+  "round|bound|4-5|late|True": [
+   0,
+   2
+  ],
+  "modality|table|bound|4-5|late|True": [
+   0,
+   2
+  ],
+  "coll|table|row|bound|4-5|late|True": [
+   0,
+   2
+  ],
+  "modality|table|bound|6-10|late|False": [
+   0,
+   1
+  ],
+  "coll|table|row|bound|6-10|late|False": [
+   0,
+   1
+  ],
+  "round|bound|6-10|late|True": [
+   0,
+   4
+  ],
+  "modality|table|bound|6-10|late|True": [
+   0,
+   4
+  ],
+  "coll|table|row|bound|6-10|late|True": [
+   0,
+   4
+  ],
+  "round|bound|11-20|late|True": [
+   0,
+   7
+  ],
+  "modality|table|bound|11-20|late|True": [
+   0,
+   7
+  ],
+  "coll|table|row|bound|11-20|late|True": [
+   0,
+   7
+  ],
+  "modality|table|bound|11-20|late|False": [
+   0,
+   3
+  ],
+  "coll|table|row|bound|11-20|late|False": [
+   0,
+   3
+  ],
+  "round|bound|21-40|late|True": [
+   0,
+   4
+  ],
+  "modality|table|bound|21-40|late|True": [
+   0,
+   4
+  ],
+  "coll|table|row|bound|21-40|late|True": [
+   0,
+   4
+  ],
+  "modality|table|bound|21-40|late|False": [
+   0,
+   16
+  ],
+  "coll|table|row|bound|21-40|late|False": [
+   0,
+   16
+  ],
+  "modality|table|bound|41-80|late|False": [
+   0,
+   40
+  ],
+  "coll|table|row|bound|41-80|late|False": [
+   0,
+   40
+  ],
+  "round|title|4-5|late|False": [
+   0,
+   2
+  ],
+  "modality|image|title|4-5|late|False": [
+   0,
+   2
+  ],
+  "coll|image|image|title|4-5|late|False": [
+   0,
+   1
+  ],
+  "coll|image|caption|title|4-5|late|False": [
+   0,
+   1
+  ]
+ },
+ "signals": {
+  "bound|1": [
+   214,
+   380
+  ],
+  "bound|2-3": [
+   340,
+   738
+  ],
+  "bound|4-5": [
+   295,
+   723
+  ],
+  "bound|6-10": [
+   608,
+   1733
+  ],
+  "bound|11-20": [
+   968,
+   3326
+  ],
+  "bound|21-40": [
+   1307,
+   6171
+  ],
+  "bound|41-80": [
+   2076,
+   11073
+  ],
+  "question|1": [
+   128,
+   293
+  ],
+  "question|2-3": [
+   179,
+   586
+  ],
+  "question|4-5": [
+   155,
+   586
+  ],
+  "question|6-10": [
+   324,
+   1465
+  ],
+  "question|11-20": [
+   441,
+   2930
+  ],
+  "question|21-40": [
+   481,
+   5860
+  ],
+  "question|41-80": [
+   722,
+   11720
+  ],
+  "title|1": [
+   84,
+   196
+  ],
+  "title|2-3": [
+   51,
+   99
+  ],
+  "sibling|1": [
+   55,
+   204
+  ],
+  "sibling|2-3": [
+   112,
+   408
+  ],
+  "sibling|4-5": [
+   115,
+   407
+  ],
+  "sibling|6-10": [
+   272,
+   995
+  ],
+  "sibling|11-20": [
+   239,
+   965
+  ],
+  "bridge|1": [
+   64,
+   79
+  ],
+  "bridge|2-3": [
+   93,
+   154
+  ],
+  "bridge|4-5": [
+   75,
+   143
+  ],
+  "bridge|6-10": [
+   155,
+   321
+  ],
+  "bridge|11-20": [
+   221,
+   579
+  ],
+  "bridge|21-40": [
+   356,
+   1092
+  ],
+  "bridge|41-80": [
+   556,
+   2127
+  ],
+  "sibling|21-40": [
+   27,
+   128
+  ],
+  "title|4-5": [
+   20,
+   26
+  ],
+  "title|6-10": [
+   36,
+   40
+  ],
+  "title|11-20": [
+   36,
+   36
+  ],
+  "title|21-40": [
+   27,
+   27
+  ]
+ },
+ "cover": {
+  "all": [
+   128,
+   142
+  ],
+  "filter": [
+   11,
+   18
+  ],
+  "filter|image": [
+   11,
+   18
+  ],
+  "first": [
+   89,
+   94
+  ],
+  "first|text": [
+   83,
+   84
+  ],
+  "late": [
+   28,
+   30
+  ],
+  "late|text": [
+   23,
+   24
+  ],
+  "late|image": [
+   5,
+   6
+  ],
+  "first|image": [
+   6,
+   10
+  ],
+  "@1": [
+   96,
+   142
+  ],
+  "@1|filter": [
+   11,
+   18
+  ],
+  "@1|filter|image": [
+   11,
+   18
+  ],
+  "@1|first": [
+   64,
+   94
+  ],
+  "@1|first|text": [
+   58,
+   84
+  ],
+  "@1|late": [
+   21,
+   30
+  ],
+  "@1|late|text": [
+   17,
+   24
+  ],
+  "@1|late|image": [
+   4,
+   6
+  ],
+  "@1|first|image": [
+   6,
+   10
+  ],
+  "@2": [
+   107,
+   142
+  ],
+  "@2|filter": [
+   11,
+   18
+  ],
+  "@2|filter|image": [
+   11,
+   18
+  ],
+  "@2|first": [
+   73,
+   94
+  ],
+  "@2|first|text": [
+   67,
+   84
+  ],
+  "@2|late": [
+   23,
+   30
+  ],
+  "@2|late|text": [
+   19,
+   24
+  ],
+  "@2|late|image": [
+   4,
+   6
+  ],
+  "@2|first|image": [
+   6,
+   10
+  ],
+  "@3": [
+   112,
+   142
+  ],
+  "@3|filter": [
+   11,
+   18
+  ],
+  "@3|filter|image": [
+   11,
+   18
+  ],
+  "@3|first": [
+   78,
+   94
+  ],
+  "@3|first|text": [
+   72,
+   84
+  ],
+  "@3|late": [
+   23,
+   30
+  ],
+  "@3|late|text": [
+   19,
+   24
+  ],
+  "@3|late|image": [
+   4,
+   6
+  ],
+  "@3|first|image": [
+   6,
+   10
+  ],
+  "@4": [
+   115,
+   142
+  ],
+  "@4|filter": [
+   11,
+   18
+  ],
+  "@4|filter|image": [
+   11,
+   18
+  ],
+  "@4|first": [
+   81,
+   94
+  ],
+  "@4|first|text": [
+   75,
+   84
+  ],
+  "@4|late": [
+   23,
+   30
+  ],
+  "@4|late|text": [
+   19,
+   24
+  ],
+  "@4|late|image": [
+   4,
+   6
+  ],
+  "@4|first|image": [
+   6,
+   10
+  ],
+  "@5": [
+   117,
+   142
+  ],
+  "@5|filter": [
+   11,
+   18
+  ],
+  "@5|filter|image": [
+   11,
+   18
+  ],
+  "@5|first": [
+   83,
+   94
+  ],
+  "@5|first|text": [
+   77,
+   84
+  ],
+  "@5|late": [
+   23,
+   30
+  ],
+  "@5|late|text": [
+   19,
+   24
+  ],
+  "@5|late|image": [
+   4,
+   6
+  ],
+  "@5|first|image": [
+   6,
+   10
+  ],
+  "@6": [
+   120,
+   142
+  ],
+  "@6|filter": [
+   11,
+   18
+  ],
+  "@6|filter|image": [
+   11,
+   18
+  ],
+  "@6|first": [
+   85,
+   94
+  ],
+  "@6|first|text": [
+   79,
+   84
+  ],
+  "@6|late": [
+   24,
+   30
+  ],
+  "@6|late|text": [
+   20,
+   24
+  ],
+  "@6|late|image": [
+   4,
+   6
+  ],
+  "@6|first|image": [
+   6,
+   10
+  ],
+  "@7": [
+   120,
+   142
+  ],
+  "@7|filter": [
+   11,
+   18
+  ],
+  "@7|filter|image": [
+   11,
+   18
+  ],
+  "@7|first": [
+   85,
+   94
+  ],
+  "@7|first|text": [
+   79,
+   84
+  ],
+  "@7|late": [
+   24,
+   30
+  ],
+  "@7|late|text": [
+   20,
+   24
+  ],
+  "@7|late|image": [
+   4,
+   6
+  ],
+  "@7|first|image": [
+   6,
+   10
+  ],
+  "@8": [
+   121,
+   142
+  ],
+  "@8|filter": [
+   11,
+   18
+  ],
+  "@8|filter|image": [
+   11,
+   18
+  ],
+  "@8|first": [
+   85,
+   94
+  ],
+  "@8|first|text": [
+   79,
+   84
+  ],
+  "@8|late": [
+   25,
+   30
+  ],
+  "@8|late|text": [
+   20,
+   24
+  ],
+  "@8|late|image": [
+   5,
+   6
+  ],
+  "@8|first|image": [
+   6,
+   10
+  ],
+  "@9": [
+   123,
+   142
+  ],
+  "@9|filter": [
+   11,
+   18
+  ],
+  "@9|filter|image": [
+   11,
+   18
+  ],
+  "@9|first": [
+   86,
+   94
+  ],
+  "@9|first|text": [
+   80,
+   84
+  ],
+  "@9|late": [
+   26,
+   30
+  ],
+  "@9|late|text": [
+   21,
+   24
+  ],
+  "@9|late|image": [
+   5,
+   6
+  ],
+  "@9|first|image": [
+   6,
+   10
+  ],
+  "@10": [
+   124,
+   142
+  ],
+  "@10|filter": [
+   11,
+   18
+  ],
+  "@10|filter|image": [
+   11,
+   18
+  ],
+  "@10|first": [
+   87,
+   94
+  ],
+  "@10|first|text": [
+   81,
+   84
+  ],
+  "@10|late": [
+   26,
+   30
+  ],
+  "@10|late|text": [
+   21,
+   24
+  ],
+  "@10|late|image": [
+   5,
+   6
+  ],
+  "@10|first|image": [
+   6,
+   10
+  ],
+  "@11": [
+   125,
+   142
+  ],
+  "@11|filter": [
+   11,
+   18
+  ],
+  "@11|filter|image": [
+   11,
+   18
+  ],
+  "@11|first": [
+   88,
+   94
+  ],
+  "@11|first|text": [
+   82,
+   84
+  ],
+  "@11|late": [
+   26,
+   30
+  ],
+  "@11|late|text": [
+   21,
+   24
+  ],
+  "@11|late|image": [
+   5,
+   6
+  ],
+  "@11|first|image": [
+   6,
+   10
+  ],
+  "@12": [
+   125,
+   142
+  ],
+  "@12|filter": [
+   11,
+   18
+  ],
+  "@12|filter|image": [
+   11,
+   18
+  ],
+  "@12|first": [
+   88,
+   94
+  ],
+  "@12|first|text": [
+   82,
+   84
+  ],
+  "@12|late": [
+   26,
+   30
+  ],
+  "@12|late|text": [
+   21,
+   24
+  ],
+  "@12|late|image": [
+   5,
+   6
+  ],
+  "@12|first|image": [
+   6,
+   10
+  ],
+  "@13": [
+   125,
+   142
+  ],
+  "@13|filter": [
+   11,
+   18
+  ],
+  "@13|filter|image": [
+   11,
+   18
+  ],
+  "@13|first": [
+   88,
+   94
+  ],
+  "@13|first|text": [
+   82,
+   84
+  ],
+  "@13|late": [
+   26,
+   30
+  ],
+  "@13|late|text": [
+   21,
+   24
+  ],
+  "@13|late|image": [
+   5,
+   6
+  ],
+  "@13|first|image": [
+   6,
+   10
+  ],
+  "@14": [
+   125,
+   142
+  ],
+  "@14|filter": [
+   11,
+   18
+  ],
+  "@14|filter|image": [
+   11,
+   18
+  ],
+  "@14|first": [
+   88,
+   94
+  ],
+  "@14|first|text": [
+   82,
+   84
+  ],
+  "@14|late": [
+   26,
+   30
+  ],
+  "@14|late|text": [
+   21,
+   24
+  ],
+  "@14|late|image": [
+   5,
+   6
+  ],
+  "@14|first|image": [
+   6,
+   10
+  ],
+  "@15": [
+   126,
+   142
+  ],
+  "@15|filter": [
+   11,
+   18
+  ],
+  "@15|filter|image": [
+   11,
+   18
+  ],
+  "@15|first": [
+   89,
+   94
+  ],
+  "@15|first|text": [
+   83,
+   84
+  ],
+  "@15|late": [
+   26,
+   30
+  ],
+  "@15|late|text": [
+   21,
+   24
+  ],
+  "@15|late|image": [
+   5,
+   6
+  ],
+  "@15|first|image": [
+   6,
+   10
+  ],
+  "@16": [
+   126,
+   142
+  ],
+  "@16|filter": [
+   11,
+   18
+  ],
+  "@16|filter|image": [
+   11,
+   18
+  ],
+  "@16|first": [
+   89,
+   94
+  ],
+  "@16|first|text": [
+   83,
+   84
+  ],
+  "@16|late": [
+   26,
+   30
+  ],
+  "@16|late|text": [
+   21,
+   24
+  ],
+  "@16|late|image": [
+   5,
+   6
+  ],
+  "@16|first|image": [
+   6,
+   10
+  ],
+  "@17": [
+   126,
+   142
+  ],
+  "@17|filter": [
+   11,
+   18
+  ],
+  "@17|filter|image": [
+   11,
+   18
+  ],
+  "@17|first": [
+   89,
+   94
+  ],
+  "@17|first|text": [
+   83,
+   84
+  ],
+  "@17|late": [
+   26,
+   30
+  ],
+  "@17|late|text": [
+   21,
+   24
+  ],
+  "@17|late|image": [
+   5,
+   6
+  ],
+  "@17|first|image": [
+   6,
+   10
+  ],
+  "@18": [
+   126,
+   142
+  ],
+  "@18|filter": [
+   11,
+   18
+  ],
+  "@18|filter|image": [
+   11,
+   18
+  ],
+  "@18|first": [
+   89,
+   94
+  ],
+  "@18|first|text": [
+   83,
+   84
+  ],
+  "@18|late": [
+   26,
+   30
+  ],
+  "@18|late|text": [
+   21,
+   24
+  ],
+  "@18|late|image": [
+   5,
+   6
+  ],
+  "@18|first|image": [
+   6,
+   10
+  ],
+  "@19": [
+   126,
+   142
+  ],
+  "@19|filter": [
+   11,
+   18
+  ],
+  "@19|filter|image": [
+   11,
+   18
+  ],
+  "@19|first": [
+   89,
+   94
+  ],
+  "@19|first|text": [
+   83,
+   84
+  ],
+  "@19|late": [
+   26,
+   30
+  ],
+  "@19|late|text": [
+   21,
+   24
+  ],
+  "@19|late|image": [
+   5,
+   6
+  ],
+  "@19|first|image": [
+   6,
+   10
+  ],
+  "@20": [
+   126,
+   142
+  ],
+  "@20|filter": [
+   11,
+   18
+  ],
+  "@20|filter|image": [
+   11,
+   18
+  ],
+  "@20|first": [
+   89,
+   94
+  ],
+  "@20|first|text": [
+   83,
+   84
+  ],
+  "@20|late": [
+   26,
+   30
+  ],
+  "@20|late|text": [
+   21,
+   24
+  ],
+  "@20|late|image": [
+   5,
+   6
+  ],
+  "@20|first|image": [
+   6,
+   10
+  ],
+  "@21": [
+   126,
+   142
+  ],
+  "@21|filter": [
+   11,
+   18
+  ],
+  "@21|filter|image": [
+   11,
+   18
+  ],
+  "@21|first": [
+   89,
+   94
+  ],
+  "@21|first|text": [
+   83,
+   84
+  ],
+  "@21|late": [
+   26,
+   30
+  ],
+  "@21|late|text": [
+   21,
+   24
+  ],
+  "@21|late|image": [
+   5,
+   6
+  ],
+  "@21|first|image": [
+   6,
+   10
+  ],
+  "@22": [
+   126,
+   142
+  ],
+  "@22|filter": [
+   11,
+   18
+  ],
+  "@22|filter|image": [
+   11,
+   18
+  ],
+  "@22|first": [
+   89,
+   94
+  ],
+  "@22|first|text": [
+   83,
+   84
+  ],
+  "@22|late": [
+   26,
+   30
+  ],
+  "@22|late|text": [
+   21,
+   24
+  ],
+  "@22|late|image": [
+   5,
+   6
+  ],
+  "@22|first|image": [
+   6,
+   10
+  ],
+  "@23": [
+   126,
+   142
+  ],
+  "@23|filter": [
+   11,
+   18
+  ],
+  "@23|filter|image": [
+   11,
+   18
+  ],
+  "@23|first": [
+   89,
+   94
+  ],
+  "@23|first|text": [
+   83,
+   84
+  ],
+  "@23|late": [
+   26,
+   30
+  ],
+  "@23|late|text": [
+   21,
+   24
+  ],
+  "@23|late|image": [
+   5,
+   6
+  ],
+  "@23|first|image": [
+   6,
+   10
+  ],
+  "@24": [
+   126,
+   142
+  ],
+  "@24|filter": [
+   11,
+   18
+  ],
+  "@24|filter|image": [
+   11,
+   18
+  ],
+  "@24|first": [
+   89,
+   94
+  ],
+  "@24|first|text": [
+   83,
+   84
+  ],
+  "@24|late": [
+   26,
+   30
+  ],
+  "@24|late|text": [
+   21,
+   24
+  ],
+  "@24|late|image": [
+   5,
+   6
+  ],
+  "@24|first|image": [
+   6,
+   10
+  ],
+  "@25": [
+   126,
+   142
+  ],
+  "@25|filter": [
+   11,
+   18
+  ],
+  "@25|filter|image": [
+   11,
+   18
+  ],
+  "@25|first": [
+   89,
+   94
+  ],
+  "@25|first|text": [
+   83,
+   84
+  ],
+  "@25|late": [
+   26,
+   30
+  ],
+  "@25|late|text": [
+   21,
+   24
+  ],
+  "@25|late|image": [
+   5,
+   6
+  ],
+  "@25|first|image": [
+   6,
+   10
+  ],
+  "@26": [
+   126,
+   142
+  ],
+  "@26|filter": [
+   11,
+   18
+  ],
+  "@26|filter|image": [
+   11,
+   18
+  ],
+  "@26|first": [
+   89,
+   94
+  ],
+  "@26|first|text": [
+   83,
+   84
+  ],
+  "@26|late": [
+   26,
+   30
+  ],
+  "@26|late|text": [
+   21,
+   24
+  ],
+  "@26|late|image": [
+   5,
+   6
+  ],
+  "@26|first|image": [
+   6,
+   10
+  ],
+  "@27": [
+   126,
+   142
+  ],
+  "@27|filter": [
+   11,
+   18
+  ],
+  "@27|filter|image": [
+   11,
+   18
+  ],
+  "@27|first": [
+   89,
+   94
+  ],
+  "@27|first|text": [
+   83,
+   84
+  ],
+  "@27|late": [
+   26,
+   30
+  ],
+  "@27|late|text": [
+   21,
+   24
+  ],
+  "@27|late|image": [
+   5,
+   6
+  ],
+  "@27|first|image": [
+   6,
+   10
+  ],
+  "@28": [
+   126,
+   142
+  ],
+  "@28|filter": [
+   11,
+   18
+  ],
+  "@28|filter|image": [
+   11,
+   18
+  ],
+  "@28|first": [
+   89,
+   94
+  ],
+  "@28|first|text": [
+   83,
+   84
+  ],
+  "@28|late": [
+   26,
+   30
+  ],
+  "@28|late|text": [
+   21,
+   24
+  ],
+  "@28|late|image": [
+   5,
+   6
+  ],
+  "@28|first|image": [
+   6,
+   10
+  ],
+  "@29": [
+   126,
+   142
+  ],
+  "@29|filter": [
+   11,
+   18
+  ],
+  "@29|filter|image": [
+   11,
+   18
+  ],
+  "@29|first": [
+   89,
+   94
+  ],
+  "@29|first|text": [
+   83,
+   84
+  ],
+  "@29|late": [
+   26,
+   30
+  ],
+  "@29|late|text": [
+   21,
+   24
+  ],
+  "@29|late|image": [
+   5,
+   6
+  ],
+  "@29|first|image": [
+   6,
+   10
+  ],
+  "@30": [
+   126,
+   142
+  ],
+  "@30|filter": [
+   11,
+   18
+  ],
+  "@30|filter|image": [
+   11,
+   18
+  ],
+  "@30|first": [
+   89,
+   94
+  ],
+  "@30|first|text": [
+   83,
+   84
+  ],
+  "@30|late": [
+   26,
+   30
+  ],
+  "@30|late|text": [
+   21,
+   24
+  ],
+  "@30|late|image": [
+   5,
+   6
+  ],
+  "@30|first|image": [
+   6,
+   10
+  ],
+  "@31": [
+   126,
+   142
+  ],
+  "@31|filter": [
+   11,
+   18
+  ],
+  "@31|filter|image": [
+   11,
+   18
+  ],
+  "@31|first": [
+   89,
+   94
+  ],
+  "@31|first|text": [
+   83,
+   84
+  ],
+  "@31|late": [
+   26,
+   30
+  ],
+  "@31|late|text": [
+   21,
+   24
+  ],
+  "@31|late|image": [
+   5,
+   6
+  ],
+  "@31|first|image": [
+   6,
+   10
+  ],
+  "@32": [
+   126,
+   142
+  ],
+  "@32|filter": [
+   11,
+   18
+  ],
+  "@32|filter|image": [
+   11,
+   18
+  ],
+  "@32|first": [
+   89,
+   94
+  ],
+  "@32|first|text": [
+   83,
+   84
+  ],
+  "@32|late": [
+   26,
+   30
+  ],
+  "@32|late|text": [
+   21,
+   24
+  ],
+  "@32|late|image": [
+   5,
+   6
+  ],
+  "@32|first|image": [
+   6,
+   10
+  ],
+  "@33": [
+   126,
+   142
+  ],
+  "@33|filter": [
+   11,
+   18
+  ],
+  "@33|filter|image": [
+   11,
+   18
+  ],
+  "@33|first": [
+   89,
+   94
+  ],
+  "@33|first|text": [
+   83,
+   84
+  ],
+  "@33|late": [
+   26,
+   30
+  ],
+  "@33|late|text": [
+   21,
+   24
+  ],
+  "@33|late|image": [
+   5,
+   6
+  ],
+  "@33|first|image": [
+   6,
+   10
+  ],
+  "@34": [
+   126,
+   142
+  ],
+  "@34|filter": [
+   11,
+   18
+  ],
+  "@34|filter|image": [
+   11,
+   18
+  ],
+  "@34|first": [
+   89,
+   94
+  ],
+  "@34|first|text": [
+   83,
+   84
+  ],
+  "@34|late": [
+   26,
+   30
+  ],
+  "@34|late|text": [
+   21,
+   24
+  ],
+  "@34|late|image": [
+   5,
+   6
+  ],
+  "@34|first|image": [
+   6,
+   10
+  ],
+  "@35": [
+   126,
+   142
+  ],
+  "@35|filter": [
+   11,
+   18
+  ],
+  "@35|filter|image": [
+   11,
+   18
+  ],
+  "@35|first": [
+   89,
+   94
+  ],
+  "@35|first|text": [
+   83,
+   84
+  ],
+  "@35|late": [
+   26,
+   30
+  ],
+  "@35|late|text": [
+   21,
+   24
+  ],
+  "@35|late|image": [
+   5,
+   6
+  ],
+  "@35|first|image": [
+   6,
+   10
+  ],
+  "@36": [
+   126,
+   142
+  ],
+  "@36|filter": [
+   11,
+   18
+  ],
+  "@36|filter|image": [
+   11,
+   18
+  ],
+  "@36|first": [
+   89,
+   94
+  ],
+  "@36|first|text": [
+   83,
+   84
+  ],
+  "@36|late": [
+   26,
+   30
+  ],
+  "@36|late|text": [
+   21,
+   24
+  ],
+  "@36|late|image": [
+   5,
+   6
+  ],
+  "@36|first|image": [
+   6,
+   10
+  ],
+  "@37": [
+   126,
+   142
+  ],
+  "@37|filter": [
+   11,
+   18
+  ],
+  "@37|filter|image": [
+   11,
+   18
+  ],
+  "@37|first": [
+   89,
+   94
+  ],
+  "@37|first|text": [
+   83,
+   84
+  ],
+  "@37|late": [
+   26,
+   30
+  ],
+  "@37|late|text": [
+   21,
+   24
+  ],
+  "@37|late|image": [
+   5,
+   6
+  ],
+  "@37|first|image": [
+   6,
+   10
+  ],
+  "@38": [
+   126,
+   142
+  ],
+  "@38|filter": [
+   11,
+   18
+  ],
+  "@38|filter|image": [
+   11,
+   18
+  ],
+  "@38|first": [
+   89,
+   94
+  ],
+  "@38|first|text": [
+   83,
+   84
+  ],
+  "@38|late": [
+   26,
+   30
+  ],
+  "@38|late|text": [
+   21,
+   24
+  ],
+  "@38|late|image": [
+   5,
+   6
+  ],
+  "@38|first|image": [
+   6,
+   10
+  ],
+  "@39": [
+   126,
+   142
+  ],
+  "@39|filter": [
+   11,
+   18
+  ],
+  "@39|filter|image": [
+   11,
+   18
+  ],
+  "@39|first": [
+   89,
+   94
+  ],
+  "@39|first|text": [
+   83,
+   84
+  ],
+  "@39|late": [
+   26,
+   30
+  ],
+  "@39|late|text": [
+   21,
+   24
+  ],
+  "@39|late|image": [
+   5,
+   6
+  ],
+  "@39|first|image": [
+   6,
+   10
+  ],
+  "@40": [
+   127,
+   142
+  ],
+  "@40|filter": [
+   11,
+   18
+  ],
+  "@40|filter|image": [
+   11,
+   18
+  ],
+  "@40|first": [
+   89,
+   94
+  ],
+  "@40|first|text": [
+   83,
+   84
+  ],
+  "@40|late": [
+   27,
+   30
+  ],
+  "@40|late|text": [
+   22,
+   24
+  ],
+  "@40|late|image": [
+   5,
+   6
+  ],
+  "@40|first|image": [
+   6,
+   10
+  ],
+  "@41": [
+   127,
+   142
+  ],
+  "@41|filter": [
+   11,
+   18
+  ],
+  "@41|filter|image": [
+   11,
+   18
+  ],
+  "@41|first": [
+   89,
+   94
+  ],
+  "@41|first|text": [
+   83,
+   84
+  ],
+  "@41|late": [
+   27,
+   30
+  ],
+  "@41|late|text": [
+   22,
+   24
+  ],
+  "@41|late|image": [
+   5,
+   6
+  ],
+  "@41|first|image": [
+   6,
+   10
+  ],
+  "@42": [
+   127,
+   142
+  ],
+  "@42|filter": [
+   11,
+   18
+  ],
+  "@42|filter|image": [
+   11,
+   18
+  ],
+  "@42|first": [
+   89,
+   94
+  ],
+  "@42|first|text": [
+   83,
+   84
+  ],
+  "@42|late": [
+   27,
+   30
+  ],
+  "@42|late|text": [
+   22,
+   24
+  ],
+  "@42|late|image": [
+   5,
+   6
+  ],
+  "@42|first|image": [
+   6,
+   10
+  ],
+  "@43": [
+   127,
+   142
+  ],
+  "@43|filter": [
+   11,
+   18
+  ],
+  "@43|filter|image": [
+   11,
+   18
+  ],
+  "@43|first": [
+   89,
+   94
+  ],
+  "@43|first|text": [
+   83,
+   84
+  ],
+  "@43|late": [
+   27,
+   30
+  ],
+  "@43|late|text": [
+   22,
+   24
+  ],
+  "@43|late|image": [
+   5,
+   6
+  ],
+  "@43|first|image": [
+   6,
+   10
+  ],
+  "@44": [
+   127,
+   142
+  ],
+  "@44|filter": [
+   11,
+   18
+  ],
+  "@44|filter|image": [
+   11,
+   18
+  ],
+  "@44|first": [
+   89,
+   94
+  ],
+  "@44|first|text": [
+   83,
+   84
+  ],
+  "@44|late": [
+   27,
+   30
+  ],
+  "@44|late|text": [
+   22,
+   24
+  ],
+  "@44|late|image": [
+   5,
+   6
+  ],
+  "@44|first|image": [
+   6,
+   10
+  ],
+  "@45": [
+   127,
+   142
+  ],
+  "@45|filter": [
+   11,
+   18
+  ],
+  "@45|filter|image": [
+   11,
+   18
+  ],
+  "@45|first": [
+   89,
+   94
+  ],
+  "@45|first|text": [
+   83,
+   84
+  ],
+  "@45|late": [
+   27,
+   30
+  ],
+  "@45|late|text": [
+   22,
+   24
+  ],
+  "@45|late|image": [
+   5,
+   6
+  ],
+  "@45|first|image": [
+   6,
+   10
+  ],
+  "@46": [
+   127,
+   142
+  ],
+  "@46|filter": [
+   11,
+   18
+  ],
+  "@46|filter|image": [
+   11,
+   18
+  ],
+  "@46|first": [
+   89,
+   94
+  ],
+  "@46|first|text": [
+   83,
+   84
+  ],
+  "@46|late": [
+   27,
+   30
+  ],
+  "@46|late|text": [
+   22,
+   24
+  ],
+  "@46|late|image": [
+   5,
+   6
+  ],
+  "@46|first|image": [
+   6,
+   10
+  ],
+  "@47": [
+   127,
+   142
+  ],
+  "@47|filter": [
+   11,
+   18
+  ],
+  "@47|filter|image": [
+   11,
+   18
+  ],
+  "@47|first": [
+   89,
+   94
+  ],
+  "@47|first|text": [
+   83,
+   84
+  ],
+  "@47|late": [
+   27,
+   30
+  ],
+  "@47|late|text": [
+   22,
+   24
+  ],
+  "@47|late|image": [
+   5,
+   6
+  ],
+  "@47|first|image": [
+   6,
+   10
+  ],
+  "@48": [
+   127,
+   142
+  ],
+  "@48|filter": [
+   11,
+   18
+  ],
+  "@48|filter|image": [
+   11,
+   18
+  ],
+  "@48|first": [
+   89,
+   94
+  ],
+  "@48|first|text": [
+   83,
+   84
+  ],
+  "@48|late": [
+   27,
+   30
+  ],
+  "@48|late|text": [
+   22,
+   24
+  ],
+  "@48|late|image": [
+   5,
+   6
+  ],
+  "@48|first|image": [
+   6,
+   10
+  ],
+  "@49": [
+   127,
+   142
+  ],
+  "@49|filter": [
+   11,
+   18
+  ],
+  "@49|filter|image": [
+   11,
+   18
+  ],
+  "@49|first": [
+   89,
+   94
+  ],
+  "@49|first|text": [
+   83,
+   84
+  ],
+  "@49|late": [
+   27,
+   30
+  ],
+  "@49|late|text": [
+   22,
+   24
+  ],
+  "@49|late|image": [
+   5,
+   6
+  ],
+  "@49|first|image": [
+   6,
+   10
+  ],
+  "@50": [
+   127,
+   142
+  ],
+  "@50|filter": [
+   11,
+   18
+  ],
+  "@50|filter|image": [
+   11,
+   18
+  ],
+  "@50|first": [
+   89,
+   94
+  ],
+  "@50|first|text": [
+   83,
+   84
+  ],
+  "@50|late": [
+   27,
+   30
+  ],
+  "@50|late|text": [
+   22,
+   24
+  ],
+  "@50|late|image": [
+   5,
+   6
+  ],
+  "@50|first|image": [
+   6,
+   10
+  ],
+  "@51": [
+   127,
+   142
+  ],
+  "@51|filter": [
+   11,
+   18
+  ],
+  "@51|filter|image": [
+   11,
+   18
+  ],
+  "@51|first": [
+   89,
+   94
+  ],
+  "@51|first|text": [
+   83,
+   84
+  ],
+  "@51|late": [
+   27,
+   30
+  ],
+  "@51|late|text": [
+   22,
+   24
+  ],
+  "@51|late|image": [
+   5,
+   6
+  ],
+  "@51|first|image": [
+   6,
+   10
+  ],
+  "@52": [
+   127,
+   142
+  ],
+  "@52|filter": [
+   11,
+   18
+  ],
+  "@52|filter|image": [
+   11,
+   18
+  ],
+  "@52|first": [
+   89,
+   94
+  ],
+  "@52|first|text": [
+   83,
+   84
+  ],
+  "@52|late": [
+   27,
+   30
+  ],
+  "@52|late|text": [
+   22,
+   24
+  ],
+  "@52|late|image": [
+   5,
+   6
+  ],
+  "@52|first|image": [
+   6,
+   10
+  ],
+  "@53": [
+   127,
+   142
+  ],
+  "@53|filter": [
+   11,
+   18
+  ],
+  "@53|filter|image": [
+   11,
+   18
+  ],
+  "@53|first": [
+   89,
+   94
+  ],
+  "@53|first|text": [
+   83,
+   84
+  ],
+  "@53|late": [
+   27,
+   30
+  ],
+  "@53|late|text": [
+   22,
+   24
+  ],
+  "@53|late|image": [
+   5,
+   6
+  ],
+  "@53|first|image": [
+   6,
+   10
+  ],
+  "@54": [
+   128,
+   142
+  ],
+  "@54|filter": [
+   11,
+   18
+  ],
+  "@54|filter|image": [
+   11,
+   18
+  ],
+  "@54|first": [
+   89,
+   94
+  ],
+  "@54|first|text": [
+   83,
+   84
+  ],
+  "@54|late": [
+   28,
+   30
+  ],
+  "@54|late|text": [
+   23,
+   24
+  ],
+  "@54|late|image": [
+   5,
+   6
+  ],
+  "@54|first|image": [
+   6,
+   10
+  ],
+  "@55": [
+   128,
+   142
+  ],
+  "@55|filter": [
+   11,
+   18
+  ],
+  "@55|filter|image": [
+   11,
+   18
+  ],
+  "@55|first": [
+   89,
+   94
+  ],
+  "@55|first|text": [
+   83,
+   84
+  ],
+  "@55|late": [
+   28,
+   30
+  ],
+  "@55|late|text": [
+   23,
+   24
+  ],
+  "@55|late|image": [
+   5,
+   6
+  ],
+  "@55|first|image": [
+   6,
+   10
+  ],
+  "@56": [
+   128,
+   142
+  ],
+  "@56|filter": [
+   11,
+   18
+  ],
+  "@56|filter|image": [
+   11,
+   18
+  ],
+  "@56|first": [
+   89,
+   94
+  ],
+  "@56|first|text": [
+   83,
+   84
+  ],
+  "@56|late": [
+   28,
+   30
+  ],
+  "@56|late|text": [
+   23,
+   24
+  ],
+  "@56|late|image": [
+   5,
+   6
+  ],
+  "@56|first|image": [
+   6,
+   10
+  ],
+  "@57": [
+   128,
+   142
+  ],
+  "@57|filter": [
+   11,
+   18
+  ],
+  "@57|filter|image": [
+   11,
+   18
+  ],
+  "@57|first": [
+   89,
+   94
+  ],
+  "@57|first|text": [
+   83,
+   84
+  ],
+  "@57|late": [
+   28,
+   30
+  ],
+  "@57|late|text": [
+   23,
+   24
+  ],
+  "@57|late|image": [
+   5,
+   6
+  ],
+  "@57|first|image": [
+   6,
+   10
+  ],
+  "@58": [
+   128,
+   142
+  ],
+  "@58|filter": [
+   11,
+   18
+  ],
+  "@58|filter|image": [
+   11,
+   18
+  ],
+  "@58|first": [
+   89,
+   94
+  ],
+  "@58|first|text": [
+   83,
+   84
+  ],
+  "@58|late": [
+   28,
+   30
+  ],
+  "@58|late|text": [
+   23,
+   24
+  ],
+  "@58|late|image": [
+   5,
+   6
+  ],
+  "@58|first|image": [
+   6,
+   10
+  ],
+  "@59": [
+   128,
+   142
+  ],
+  "@59|filter": [
+   11,
+   18
+  ],
+  "@59|filter|image": [
+   11,
+   18
+  ],
+  "@59|first": [
+   89,
+   94
+  ],
+  "@59|first|text": [
+   83,
+   84
+  ],
+  "@59|late": [
+   28,
+   30
+  ],
+  "@59|late|text": [
+   23,
+   24
+  ],
+  "@59|late|image": [
+   5,
+   6
+  ],
+  "@59|first|image": [
+   6,
+   10
+  ],
+  "@60": [
+   128,
+   142
+  ],
+  "@60|filter": [
+   11,
+   18
+  ],
+  "@60|filter|image": [
+   11,
+   18
+  ],
+  "@60|first": [
+   89,
+   94
+  ],
+  "@60|first|text": [
+   83,
+   84
+  ],
+  "@60|late": [
+   28,
+   30
+  ],
+  "@60|late|text": [
+   23,
+   24
+  ],
+  "@60|late|image": [
+   5,
+   6
+  ],
+  "@60|first|image": [
+   6,
+   10
+  ],
+  "@61": [
+   128,
+   142
+  ],
+  "@61|filter": [
+   11,
+   18
+  ],
+  "@61|filter|image": [
+   11,
+   18
+  ],
+  "@61|first": [
+   89,
+   94
+  ],
+  "@61|first|text": [
+   83,
+   84
+  ],
+  "@61|late": [
+   28,
+   30
+  ],
+  "@61|late|text": [
+   23,
+   24
+  ],
+  "@61|late|image": [
+   5,
+   6
+  ],
+  "@61|first|image": [
+   6,
+   10
+  ],
+  "@62": [
+   128,
+   142
+  ],
+  "@62|filter": [
+   11,
+   18
+  ],
+  "@62|filter|image": [
+   11,
+   18
+  ],
+  "@62|first": [
+   89,
+   94
+  ],
+  "@62|first|text": [
+   83,
+   84
+  ],
+  "@62|late": [
+   28,
+   30
+  ],
+  "@62|late|text": [
+   23,
+   24
+  ],
+  "@62|late|image": [
+   5,
+   6
+  ],
+  "@62|first|image": [
+   6,
+   10
+  ],
+  "@63": [
+   128,
+   142
+  ],
+  "@63|filter": [
+   11,
+   18
+  ],
+  "@63|filter|image": [
+   11,
+   18
+  ],
+  "@63|first": [
+   89,
+   94
+  ],
+  "@63|first|text": [
+   83,
+   84
+  ],
+  "@63|late": [
+   28,
+   30
+  ],
+  "@63|late|text": [
+   23,
+   24
+  ],
+  "@63|late|image": [
+   5,
+   6
+  ],
+  "@63|first|image": [
+   6,
+   10
+  ],
+  "@64": [
+   128,
+   142
+  ],
+  "@64|filter": [
+   11,
+   18
+  ],
+  "@64|filter|image": [
+   11,
+   18
+  ],
+  "@64|first": [
+   89,
+   94
+  ],
+  "@64|first|text": [
+   83,
+   84
+  ],
+  "@64|late": [
+   28,
+   30
+  ],
+  "@64|late|text": [
+   23,
+   24
+  ],
+  "@64|late|image": [
+   5,
+   6
+  ],
+  "@64|first|image": [
+   6,
+   10
+  ],
+  "@65": [
+   128,
+   142
+  ],
+  "@65|filter": [
+   11,
+   18
+  ],
+  "@65|filter|image": [
+   11,
+   18
+  ],
+  "@65|first": [
+   89,
+   94
+  ],
+  "@65|first|text": [
+   83,
+   84
+  ],
+  "@65|late": [
+   28,
+   30
+  ],
+  "@65|late|text": [
+   23,
+   24
+  ],
+  "@65|late|image": [
+   5,
+   6
+  ],
+  "@65|first|image": [
+   6,
+   10
+  ],
+  "@66": [
+   128,
+   142
+  ],
+  "@66|filter": [
+   11,
+   18
+  ],
+  "@66|filter|image": [
+   11,
+   18
+  ],
+  "@66|first": [
+   89,
+   94
+  ],
+  "@66|first|text": [
+   83,
+   84
+  ],
+  "@66|late": [
+   28,
+   30
+  ],
+  "@66|late|text": [
+   23,
+   24
+  ],
+  "@66|late|image": [
+   5,
+   6
+  ],
+  "@66|first|image": [
+   6,
+   10
+  ],
+  "@67": [
+   128,
+   142
+  ],
+  "@67|filter": [
+   11,
+   18
+  ],
+  "@67|filter|image": [
+   11,
+   18
+  ],
+  "@67|first": [
+   89,
+   94
+  ],
+  "@67|first|text": [
+   83,
+   84
+  ],
+  "@67|late": [
+   28,
+   30
+  ],
+  "@67|late|text": [
+   23,
+   24
+  ],
+  "@67|late|image": [
+   5,
+   6
+  ],
+  "@67|first|image": [
+   6,
+   10
+  ],
+  "@68": [
+   128,
+   142
+  ],
+  "@68|filter": [
+   11,
+   18
+  ],
+  "@68|filter|image": [
+   11,
+   18
+  ],
+  "@68|first": [
+   89,
+   94
+  ],
+  "@68|first|text": [
+   83,
+   84
+  ],
+  "@68|late": [
+   28,
+   30
+  ],
+  "@68|late|text": [
+   23,
+   24
+  ],
+  "@68|late|image": [
+   5,
+   6
+  ],
+  "@68|first|image": [
+   6,
+   10
+  ],
+  "@69": [
+   128,
+   142
+  ],
+  "@69|filter": [
+   11,
+   18
+  ],
+  "@69|filter|image": [
+   11,
+   18
+  ],
+  "@69|first": [
+   89,
+   94
+  ],
+  "@69|first|text": [
+   83,
+   84
+  ],
+  "@69|late": [
+   28,
+   30
+  ],
+  "@69|late|text": [
+   23,
+   24
+  ],
+  "@69|late|image": [
+   5,
+   6
+  ],
+  "@69|first|image": [
+   6,
+   10
+  ],
+  "@70": [
+   128,
+   142
+  ],
+  "@70|filter": [
+   11,
+   18
+  ],
+  "@70|filter|image": [
+   11,
+   18
+  ],
+  "@70|first": [
+   89,
+   94
+  ],
+  "@70|first|text": [
+   83,
+   84
+  ],
+  "@70|late": [
+   28,
+   30
+  ],
+  "@70|late|text": [
+   23,
+   24
+  ],
+  "@70|late|image": [
+   5,
+   6
+  ],
+  "@70|first|image": [
+   6,
+   10
+  ],
+  "@71": [
+   128,
+   142
+  ],
+  "@71|filter": [
+   11,
+   18
+  ],
+  "@71|filter|image": [
+   11,
+   18
+  ],
+  "@71|first": [
+   89,
+   94
+  ],
+  "@71|first|text": [
+   83,
+   84
+  ],
+  "@71|late": [
+   28,
+   30
+  ],
+  "@71|late|text": [
+   23,
+   24
+  ],
+  "@71|late|image": [
+   5,
+   6
+  ],
+  "@71|first|image": [
+   6,
+   10
+  ],
+  "@72": [
+   128,
+   142
+  ],
+  "@72|filter": [
+   11,
+   18
+  ],
+  "@72|filter|image": [
+   11,
+   18
+  ],
+  "@72|first": [
+   89,
+   94
+  ],
+  "@72|first|text": [
+   83,
+   84
+  ],
+  "@72|late": [
+   28,
+   30
+  ],
+  "@72|late|text": [
+   23,
+   24
+  ],
+  "@72|late|image": [
+   5,
+   6
+  ],
+  "@72|first|image": [
+   6,
+   10
+  ],
+  "@73": [
+   128,
+   142
+  ],
+  "@73|filter": [
+   11,
+   18
+  ],
+  "@73|filter|image": [
+   11,
+   18
+  ],
+  "@73|first": [
+   89,
+   94
+  ],
+  "@73|first|text": [
+   83,
+   84
+  ],
+  "@73|late": [
+   28,
+   30
+  ],
+  "@73|late|text": [
+   23,
+   24
+  ],
+  "@73|late|image": [
+   5,
+   6
+  ],
+  "@73|first|image": [
+   6,
+   10
+  ],
+  "@74": [
+   128,
+   142
+  ],
+  "@74|filter": [
+   11,
+   18
+  ],
+  "@74|filter|image": [
+   11,
+   18
+  ],
+  "@74|first": [
+   89,
+   94
+  ],
+  "@74|first|text": [
+   83,
+   84
+  ],
+  "@74|late": [
+   28,
+   30
+  ],
+  "@74|late|text": [
+   23,
+   24
+  ],
+  "@74|late|image": [
+   5,
+   6
+  ],
+  "@74|first|image": [
+   6,
+   10
+  ],
+  "@75": [
+   128,
+   142
+  ],
+  "@75|filter": [
+   11,
+   18
+  ],
+  "@75|filter|image": [
+   11,
+   18
+  ],
+  "@75|first": [
+   89,
+   94
+  ],
+  "@75|first|text": [
+   83,
+   84
+  ],
+  "@75|late": [
+   28,
+   30
+  ],
+  "@75|late|text": [
+   23,
+   24
+  ],
+  "@75|late|image": [
+   5,
+   6
+  ],
+  "@75|first|image": [
+   6,
+   10
+  ],
+  "@76": [
+   128,
+   142
+  ],
+  "@76|filter": [
+   11,
+   18
+  ],
+  "@76|filter|image": [
+   11,
+   18
+  ],
+  "@76|first": [
+   89,
+   94
+  ],
+  "@76|first|text": [
+   83,
+   84
+  ],
+  "@76|late": [
+   28,
+   30
+  ],
+  "@76|late|text": [
+   23,
+   24
+  ],
+  "@76|late|image": [
+   5,
+   6
+  ],
+  "@76|first|image": [
+   6,
+   10
+  ],
+  "@77": [
+   128,
+   142
+  ],
+  "@77|filter": [
+   11,
+   18
+  ],
+  "@77|filter|image": [
+   11,
+   18
+  ],
+  "@77|first": [
+   89,
+   94
+  ],
+  "@77|first|text": [
+   83,
+   84
+  ],
+  "@77|late": [
+   28,
+   30
+  ],
+  "@77|late|text": [
+   23,
+   24
+  ],
+  "@77|late|image": [
+   5,
+   6
+  ],
+  "@77|first|image": [
+   6,
+   10
+  ],
+  "@78": [
+   128,
+   142
+  ],
+  "@78|filter": [
+   11,
+   18
+  ],
+  "@78|filter|image": [
+   11,
+   18
+  ],
+  "@78|first": [
+   89,
+   94
+  ],
+  "@78|first|text": [
+   83,
+   84
+  ],
+  "@78|late": [
+   28,
+   30
+  ],
+  "@78|late|text": [
+   23,
+   24
+  ],
+  "@78|late|image": [
+   5,
+   6
+  ],
+  "@78|first|image": [
+   6,
+   10
+  ],
+  "@79": [
+   128,
+   142
+  ],
+  "@79|filter": [
+   11,
+   18
+  ],
+  "@79|filter|image": [
+   11,
+   18
+  ],
+  "@79|first": [
+   89,
+   94
+  ],
+  "@79|first|text": [
+   83,
+   84
+  ],
+  "@79|late": [
+   28,
+   30
+  ],
+  "@79|late|text": [
+   23,
+   24
+  ],
+  "@79|late|image": [
+   5,
+   6
+  ],
+  "@79|first|image": [
+   6,
+   10
+  ],
+  "@80": [
+   128,
+   142
+  ],
+  "@80|filter": [
+   11,
+   18
+  ],
+  "@80|filter|image": [
+   11,
+   18
+  ],
+  "@80|first": [
+   89,
+   94
+  ],
+  "@80|first|text": [
+   83,
+   84
+  ],
+  "@80|late": [
+   28,
+   30
+  ],
+  "@80|late|text": [
+   23,
+   24
+  ],
+  "@80|late|image": [
+   5,
+   6
+  ],
+  "@80|first|image": [
+   6,
+   10
+  ]
+ },
+ "snippets": {
+  "all": [
+   53,
+   83
+  ],
+  "text": [
+   26,
+   54
+  ],
+  "text|60-99": [
+   11,
+   16
+  ],
+  "text|175-299": [
+   4,
+   14
+  ],
+  "text|100-174": [
+   11,
+   24
+  ],
+  "table": [
+   27,
+   29
+  ],
+  "table|60-99": [
+   20,
+   21
+  ],
+  "table|100-174": [
+   7,
+   8
+  ]
+ },
+ "sizes": {
+  "image": [
+   799960.0,
+   2857
+  ],
+  "text": [
+   3123144.0,
+   25602
+  ],
+  "table": [
+   547553.0,
+   13909
+  ]
+ },
+ "entries": {
+  "view@240": {
+   "all": [
+    30,
+    60
+   ],
+   "text": [
+    30,
+    60
+   ],
+   "text|60-99": [
+    12,
+    16
+   ],
+   "text|175-299": [
+    5,
+    18
+   ],
+   "text|100-174": [
+    13,
+    26
+   ]
+  },
+  "qview@240": {
+   "all": [
+    30,
+    60
+   ],
+   "text": [
+    30,
+    60
+   ],
+   "text|60-99": [
+    12,
+    16
+   ],
+   "text|175-299": [
+    5,
+    18
+   ],
+   "text|100-174": [
+    13,
+    26
+   ]
+  },
+  "view@360": {
+   "all": [
+    40,
+    60
+   ],
+   "text": [
+    40,
+    60
+   ],
+   "text|60-99": [
+    14,
+    16
+   ],
+   "text|175-299": [
+    9,
+    18
+   ],
+   "text|100-174": [
+    17,
+    26
+   ]
+  },
+  "lead@360": {
+   "all": [
+    43,
+    60
+   ],
+   "text": [
+    43,
+    60
+   ],
+   "text|60-99": [
+    14,
+    16
+   ],
+   "text|175-299": [
+    12,
+    18
+   ],
+   "text|100-174": [
+    17,
+    26
+   ]
+  },
+  "lead@480": {
+   "all": [
+    46,
+    60
+   ],
+   "text": [
+    46,
+    60
+   ],
+   "text|60-99": [
+    14,
+    16
+   ],
+   "text|175-299": [
+    12,
+    18
+   ],
+   "text|100-174": [
+    20,
+    26
+   ]
+  }
+ }
+}

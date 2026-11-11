@@ -1,0 +1,25 @@
+facilities:
+  aurora:
+    endpoint: ${FEDQUEST_AURORA_CN_ENDPOINT}
+    config:
+      nodes: 2
+    placement:
+      twowiki_s2_r0/aurora_0: 0
+      hotpot_s2_r0/aurora_0: 1
+  midway3:
+    endpoint: ${FEDQUEST_MIDWAY3_CN_ENDPOINT}
+    config:
+      nodes: 2
+    placement:
+      twowiki_s2_r0/midway3_0: 0
+      hotpot_s2_r0/midway3_0: 1
+federations:
+- twowiki_s2_r0
+- hotpot_s2_r0
+models: configs/models/final.yaml
+action_timeout_s: 900
+env:
+  FEDQUEST_LLM_AIMD: '1'
+  FEDQUEST_LLM_RATE: '6'
+  FEDQUEST_ANN: hnsw
+  FEDQUEST_VIRTUAL_SHARDS: '1'

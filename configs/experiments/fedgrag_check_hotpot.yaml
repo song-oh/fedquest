@@ -1,0 +1,15 @@
+name: fedgrag_check_hotpot
+federation: hotpot_s4_k05_r0
+split: full
+limit: 1000
+workload: cold
+concurrency: 24
+require_calibration: true
+interleave: true
+stage: 2
+lane: gemma
+after: ['tool:fedgrag_tune', 'tool:fedgrag_tune_trained', 'tool:fedgrag_xfit']
+optional: true
+methods:
+  - {method: fedgrag_tuned, label: fedgrag_tuned, params: {index: hotpot_s4_k05_r0, router: 'x{x}'}}
+  - {method: fedgrag_trained, label: fedgrag_trained, params: {index: hotpot_s4_k05_r0, router: 'x{x}'}}

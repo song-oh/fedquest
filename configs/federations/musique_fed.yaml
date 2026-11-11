@@ -1,0 +1,25 @@
+name: musique_fed
+dataset: musique
+answer_style: short
+calibration: musique
+questions:
+  split: hipporag
+  n: 300
+  calib_split: train
+  calib_n: 100
+  seed: 13
+partition: {method: by_title, parts: 3, seed: 13}
+sites:
+  - name: aurora
+    machine: aurora
+    domain: alcf
+    policy: snippets
+    max_concurrency: 32
+    collections:
+      - {name: text, modality: text, encoder: bge-base, source: "text:0,text:2", vectors_from: musique_home/home/all}
+  - name: midway3
+    machine: midway3
+    policy: snippets
+    max_concurrency: 32
+    collections:
+      - {name: text, modality: text, encoder: e5-base, source: "text:1"}

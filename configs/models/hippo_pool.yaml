@@ -1,0 +1,21 @@
+provider: alcf
+base_url: https://inference-api.alcf.anl.gov/resource_server/sophia/vllm/v1
+trust: alcf
+roles:
+  pattern: google/gemma-4-31B-it
+  extract_text: google/gemma-4-31B-it
+  extract_image: google/gemma-4-31B-it
+  answer: google/gemma-4-31B-it
+  answer_vision: google/gemma-4-31B-it
+  planner: google/gemma-4-31B-it
+  reader: google/gemma-4-31B-it
+  judge: openai/gpt-oss-120b
+  judge2: meta-llama/Meta-Llama-3.1-70B-Instruct
+endpoints:
+  google/gemma-4-31B-it: {provider: openai, base_url: "pool:gemma", api_key_env: null, trust: alcf}
+model_concurrency:
+  google/gemma-4-31B-it: 192
+max_concurrency: 192
+timeout_s: 900
+max_retries: 6
+token_refresh_s: 900

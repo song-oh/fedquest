@@ -1,0 +1,17 @@
+name: session_musique
+federation: musique_s4_k05_r0
+split: sessions
+workload: cold
+concurrency: 32
+require_calibration: true
+stage: 2
+lane: gemma
+after: ['tool:route']
+kg: neo4j
+stream_batch: 32
+methods:
+  - {method: fedquest, label: fedquest_cold, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto}}
+  - {method: fedquest, label: fedquest_kg, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto, kg: reuse, kg_check: version}}
+  - {method: fedquest, label: fedquest_kg_keep, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto, kg: reuse, kg_check: version, keep_probe: true}}
+  - {method: fedquest, label: fedquest_kg_own, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto, kg: reuse, kg_check: version, keep_probe: true, owners: titles+kg}}
+  - {method: fedquest, label: fedquest_own, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto, owners: titles}}

@@ -1,0 +1,13 @@
+name: kgu_warm_musique
+federation: musique_s4_k05_r0
+split: kg_base
+workload: cold
+concurrency: 24
+require_calibration: true
+stage: 2
+lane: gemma
+after: ['tool:route', 'tool:kgu_make_musique']
+before: [python, -m, fedquest.eval.kg_update, derive, --federation, musique_s4_k05_r0, --source, musique_s2_r0]
+kg: neo4j
+methods:
+  - {method: fedquest, label: fedquest_kg_warm, preset: final, params: {calibration: musique_v4e, scores: anchor, zcal: musique_z, views: true, total_budget: 16000, route: vocab+proto, kg: harvest, kg_check: version, kg_ns: kgu_musique, keep_probe: true}}

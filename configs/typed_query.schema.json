@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "configs/typed_query.schema.json",
+  "title": "FedQuest typed query graph, typed-v1",
+  "description": "The restricted, typed query FedQuest's front end writes for a question (fedquest.methods.compiler: grammar, semantics and the execution contract). A conjunctive query with access limitations: atoms are relations a read materializes, filters selections on one variable, shared variables joins, constants selections, the answer its projection. Every field but atoms may be absent; uses (a typed-v1 addition) is derived from the relation when absent.",
+  "type": "object",
+  "required": ["atoms"],
+  "additionalProperties": false,
+  "properties": {
+    "constants": {"type": "array", "items": {"$ref": "#/$defs/name"},
+                  "description": "The names the question gives, written as in the question; never a guessed value."},
+    "variables": {"type": "array", "items": {"$ref": "#/$defs/declaration"}},
+    "atoms": {"type": "array", "items": {"$ref": "#/$defs/atom"}},
+    "filters": {"type": "array", "items": {"$ref": "#/$defs/filter"}},
+    "answer": {"anyOf": [{"$ref": "#/$defs/variable"}, {"type": "null"}],
+               "description": "The variable whose values answer the question; null for yes/no, a choice between named items or what both sides of a comparison share (every variable is then awaited)."},
+    "form": {"enum": ["entity", "yes/no", "choice", "count", "date", "number", null],
+             "description": "What the answer is; yes/no and choice await every variable."}
+  },
+  "$defs": {
+    "name": {"type": "string", "pattern": "^[^?\\s]",
+             "description": "A constant: a name the question gives."},
+    "variable": {"type": "string", "pattern": "^\\?\\S",
+                 "description": "An unknown; a placeholder (a type and a number: ?person2) may be named inside a relation."},
+    "term": {"anyOf": [{"$ref": "#/$defs/variable"}, {"$ref": "#/$defs/name"}]},
+    "phrase": {"type": "string", "pattern": "\\S"},
+    "evidence": {"enum": ["text", "image"],
+                 "description": "What can state the fact: texts and tables, or only an image (its appearance, what it shows). Absent: text."},
+    "declaration": {
+      "type": "object",
+      "required": ["name"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {"$ref": "#/$defs/variable"},
+        "set": {"type": "boolean", "description": "Several members: the variable binds to a set (a list read)."}
+      }
+    },
+    "atom": {
+      "type": "object",
+      "required": ["subject", "relation", "object"],
+      "additionalProperties": false,
+      "properties": {
+        "subject": {"$ref": "#/$defs/term"},
+        "relation": {"$ref": "#/$defs/phrase", "description": "A short phrase read from subject to object."},
+        "object": {"$ref": "#/$defs/term"},
+        "evidence": {"$ref": "#/$defs/evidence"},
+        "uses": {"type": "array", "items": {"$ref": "#/$defs/variable"},
+                 "description": "The variables the relation names inside it (?person1 | married ?person2 in | ?date1): bound before the atom is read, their values written into the relation. Absent: derived from the relation."}
+      }
+    },
+    "filter": {
+      "type": "object",
+      "required": ["variable", "condition"],
+      "additionalProperties": false,
+      "properties": {
+        "variable": {"$ref": "#/$defs/variable"},
+        "condition": {"$ref": "#/$defs/phrase", "description": "A condition on the variable alone."},
+        "evidence": {"$ref": "#/$defs/evidence"}
+      }
+    }
+  }
+}

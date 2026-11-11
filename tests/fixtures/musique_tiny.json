@@ -1,0 +1,682 @@
+{
+ "_source": "MuSiQue-Ans (Trivedi et al., TACL 2022), CC-BY-4.0: HippoRAG 2's subset (osunlp/HippoRAG_2) and MuSiQue-Ans train; paragraphs trimmed to the supporting ones and a few distractors",
+ "questions": [
+  {
+   "id": "2hop__13548_13529",
+   "paragraphs": [
+    {
+     "idx": 0,
+     "title": "Lionel Messi",
+     "paragraph_text": "After a year at Barcelona's youth academy, La Masia, Messi was finally enrolled in the Royal Spanish Football Federation (RFEF) in February 2002. Now playing in all competitions, he befriended his teammates, among whom were Cesc Fàbregas and Gerard Piqué. After completing his growth hormone treatment aged 14, Messi became an integral part of the ``Baby Dream Team '', Barcelona's greatest - ever youth side. During his first full season (2002 -- 03), he was top scorer with 36 goals in 30 games for the Cadetes A, who won an unprecedented treble of the league and both the Spanish and Catalan cups. The Copa Catalunya final, a 4 -- 1 victory over Espanyol, became known in club lore as the partido de la máscara, the final of the mask. A week after suffering a broken cheekbone during a league match, Messi was allowed to start the game on the condition that he wear a plastic protector; soon hindered by the mask, he took it off and scored two goals in 10 minutes before his substitution. At the close of the season, he received an offer to join Arsenal, his first from a foreign club, but while Fàbregas and Piqué soon left for England, he chose to remain in Barcelona.",
+     "is_supporting": false
+    },
+    {
+     "idx": 1,
+     "title": "FC Barcelona",
+     "paragraph_text": "Despite being the favourites and starting strongly, Barcelona finished the 2006–07 season without trophies. A pre-season US tour was later blamed for a string of injuries to key players, including leading scorer Eto'o and rising star Lionel Messi. There was open feuding as Eto'o publicly criticized coach Frank Rijkaard and Ronaldinho. Ronaldinho also admitted that a lack of fitness affected his form. In La Liga, Barcelona were in first place for much of the season, but inconsistency in the New Year saw Real Madrid overtake them to become champions. Barcelona advanced to the semi-finals of the Copa del Rey, winning the first leg against Getafe 5–2, with a goal from Messi bringing comparison to Diego Maradona's goal of the century, but then lost the second leg 4–0. They took part in the 2006 FIFA Club World Cup, but were beaten by a late goal in the final against Brazilian side Internacional. In the Champions League, Barcelona were knocked out of the competition in the last 16 by eventual runners-up Liverpool on away goals.",
+     "is_supporting": true
+    },
+    {
+     "idx": 2,
+     "title": "FC Barcelona",
+     "paragraph_text": "In June 1982, Diego Maradona was signed for a world record fee of £5 million from Boca Juniors. In the following season, under coach Luis, Barcelona won the Copa del Rey, beating Real Madrid. However, Maradona's time with Barcelona was short-lived and he soon left for Napoli. At the start of the 1984–85 season, Terry Venables was hired as manager and he won La Liga with noteworthy displays by German midfielder Bernd Schuster. The next season, he took the team to their second European Cup final, only to lose on penalties to Steaua Bucureşti during a dramatic evening in Seville.",
+     "is_supporting": true
+    },
+    {
+     "idx": 3,
+     "title": "FC Barcelona",
+     "paragraph_text": "Barcelona is the only European club to have played continental football every season since 1955, and one of three clubs to have never been relegated from La Liga, along with Athletic Bilbao and Real Madrid. In 2009, Barcelona became the first club in Spain to win the treble consisting of La Liga, Copa del Rey, and the Champions League. That same year, it also became the first football club ever to win six out of six competitions in a single year, thus completing the sextuple, comprising the aforementioned treble and the Spanish Super Cup, UEFA Super Cup and FIFA Club World Cup. In the 2014–15 season, Barcelona won another historic treble, making them the first club in European football to win the treble twice.",
+     "is_supporting": false
+    }
+   ],
+   "question": "When was the person who Messi's goals in Copa del Rey compared to get signed by Barcelona?",
+   "question_decomposition": [
+    {
+     "id": 13548,
+     "question": "To whom was Messi's goal in the first leg of the Copa del Rey compared?",
+     "answer": "Diego Maradona",
+     "paragraph_support_idx": 1
+    },
+    {
+     "id": 13529,
+     "question": "When was #1 signed by Barcelona?",
+     "answer": "June 1982",
+     "paragraph_support_idx": 2
+    }
+   ],
+   "answer": "June 1982",
+   "answer_aliases": [],
+   "answerable": true
+  },
+  {
+   "id": "3hop1__305282_282081_73772",
+   "paragraphs": [
+    {
+     "idx": 0,
+     "title": "Jesse Bennett",
+     "paragraph_text": "Dr. Jesse Bennett (July 10, 1769 -- July 13, 1842) was the first American physician to perform a successful Caesarean section, which he performed on his own wife at the birth of their only child on January 14, 1794.",
+     "is_supporting": false
+    },
+    {
+     "idx": 1,
+     "title": "Charles Russell Lowell",
+     "paragraph_text": "Charles Russell Lowell III (January 2, 1835 – October 20, 1864) was a railroad executive, foundryman, and General in the Union Army during the American Civil War. He was mortally wounded at the Battle of Cedar Creek and was mourned by a number of leading generals.",
+     "is_supporting": false
+    },
+    {
+     "idx": 2,
+     "title": "III (Stanton Moore album)",
+     "paragraph_text": "III is Stanton Moore's third studio solo album released 2006. As each of Moore's solo albums have had unique character, \"III\" features keyboardist Robert Walter and guitarist Will Bernard for a 1970s-like soul funk with a \"sense of authenticity\" as \"artists who live it.\"",
+     "is_supporting": true
+    },
+    {
+     "idx": 9,
+     "title": "Flyin' the Koop",
+     "paragraph_text": "Flyin' the Koop is the second solo album by New Orleans drummer Stanton Moore. The album includes funk, rock and jazz. Moore's line-up for \"Flyin' the Koop\" is in part a combination of musicians with whom he played at a \"SuperJam\" at Tipitina's during Jazz Fest 2000.",
+     "is_supporting": true
+    },
+    {
+     "idx": 19,
+     "title": "Battle of New Orleans",
+     "paragraph_text": "The Battle of New Orleans was a series of engagements fought between December 14, 1814 and January 18, 1815, constituting the last major battle of the War of 1812. American combatants, commanded by Major General Andrew Jackson, prevented a much larger British force, commanded by Admiral Alexander Cochrane and General Edward Pakenham, from seizing New Orleans and the vast territory the United States had acquired with the Louisiana Purchase.",
+     "is_supporting": true
+    }
+   ],
+   "question": "When was the start of the battle of the birthplace of the performer of III?",
+   "question_decomposition": [
+    {
+     "id": 305282,
+     "question": "III >> performer",
+     "answer": "Stanton Moore",
+     "paragraph_support_idx": 2
+    },
+    {
+     "id": 282081,
+     "question": "#1 >> place of birth",
+     "answer": "New Orleans",
+     "paragraph_support_idx": 9
+    },
+    {
+     "id": 73772,
+     "question": "when did the battle of #2 start",
+     "answer": "December 14, 1814",
+     "paragraph_support_idx": 19
+    }
+   ],
+   "answer": "December 14, 1814",
+   "answer_aliases": [],
+   "answerable": true
+  },
+  {
+   "id": "3hop2__607269_223623_162182",
+   "paragraphs": [
+    {
+     "idx": 0,
+     "title": "Mohammad Zubair Khan",
+     "paragraph_text": "Dr. Mohammad Zubair Khan has a doctorate in political economy from Johns Hopkins University. After working briefly for the World Bank, he worked at the International Monetary Fund from 1981 to 1992, assigned to a wide range of countries, including industrial countries in northern Europe and Turkey, developing countries in south Asia, the oil producing countries in the Middle East and countries in the South Pacific region.",
+     "is_supporting": false
+    },
+    {
+     "idx": 1,
+     "title": "Tourism in Nepal",
+     "paragraph_text": "Mount Everest, the highest mountain peak in the world, is located in Nepal. Mountaineering and other types of adventure tourism and ecotourism are important attractions for visitors. The world heritage site Lumbini, birthplace of Gautama Buddha, is located in the south of the West region of Nepal (which despite the name is located in the centre of the country) and there are other important religious pilgrimage sites throughout the country. The tourist industry is seen as a way to alleviate poverty and achieve greater social equity in the country. Tourism brings $471 ma year to Nepal.",
+     "is_supporting": false
+    },
+    {
+     "idx": 4,
+     "title": "John Phan",
+     "paragraph_text": "Bon \"John\" Phan (born October 10, 1974 in Da Nang, Vietnam) is a Vietnamese-American professional poker player based in Stockton, California who is a two time World Series of Poker bracelet winner and is a winner and four time final tablist of World Poker Tour Championships.",
+     "is_supporting": true
+    },
+    {
+     "idx": 5,
+     "title": "South Central Coast",
+     "paragraph_text": "South Central Coast (Vietnamese: Duyên hải Nam Trung Bộ) is one of the regions of Vietnam. It consists of the independent municipality of Đà Nẵng and seven other provinces. The two southern provinces Ninh Thuận and Bình Thuận are sometimes seen as part of the Southeast region.The Paracel Islands (Hoàng Sa District), and Spratly Islands (Trường Sa District), are also part of this region.",
+     "is_supporting": true
+    },
+    {
+     "idx": 13,
+     "title": "Hạ Hòa District",
+     "paragraph_text": "Hạ Hòa is a rural district of Phú Thọ Province in the Northeast region of Vietnam. As of 2003, the district had a population of 108,556. The district covers an area of 340 km². The district capital lies at Hạ Hòa.",
+     "is_supporting": true
+    }
+   ],
+   "question": "In what region of the country containing Hạ Hòa is John Phan's birthplace found?",
+   "question_decomposition": [
+    {
+     "id": 607269,
+     "question": "Hạ Hòa >> country",
+     "answer": "Vietnam",
+     "paragraph_support_idx": 13
+    },
+    {
+     "id": 223623,
+     "question": "John Phan >> place of birth",
+     "answer": "Da Nang",
+     "paragraph_support_idx": 4
+    },
+    {
+     "id": 162182,
+     "question": "In what region of #1 is #2 located?",
+     "answer": "South Central Coast",
+     "paragraph_support_idx": 5
+    }
+   ],
+   "answer": "South Central Coast",
+   "answer_aliases": [],
+   "answerable": true
+  },
+  {
+   "id": "4hop2__103790_14670_8987_8529",
+   "paragraphs": [
+    {
+     "idx": 2,
+     "title": "Saving Private Ryan",
+     "paragraph_text": "In the present day, an elderly veteran visits the Normandy American Cemetery and Memorial with his family. Upon seeing one particular grave, he falls to his knees overcome with emotion. The scene then shifts to the morning of June 6, 1944, as American soldiers land on Omaha Beach as part of the Normandy Invasion. They suffer heavy losses in assaulting German positions defended by artillery and machine guns. Captain John H. Miller of the 2nd Ranger Battalion assembles a group to penetrate the German defenses, leading to a breakout from the beach. Elsewhere on the beach, a dead soldier is face down in the bloody surf; his pack is stenciled Ryan, S.",
+     "is_supporting": false
+    },
+    {
+     "idx": 3,
+     "title": "Saving Private Ryan",
+     "paragraph_text": "An elderly veteran visits the Normandy American Cemetery and Memorial with his family. Upon seeing one particular grave, he falls to his knees overcome with emotion. The scene then shifts to the morning of June 6, 1944, as American soldiers land on Omaha Beach as part of the Normandy Invasion. They suffer heavy losses in assaulting German defensive positions of artillery and machine guns raining down intense fire on the American forces. Captain John H. Miller of the 2nd Ranger Battalion assembles a group to penetrate the German defenses, leading to a breakout from the beach. Elsewhere on the beach, a dead soldier lies face - down in the bloody surf; his pack is stenciled Ryan, S.",
+     "is_supporting": false
+    },
+    {
+     "idx": 6,
+     "title": "Slavs",
+     "paragraph_text": "The word \"Slavs\" was used in the national anthem of the Slovak Republic (1939–1945), Yugoslavia (1943–1992) and the Federal Republic of Yugoslavia (1992–2003), later Serbia and Montenegro (2003–2006).",
+     "is_supporting": true
+    },
+    {
+     "idx": 14,
+     "title": "Josip Broz Tito",
+     "paragraph_text": "In 1968, Tito offered Czechoslovak leader Alexander Dubček to fly to Prague on three hours notice if Dubček needed help in facing down the Soviets. In April 1969, Tito removed generals Ivan Gošnjak and Rade Hamović in the aftermath of the invasion of Czechoslovakia due to the unpreparedness of the Yugoslav army to respond to a similar invasion of Yugoslavia.",
+     "is_supporting": true
+    },
+    {
+     "idx": 16,
+     "title": "United States Army",
+     "paragraph_text": "Currently, the army is divided into the Regular Army, the Army Reserve, and the Army National Guard. The army is also divided into major branches such as Air Defense Artillery, Infantry, Aviation, Signal Corps, Corps of Engineers, and Armor. Before 1903 members of the National Guard were considered state soldiers unless federalized (i.e., activated) by the President. Since the Militia Act of 1903 all National Guard soldiers have held dual status: as National Guardsmen under the authority of the governor of their state or territory and, when activated, as a reserve of the U.S. Army under the authority of the President.",
+     "is_supporting": true
+    },
+    {
+     "idx": 17,
+     "title": "Ivo Werner",
+     "paragraph_text": "Ivo Werner (born 19 August 1960) is a former professional tennis player originally from Czechoslovakia who competed for both his native country as well as West Germany. Werner, who is now a tennis coach, immigrated to West Germany in 1982 and got citizenship two years later.",
+     "is_supporting": true
+    }
+   ],
+   "question": "A country's military branch, the equivalent of which in the US contains the Air Defense Artillery, was unprepared for the invasion of Ivo Werner's country. When was the word \"Slavs\" used in the national anthem of the unprepared country?",
+   "question_decomposition": [
+    {
+     "id": 103790,
+     "question": "Where was Ivo Werner from?",
+     "answer": "Czechoslovakia",
+     "paragraph_support_idx": 17
+    },
+    {
+     "id": 14670,
+     "question": "The Air Defense Artillery is a branch of what?",
+     "answer": "the Army",
+     "paragraph_support_idx": 16
+    },
+    {
+     "id": 8987,
+     "question": "What #2 was unprepared for the invasion of #1 ?",
+     "answer": "Yugoslavia",
+     "paragraph_support_idx": 14
+    },
+    {
+     "id": 8529,
+     "question": "When was the word \"Slavs\" used in the national anthem of #3 ?",
+     "answer": "1943–1992",
+     "paragraph_support_idx": 6
+    }
+   ],
+   "answer": "1943–1992",
+   "answer_aliases": [],
+   "answerable": true
+  },
+  {
+   "id": "4hop3__129456_29339_508306_70744",
+   "paragraphs": [
+    {
+     "idx": 0,
+     "title": "Fort Meade National Cemetery",
+     "paragraph_text": "Fort Meade National Cemetery is a United States National Cemetery located near the city of Sturgis in Meade County, South Dakota. Administered by the United States Department of Veterans Affairs, it encompasses . It is maintained by Black Hills National Cemetery.",
+     "is_supporting": false
+    },
+    {
+     "idx": 1,
+     "title": "Toiyabe Range",
+     "paragraph_text": "The Toiyabe Range is a mountain range in Lander and Nye counties, Nevada, United States. Most of the range is included within the Humboldt-Toiyabe National Forest. The highest point in the range, near its southern end, is Arc Dome (11,788 feet, 3592 m), an area protected as the Arc Dome Wilderness. The highest point in Lander County, Bunker Hill, is also located within the Toiyabe Range. The range starts in northwestern Nye County north of Tonopah, Nevada and runs approximately 120 miles (190 km) north-northeast into southern Lander County, making it the second longest range in the state.",
+     "is_supporting": false
+    },
+    {
+     "idx": 8,
+     "title": "Fort Hill (Clemson, South Carolina)",
+     "paragraph_text": "Fort Hill, also known as the John C. Calhoun Mansion and Library, is a National Historic Landmark on the Clemson University campus in Clemson, South Carolina. The house is significant as the home from 1825-50 of John C. Calhoun, a leading national politician of the period, and is now a museum and library maintained in his memory.",
+     "is_supporting": true
+    },
+    {
+     "idx": 9,
+     "title": "2004 United States presidential election",
+     "paragraph_text": "In March's Super Tuesday, Kerry won decisive victories in the California, Connecticut, Georgia, Maryland, Massachusetts, New York, Ohio, and Rhode Island primaries and the Minnesota caucuses. Dean, despite having withdrawn from the race two weeks earlier, won his home state of Vermont. Edwards finished only slightly behind Kerry in Georgia, but, failing to win a single state other than South Carolina, chose to withdraw from the presidential race. Sharpton followed suit a couple weeks later. Kuninch did not leave the race officially until July.",
+     "is_supporting": true
+    },
+    {
+     "idx": 11,
+     "title": "North Point Mall",
+     "paragraph_text": "North Point Mall is a shopping mall, located in Alpharetta, Georgia (an affluent suburb of Atlanta). The mall opened on October 20, 1993 as one of the largest shopping malls in the country. The mall was the second final property built by Homart Development Company. As of 2018, North Point Mall is one of Atlanta's most popular malls.",
+     "is_supporting": true
+    },
+    {
+     "idx": 17,
+     "title": "Clemson–South Carolina rivalry",
+     "paragraph_text": "College comparison Clemson University University of South Carolina Location Clemson Columbia Students 23,406 34,618 School colors Clemson Orange and Regalia Garnet and Black Nickname Tigers Gamecocks Mascot The Tiger and The Tiger Cub Cocky National Championships 5 10",
+     "is_supporting": true
+    }
+   ],
+   "question": "Between the state university in the state without North Point Mall and where Edwards won the primary and the university in Fort Hill's town which has the more national championships?",
+   "question_decomposition": [
+    {
+     "id": 129456,
+     "question": "In which state is North Point Mall located?",
+     "answer": "Georgia",
+     "paragraph_support_idx": 11
+    },
+    {
+     "id": 29339,
+     "question": "Besides #1 , what other state primary did Edwards win?",
+     "answer": "South Carolina",
+     "paragraph_support_idx": 9
+    },
+    {
+     "id": 508306,
+     "question": "Fort Hill >> located in the administrative territorial entity",
+     "answer": "Clemson",
+     "paragraph_support_idx": 8
+    },
+    {
+     "id": 70744,
+     "question": "who has more national championships #3 or #2",
+     "answer": "University of South Carolina",
+     "paragraph_support_idx": 17
+    }
+   ],
+   "answer": "University of South Carolina",
+   "answer_aliases": [
+    "SC"
+   ],
+   "answerable": true
+  }
+ ],
+ "corpus": [
+  {
+   "title": "Lionel Messi",
+   "text": "After a year at Barcelona's youth academy, La Masia, Messi was finally enrolled in the Royal Spanish Football Federation (RFEF) in February 2002. Now playing in all competitions, he befriended his teammates, among whom were Cesc Fàbregas and Gerard Piqué. After completing his growth hormone treatment aged 14, Messi became an integral part of the ``Baby Dream Team '', Barcelona's greatest - ever youth side. During his first full season (2002 -- 03), he was top scorer with 36 goals in 30 games for the Cadetes A, who won an unprecedented treble of the league and both the Spanish and Catalan cups. The Copa Catalunya final, a 4 -- 1 victory over Espanyol, became known in club lore as the partido de la máscara, the final of the mask. A week after suffering a broken cheekbone during a league match, Messi was allowed to start the game on the condition that he wear a plastic protector; soon hindered by the mask, he took it off and scored two goals in 10 minutes before his substitution. At the close of the season, he received an offer to join Arsenal, his first from a foreign club, but while Fàbregas and Piqué soon left for England, he chose to remain in Barcelona."
+  },
+  {
+   "title": "FC Barcelona",
+   "text": "Despite being the favourites and starting strongly, Barcelona finished the 2006–07 season without trophies. A pre-season US tour was later blamed for a string of injuries to key players, including leading scorer Eto'o and rising star Lionel Messi. There was open feuding as Eto'o publicly criticized coach Frank Rijkaard and Ronaldinho. Ronaldinho also admitted that a lack of fitness affected his form. In La Liga, Barcelona were in first place for much of the season, but inconsistency in the New Year saw Real Madrid overtake them to become champions. Barcelona advanced to the semi-finals of the Copa del Rey, winning the first leg against Getafe 5–2, with a goal from Messi bringing comparison to Diego Maradona's goal of the century, but then lost the second leg 4–0. They took part in the 2006 FIFA Club World Cup, but were beaten by a late goal in the final against Brazilian side Internacional. In the Champions League, Barcelona were knocked out of the competition in the last 16 by eventual runners-up Liverpool on away goals."
+  },
+  {
+   "title": "FC Barcelona",
+   "text": "In June 1982, Diego Maradona was signed for a world record fee of £5 million from Boca Juniors. In the following season, under coach Luis, Barcelona won the Copa del Rey, beating Real Madrid. However, Maradona's time with Barcelona was short-lived and he soon left for Napoli. At the start of the 1984–85 season, Terry Venables was hired as manager and he won La Liga with noteworthy displays by German midfielder Bernd Schuster. The next season, he took the team to their second European Cup final, only to lose on penalties to Steaua Bucureşti during a dramatic evening in Seville."
+  },
+  {
+   "title": "FC Barcelona",
+   "text": "Barcelona is the only European club to have played continental football every season since 1955, and one of three clubs to have never been relegated from La Liga, along with Athletic Bilbao and Real Madrid. In 2009, Barcelona became the first club in Spain to win the treble consisting of La Liga, Copa del Rey, and the Champions League. That same year, it also became the first football club ever to win six out of six competitions in a single year, thus completing the sextuple, comprising the aforementioned treble and the Spanish Super Cup, UEFA Super Cup and FIFA Club World Cup. In the 2014–15 season, Barcelona won another historic treble, making them the first club in European football to win the treble twice."
+  },
+  {
+   "title": "Jesse Bennett",
+   "text": "Dr. Jesse Bennett (July 10, 1769 -- July 13, 1842) was the first American physician to perform a successful Caesarean section, which he performed on his own wife at the birth of their only child on January 14, 1794."
+  },
+  {
+   "title": "Charles Russell Lowell",
+   "text": "Charles Russell Lowell III (January 2, 1835 – October 20, 1864) was a railroad executive, foundryman, and General in the Union Army during the American Civil War. He was mortally wounded at the Battle of Cedar Creek and was mourned by a number of leading generals."
+  },
+  {
+   "title": "III (Stanton Moore album)",
+   "text": "III is Stanton Moore's third studio solo album released 2006. As each of Moore's solo albums have had unique character, \"III\" features keyboardist Robert Walter and guitarist Will Bernard for a 1970s-like soul funk with a \"sense of authenticity\" as \"artists who live it.\""
+  },
+  {
+   "title": "Flyin' the Koop",
+   "text": "Flyin' the Koop is the second solo album by New Orleans drummer Stanton Moore. The album includes funk, rock and jazz. Moore's line-up for \"Flyin' the Koop\" is in part a combination of musicians with whom he played at a \"SuperJam\" at Tipitina's during Jazz Fest 2000."
+  },
+  {
+   "title": "Battle of New Orleans",
+   "text": "The Battle of New Orleans was a series of engagements fought between December 14, 1814 and January 18, 1815, constituting the last major battle of the War of 1812. American combatants, commanded by Major General Andrew Jackson, prevented a much larger British force, commanded by Admiral Alexander Cochrane and General Edward Pakenham, from seizing New Orleans and the vast territory the United States had acquired with the Louisiana Purchase."
+  },
+  {
+   "title": "Mohammad Zubair Khan",
+   "text": "Dr. Mohammad Zubair Khan has a doctorate in political economy from Johns Hopkins University. After working briefly for the World Bank, he worked at the International Monetary Fund from 1981 to 1992, assigned to a wide range of countries, including industrial countries in northern Europe and Turkey, developing countries in south Asia, the oil producing countries in the Middle East and countries in the South Pacific region."
+  },
+  {
+   "title": "Tourism in Nepal",
+   "text": "Mount Everest, the highest mountain peak in the world, is located in Nepal. Mountaineering and other types of adventure tourism and ecotourism are important attractions for visitors. The world heritage site Lumbini, birthplace of Gautama Buddha, is located in the south of the West region of Nepal (which despite the name is located in the centre of the country) and there are other important religious pilgrimage sites throughout the country. The tourist industry is seen as a way to alleviate poverty and achieve greater social equity in the country. Tourism brings $471 ma year to Nepal."
+  },
+  {
+   "title": "John Phan",
+   "text": "Bon \"John\" Phan (born October 10, 1974 in Da Nang, Vietnam) is a Vietnamese-American professional poker player based in Stockton, California who is a two time World Series of Poker bracelet winner and is a winner and four time final tablist of World Poker Tour Championships."
+  },
+  {
+   "title": "South Central Coast",
+   "text": "South Central Coast (Vietnamese: Duyên hải Nam Trung Bộ) is one of the regions of Vietnam. It consists of the independent municipality of Đà Nẵng and seven other provinces. The two southern provinces Ninh Thuận and Bình Thuận are sometimes seen as part of the Southeast region.The Paracel Islands (Hoàng Sa District), and Spratly Islands (Trường Sa District), are also part of this region."
+  },
+  {
+   "title": "Hạ Hòa District",
+   "text": "Hạ Hòa is a rural district of Phú Thọ Province in the Northeast region of Vietnam. As of 2003, the district had a population of 108,556. The district covers an area of 340 km². The district capital lies at Hạ Hòa."
+  },
+  {
+   "title": "Saving Private Ryan",
+   "text": "In the present day, an elderly veteran visits the Normandy American Cemetery and Memorial with his family. Upon seeing one particular grave, he falls to his knees overcome with emotion. The scene then shifts to the morning of June 6, 1944, as American soldiers land on Omaha Beach as part of the Normandy Invasion. They suffer heavy losses in assaulting German positions defended by artillery and machine guns. Captain John H. Miller of the 2nd Ranger Battalion assembles a group to penetrate the German defenses, leading to a breakout from the beach. Elsewhere on the beach, a dead soldier is face down in the bloody surf; his pack is stenciled Ryan, S."
+  },
+  {
+   "title": "Saving Private Ryan",
+   "text": "An elderly veteran visits the Normandy American Cemetery and Memorial with his family. Upon seeing one particular grave, he falls to his knees overcome with emotion. The scene then shifts to the morning of June 6, 1944, as American soldiers land on Omaha Beach as part of the Normandy Invasion. They suffer heavy losses in assaulting German defensive positions of artillery and machine guns raining down intense fire on the American forces. Captain John H. Miller of the 2nd Ranger Battalion assembles a group to penetrate the German defenses, leading to a breakout from the beach. Elsewhere on the beach, a dead soldier lies face - down in the bloody surf; his pack is stenciled Ryan, S."
+  },
+  {
+   "title": "Slavs",
+   "text": "The word \"Slavs\" was used in the national anthem of the Slovak Republic (1939–1945), Yugoslavia (1943–1992) and the Federal Republic of Yugoslavia (1992–2003), later Serbia and Montenegro (2003–2006)."
+  },
+  {
+   "title": "Josip Broz Tito",
+   "text": "In 1968, Tito offered Czechoslovak leader Alexander Dubček to fly to Prague on three hours notice if Dubček needed help in facing down the Soviets. In April 1969, Tito removed generals Ivan Gošnjak and Rade Hamović in the aftermath of the invasion of Czechoslovakia due to the unpreparedness of the Yugoslav army to respond to a similar invasion of Yugoslavia."
+  },
+  {
+   "title": "United States Army",
+   "text": "Currently, the army is divided into the Regular Army, the Army Reserve, and the Army National Guard. The army is also divided into major branches such as Air Defense Artillery, Infantry, Aviation, Signal Corps, Corps of Engineers, and Armor. Before 1903 members of the National Guard were considered state soldiers unless federalized (i.e., activated) by the President. Since the Militia Act of 1903 all National Guard soldiers have held dual status: as National Guardsmen under the authority of the governor of their state or territory and, when activated, as a reserve of the U.S. Army under the authority of the President."
+  },
+  {
+   "title": "Ivo Werner",
+   "text": "Ivo Werner (born 19 August 1960) is a former professional tennis player originally from Czechoslovakia who competed for both his native country as well as West Germany. Werner, who is now a tennis coach, immigrated to West Germany in 1982 and got citizenship two years later."
+  },
+  {
+   "title": "Fort Meade National Cemetery",
+   "text": "Fort Meade National Cemetery is a United States National Cemetery located near the city of Sturgis in Meade County, South Dakota. Administered by the United States Department of Veterans Affairs, it encompasses . It is maintained by Black Hills National Cemetery."
+  },
+  {
+   "title": "Toiyabe Range",
+   "text": "The Toiyabe Range is a mountain range in Lander and Nye counties, Nevada, United States. Most of the range is included within the Humboldt-Toiyabe National Forest. The highest point in the range, near its southern end, is Arc Dome (11,788 feet, 3592 m), an area protected as the Arc Dome Wilderness. The highest point in Lander County, Bunker Hill, is also located within the Toiyabe Range. The range starts in northwestern Nye County north of Tonopah, Nevada and runs approximately 120 miles (190 km) north-northeast into southern Lander County, making it the second longest range in the state."
+  },
+  {
+   "title": "Fort Hill (Clemson, South Carolina)",
+   "text": "Fort Hill, also known as the John C. Calhoun Mansion and Library, is a National Historic Landmark on the Clemson University campus in Clemson, South Carolina. The house is significant as the home from 1825-50 of John C. Calhoun, a leading national politician of the period, and is now a museum and library maintained in his memory."
+  },
+  {
+   "title": "2004 United States presidential election",
+   "text": "In March's Super Tuesday, Kerry won decisive victories in the California, Connecticut, Georgia, Maryland, Massachusetts, New York, Ohio, and Rhode Island primaries and the Minnesota caucuses. Dean, despite having withdrawn from the race two weeks earlier, won his home state of Vermont. Edwards finished only slightly behind Kerry in Georgia, but, failing to win a single state other than South Carolina, chose to withdraw from the presidential race. Sharpton followed suit a couple weeks later. Kuninch did not leave the race officially until July."
+  },
+  {
+   "title": "North Point Mall",
+   "text": "North Point Mall is a shopping mall, located in Alpharetta, Georgia (an affluent suburb of Atlanta). The mall opened on October 20, 1993 as one of the largest shopping malls in the country. The mall was the second final property built by Homart Development Company. As of 2018, North Point Mall is one of Atlanta's most popular malls."
+  },
+  {
+   "title": "Clemson–South Carolina rivalry",
+   "text": "College comparison Clemson University University of South Carolina Location Clemson Columbia Students 23,406 34,618 School colors Clemson Orange and Regalia Garnet and Black Nickname Tigers Gamecocks Mascot The Tiger and The Tiger Cub Cocky National Championships 5 10"
+  }
+ ],
+ "train": [
+  {
+   "id": "2hop__129292_160863",
+   "paragraphs": [
+    {
+     "idx": 0,
+     "title": "The Spy in Black",
+     "paragraph_text": "\"The Spy in Black\" was filmed at Denham Studios, with location shooting at Northchurch Common in Berkhamsted, Hertfordshire and in Orkney, Scotland. The film wrapped production on 24 December 1938 and was released in the U.K. on 12 August 1939 – 22 days before the country again went to war with Germany. Its American premiere was held in New York City on 5 October of that year, and it went into general release two days later.",
+     "is_supporting": false
+    },
+    {
+     "idx": 6,
+     "title": "Hertfordshire",
+     "paragraph_text": "Hertfordshire is the county immediately north of London and is part of the East of England region, a mainly statistical unit. A significant minority of the population across all districts are City of London commuters. To the east is Essex, to the west is Buckinghamshire and to the north are Bedfordshire and Cambridgeshire.",
+     "is_supporting": true
+    },
+    {
+     "idx": 10,
+     "title": "East of England",
+     "paragraph_text": "The East of England is one of nine official regions of England at the first level of NUTS for statistical purposes. It was created in 1994 and was adopted for statistics from 1999. It includes the ceremonial counties of Bedfordshire, Cambridgeshire, Essex, Hertfordshire, Norfolk and Suffolk. Essex has the highest population in the region.",
+     "is_supporting": true
+    }
+   ],
+   "question": "What year saw the creation of the region where the county of Hertfordshire is located?",
+   "question_decomposition": [
+    {
+     "id": 129292,
+     "question": "In which state is Hertfordshire located?",
+     "answer": "East of England",
+     "paragraph_support_idx": 6
+    },
+    {
+     "id": 160863,
+     "question": "When was #1 birthed?",
+     "answer": "1994",
+     "paragraph_support_idx": 10
+    }
+   ],
+   "answer": "1994",
+   "answer_aliases": [],
+   "answerable": true
+  },
+  {
+   "id": "2hop__679261_120616",
+   "paragraphs": [
+    {
+     "idx": 0,
+     "title": "PolyGram Filmed Entertainment",
+     "paragraph_text": "PolyGram Filmed Entertainment (formerly known as PolyGram Films and PolyGram Pictures or simply PFE) was a British-American film studio founded in 1980 which became a European competitor to Hollywood, but was eventually sold to Seagram Company Ltd. in 1998 and was folded in 1999. Among its most successful and well known films were \"An American Werewolf in London\" (1981), \"Flashdance\" (1983), \"Four Weddings and a Funeral\" (1994), \"Dead Man Walking\" (1995), \"The Big Lebowski\" (1998), \"Fargo\" (1996), \"The Usual Suspects\" (1995), and \"Notting Hill\" (1999).",
+     "is_supporting": true
+    },
+    {
+     "idx": 1,
+     "title": "Fortnite",
+     "paragraph_text": "Fortnite is a co-op sandbox survival game developed by Epic Games and People Can Fly and published by Epic Games. The game was released as a paid - for early access title for Microsoft Windows, macOS, PlayStation 4 and Xbox One on July 25, 2017, with a full free - to - play release expected in 2018. The retail versions of the game were published by Gearbox Publishing, while online distribution of the PC versions is handled by Epic's launcher.",
+     "is_supporting": false
+    },
+    {
+     "idx": 17,
+     "title": "The Game (1997 film)",
+     "paragraph_text": "The Game is a 1997 American mystery thriller film directed by David Fincher, starring Michael Douglas and Sean Penn, and produced by Propaganda Films and PolyGram Filmed Entertainment. It tells the story of a wealthy investment banker who is given a mysterious gift: participation in a game that integrates in strange ways with his everyday life. As the lines between the banker's real life and the game become more uncertain, hints of a large conspiracy become apparent.",
+     "is_supporting": true
+    }
+   ],
+   "question": "When was the abolishment of the studio that distributed The Game?",
+   "question_decomposition": [
+    {
+     "id": 679261,
+     "question": "The Game >> distributed by",
+     "answer": "PolyGram Filmed Entertainment",
+     "paragraph_support_idx": 17
+    },
+    {
+     "id": 120616,
+     "question": "When was #1 abolished?",
+     "answer": "1999",
+     "paragraph_support_idx": 0
+    }
+   ],
+   "answer": "1999",
+   "answer_aliases": [],
+   "answerable": true
+  },
+  {
+   "id": "3hop2__72459_51964_32334",
+   "paragraphs": [
+    {
+     "idx": 0,
+     "title": "Damernas Värld",
+     "paragraph_text": "Damernas Värld (meaning \"Women's World\" in English) is a Swedish language monthly fashion and women's magazine published in Stockholm, Sweden. It is one of the oldest magazines in the country.",
+     "is_supporting": false
+    },
+    {
+     "idx": 2,
+     "title": "Navy",
+     "paragraph_text": "The Spanish Infantería de Marina was formed in 1537, making it the oldest, current marine force in the world. The British Royal Marines combine being both a ship - based force and also being specially trained in commando - style operations and tactics, operating in some cases separately from the rest of the Royal Navy. The Royal Marines also have their own special forces unit.",
+     "is_supporting": true
+    },
+    {
+     "idx": 3,
+     "title": "Spanish language in the United States",
+     "paragraph_text": "Spanish is currently the most widely taught non-English language in American secondary schools and of higher education. More than 1.4 million university students were enrolled in language courses in autumn of 2002 and Spanish is the most widely taught language in American colleges and universities with 53 percent of the total number of people enrolled, followed by French (14.4%), German (7.1%), Italian (4.5%), American Sign language (4.3%), Japanese (3.7%), and Chinese (2.4%) although the totals remain relatively small in relation to the total U.S population.",
+     "is_supporting": true
+    },
+    {
+     "idx": 8,
+     "title": "United States energy independence",
+     "paragraph_text": "In total energy consumption, the U.S. was between 86% and 91% self - sufficient in 2016. In May 2011, the country became a net exporter of refined petroleum products. As of 2014, the United States was the world's third - largest producer of crude oil, after Saudi Arabia and Russia. and second largest exporter of refined products, after Russia.",
+     "is_supporting": true
+    }
+   ],
+   "question": "Are these other languages learned in the country that produces most of its own oil as popular as the language that originated in the country with the oldest navy?",
+   "question_decomposition": [
+    {
+     "id": 72459,
+     "question": "where does most of the oil in the us come from",
+     "answer": "the U.S.",
+     "paragraph_support_idx": 8
+    },
+    {
+     "id": 51964,
+     "question": "who has the oldest navy in the world",
+     "answer": "The Spanish",
+     "paragraph_support_idx": 2
+    },
+    {
+     "id": 32334,
+     "question": "Are these other languages learned in the #1 as popular as #2 ?",
+     "answer": "totals remain relatively small in relation to the total U.S population.",
+     "paragraph_support_idx": 3
+    }
+   ],
+   "answer": "totals remain relatively small in relation to the total U.S population.",
+   "answer_aliases": [
+    "the US",
+    "America",
+    "U.S.",
+    "the United States",
+    "United States",
+    "US"
+   ],
+   "answerable": true
+  },
+  {
+   "id": "3hop1__194721_295697_126906",
+   "paragraphs": [
+    {
+     "idx": 0,
+     "title": "Straight No Filter",
+     "paragraph_text": "Straight No Filter is an album by jazz saxophonist Hank Mobley, recorded mostly in 1963 but not released on the Blue Note label until 1985. The albums compiles performances recorded at four different sessions from 1963 to 1966.",
+     "is_supporting": false
+    },
+    {
+     "idx": 7,
+     "title": "Kirtland Records",
+     "paragraph_text": "In 2003, John Kirtland co-founded Kirtland Records with his wife, The Polyphonic Spree choir member Jenny Kirtland. Kirtland Records leveraged the Bush back catalog rights to secure a national distribution deal with RED Distribution, which remains the label's distributor. Kirtland Records went on to become the record label for a number of Texas-based indie bands, including the Burden Brothers, The Polyphonic Spree, Toadies, The Vanished, and Sarah Jaffe.",
+     "is_supporting": true
+    },
+    {
+     "idx": 12,
+     "title": "The Galaxy Kings",
+     "paragraph_text": "The Galaxy Kings is an album by Austin, Texas, singer-songwriter Bob Schneider, released in a limited edition of 1000 copies by Vanguard Records in 2002.",
+     "is_supporting": true
+    },
+    {
+     "idx": 18,
+     "title": "Lovely Creatures",
+     "paragraph_text": "Lovely Creatures is the eleventh solo album by Bob Schneider, released on September 29, 2009 through Kirtland Records. It was produced by Dwight Baker. A vinyl version of the album appeared in 2012. It features a duet with Patty Griffin and the single \"40 Dogs (Like Romeo and Juliet)\", supported by a video directed by Robert Rodriguez featuring Kat Dennings. A music video for the track \"The Bringdown\" was directed by Joey Boukadakis.",
+     "is_supporting": true
+    }
+   ],
+   "question": "When was the creation of the record label that the performer of The Galaxy Kings belongs to?",
+   "question_decomposition": [
+    {
+     "id": 194721,
+     "question": "The Galaxy Kings >> performer",
+     "answer": "Bob Schneider",
+     "paragraph_support_idx": 12
+    },
+    {
+     "id": 295697,
+     "question": "#1 >> record label",
+     "answer": "Kirtland Records",
+     "paragraph_support_idx": 18
+    },
+    {
+     "id": 126906,
+     "question": "When was #2 created?",
+     "answer": "2003",
+     "paragraph_support_idx": 7
+    }
+   ],
+   "answer": "2003",
+   "answer_aliases": [],
+   "answerable": true
+  },
+  {
+   "id": "4hop1__157164_591064_91861_124556",
+   "paragraphs": [
+    {
+     "idx": 1,
+     "title": "Nehalem Bay",
+     "paragraph_text": "Nehalem Bay is a bay formed by the confluence of the Nehalem River with the Pacific Ocean in northern Oregon, United States.",
+     "is_supporting": true
+    },
+    {
+     "idx": 2,
+     "title": "Johanna River",
+     "paragraph_text": "The Johanna River rises in the Otway Ranges in southwest Victoria, below and flows generally south through the Great Otway National Park before reaching its river mouth and emptying into the Great Australian Bight, west of Cape Otway at Johanna Beach, near . From its highest point, the river descends over its course.",
+     "is_supporting": false
+    },
+    {
+     "idx": 10,
+     "title": "Vasco da Gama",
+     "paragraph_text": "Vasco da Gama's father was Estêvão da Gama, who had served in the 1460s as a knight of the household of Infante Ferdinand, Duke of Viseu. He rose in the ranks of the military Order of Santiago. Estêvão da Gama was appointed \"alcaide-mór\" (civil governor) of Sines in the 1460s, a post he held until 1478; after that he continued as a receiver of taxes and holder of the Order's commendas in the region.",
+     "is_supporting": true
+    },
+    {
+     "idx": 13,
+     "title": "Salmonberry River",
+     "paragraph_text": "The Salmonberry River is a tributary of the Nehalem River, about long, in northwest Oregon in the United States. It drains a remote unpopulated area of the Northern Oregon Coast Range in the Tillamook State Forest about west-northwest of Portland. The river runs through part of the region devastated between 1933 and 1951 by a series of wildfires known as the Tillamook Burn.",
+     "is_supporting": true
+    },
+    {
+     "idx": 14,
+     "title": "Chronology of European exploration of Asia",
+     "paragraph_text": "The Portuguese Vasco da Gama, accompanied by Nicolau Coelho and Bartolomeu Dias, is the first European to reach India by an all - sea route from Europe.",
+     "is_supporting": true
+    }
+   ],
+   "question": "Who fathered the leader of the first expedition to reach Asia by sailing west across the ocean serving as the mouth of the river the Salmonberry River flows into?",
+   "question_decomposition": [
+    {
+     "id": 157164,
+     "question": "What does Salmonberry River flow into?",
+     "answer": "Nehalem River",
+     "paragraph_support_idx": 13
+    },
+    {
+     "id": 591064,
+     "question": "#1 >> mouth of the watercourse",
+     "answer": "Pacific Ocean",
+     "paragraph_support_idx": 1
+    },
+    {
+     "id": 91861,
+     "question": "who led the first expedition to reach asia by sailing west across #2",
+     "answer": "Vasco da Gama",
+     "paragraph_support_idx": 14
+    },
+    {
+     "id": 124556,
+     "question": "Who fathered #3 ?",
+     "answer": "Estêvão da Gama",
+     "paragraph_support_idx": 10
+    }
+   ],
+   "answer": "Estêvão da Gama",
+   "answer_aliases": [],
+   "answerable": true
+  }
+ ]
+}

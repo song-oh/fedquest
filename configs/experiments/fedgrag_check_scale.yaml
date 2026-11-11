@@ -1,0 +1,55 @@
+name: fedgrag_check_scale
+federation: musique_s4_k05_r0
+split: test
+limit: 300
+workload: cold
+concurrency: 24
+require_calibration: true
+interleave: true
+stage: 2
+lane: gemma
+after: ['tool:fedgrag_build', 'tool:fedgrag_seeds', 'tool:fedgrag_tune', 'tool:fedgrag_tune_trained']
+optional: true
+methods:
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s2_r0, federation: musique_s2_r0, params: {index: musique_s2_r0}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s2_r0, federation: musique_s2_r0, params: {index: musique_s2_r0}}
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s4_k05_r0, federation: musique_s4_k05_r0, params: {index: musique_s4_k05_r0}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s4_k05_r0, federation: musique_s4_k05_r0, params: {index: musique_s4_k05_r0}}
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s4_k05_r1, federation: musique_s4_k05_r1, params: {index: musique_s4_k05_r1}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s4_k05_r1, federation: musique_s4_k05_r1, params: {index: musique_s4_k05_r1}}
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s4_k05_r2, federation: musique_s4_k05_r2, params: {index: musique_s4_k05_r2}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s4_k05_r2, federation: musique_s4_k05_r2, params: {index: musique_s4_k05_r2}}
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s4_k05_r3, federation: musique_s4_k05_r3, params: {index: musique_s4_k05_r3}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s4_k05_r3, federation: musique_s4_k05_r3, params: {index: musique_s4_k05_r3}}
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s4_k05_r4, federation: musique_s4_k05_r4, params: {index: musique_s4_k05_r4}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s4_k05_r4, federation: musique_s4_k05_r4, params: {index: musique_s4_k05_r4}}
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s8_k05_r0, federation: musique_s8_k05_r0, params: {index: musique_s8_k05_r0}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s8_k05_r0, federation: musique_s8_k05_r0, params: {index: musique_s8_k05_r0}}
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s8_k05_r1, federation: musique_s8_k05_r1, params: {index: musique_s8_k05_r1}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s8_k05_r1, federation: musique_s8_k05_r1, params: {index: musique_s8_k05_r1}}
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s8_k05_r2, federation: musique_s8_k05_r2, params: {index: musique_s8_k05_r2}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s8_k05_r2, federation: musique_s8_k05_r2, params: {index: musique_s8_k05_r2}}
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s8_k05_r3, federation: musique_s8_k05_r3, params: {index: musique_s8_k05_r3}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s8_k05_r3, federation: musique_s8_k05_r3, params: {index: musique_s8_k05_r3}}
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s8_k05_r4, federation: musique_s8_k05_r4, params: {index: musique_s8_k05_r4}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s8_k05_r4, federation: musique_s8_k05_r4, params: {index: musique_s8_k05_r4}}
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s16_k05_r0, federation: musique_s16_k05_r0, params: {index: musique_s16_k05_r0}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s16_k05_r0, federation: musique_s16_k05_r0, params: {index: musique_s16_k05_r0}}
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s16_k05_r1, federation: musique_s16_k05_r1, params: {index: musique_s16_k05_r1}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s16_k05_r1, federation: musique_s16_k05_r1, params: {index: musique_s16_k05_r1}}
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s16_k05_r2, federation: musique_s16_k05_r2, params: {index: musique_s16_k05_r2}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s16_k05_r2, federation: musique_s16_k05_r2, params: {index: musique_s16_k05_r2}}
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s16_k05_r3, federation: musique_s16_k05_r3, params: {index: musique_s16_k05_r3}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s16_k05_r3, federation: musique_s16_k05_r3, params: {index: musique_s16_k05_r3}}
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s16_k05_r4, federation: musique_s16_k05_r4, params: {index: musique_s16_k05_r4}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s16_k05_r4, federation: musique_s16_k05_r4, params: {index: musique_s16_k05_r4}}
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s32_k05_r0, federation: musique_s32_k05_r0, params: {index: musique_s32_k05_r0}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s32_k05_r0, federation: musique_s32_k05_r0, params: {index: musique_s32_k05_r0}}
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s32_k05_r1, federation: musique_s32_k05_r1, params: {index: musique_s32_k05_r1}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s32_k05_r1, federation: musique_s32_k05_r1, params: {index: musique_s32_k05_r1}}
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s32_k05_r2, federation: musique_s32_k05_r2, params: {index: musique_s32_k05_r2}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s32_k05_r2, federation: musique_s32_k05_r2, params: {index: musique_s32_k05_r2}}
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s32_k05_r3, federation: musique_s32_k05_r3, params: {index: musique_s32_k05_r3}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s32_k05_r3, federation: musique_s32_k05_r3, params: {index: musique_s32_k05_r3}}
+  - {method: fedgrag_tuned, label: fedgrag_tuned_s32_k05_r4, federation: musique_s32_k05_r4, params: {index: musique_s32_k05_r4}}
+  - {method: fedgrag_trained, label: fedgrag_trained_s32_k05_r4, federation: musique_s32_k05_r4, params: {index: musique_s32_k05_r4}}
